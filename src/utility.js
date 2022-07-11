@@ -40,7 +40,7 @@ async function fetchData(){
 
 
 async function forceUpdate(){
-    const update = 8
+    const update = 7
     if(localStorage.getItem("update") != `${update} IR`){
         await localStorage.clear()
         await localStorage.setItem("update", `${update} IR`)
