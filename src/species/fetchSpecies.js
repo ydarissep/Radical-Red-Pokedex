@@ -191,7 +191,10 @@ async function fetchSpeciesObj(){
 
     window.spritesObj = {}
     if(localStorage.getItem("sprites")){
-        spritesObj = JSON.parse(LZString.decompressFromUTF16(localStorage.getItem("sprites")))
+        spritesObj = JSON.parse(localStorage.getItem("sprites"))
+        Object.keys(spritesObj).forEach(species => {
+            spritesObj[species] = LZString.decompressFromUTF16(spritesObj[species])
+        })
     }
 
     await displaySpecies()

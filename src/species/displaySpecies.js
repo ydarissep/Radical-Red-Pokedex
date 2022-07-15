@@ -22,10 +22,6 @@ function displaySpecies(){
 
         let spriteContainer = document.createElement("td")
         spriteContainer.className = "sprite"
-        let canvas = renderSprite(speciesName)
-        canvas.className = "src"
-        spriteContainer.append(canvas)
-        /*
         if(localStorage.getItem("sprites")){
             let sprite = document.createElement("img")
             sprite.src = spritesObj[speciesName]
@@ -37,7 +33,6 @@ function displaySpecies(){
             canvas.className = "src"
             spriteContainer.append(canvas)
         }
-        */
         row.append(spriteContainer)
         
 
@@ -164,7 +159,7 @@ function renderSprite(speciesName){
         }
         context.putImageData(imageData, 0, 0) 
 
-        //spritesObj[speciesName] = canvas.toDataURL()
+        spritesObj[speciesName] = LZString.compressToUTF16(canvas.toDataURL())
 
         if(Object.keys(spritesObj).length == Object.keys(species).length){
             setItemSprites(spritesObj)
@@ -174,6 +169,6 @@ function renderSprite(speciesName){
 }
 
 
-function setItemSprites(spritesObj){
-    localStorage.setItem("sprites", LZString.compressToUTF16(JSON.stringify(spritesObj)))
+async function setItemSprites(spritesObj){
+    await localStorage.setItem("sprites", JSON.stringify(spritesObj))
 }

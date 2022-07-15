@@ -508,7 +508,7 @@ update.addEventListener("click", () => {
 
 
 window.onbeforeunload = () => {  
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0)
 }
 
 

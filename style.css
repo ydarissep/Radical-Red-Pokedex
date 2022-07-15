@@ -14,7 +14,7 @@ footer > p {
 
 #tableButton, #tableInput, #tableFilter {
     text-align: center;
-    padding: 0.5em;
+    padding: 0.5em 0em 0.5em 0em;
 }
 
 
@@ -158,6 +158,23 @@ td, th {
     */
 }
 
+.filterLabel {
+    width: calc(50vw - 150px);
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+@media 
+only screen and (max-width: 500px) {
+    .filterLabel {
+        width: calc(50vw - 75px);
+    }
+    .filterInput {
+        width: 150px !important;
+    }
+}
+
 .background {
     display: flex;
     justify-content: center;
@@ -262,7 +279,7 @@ td, th {
 }
 
 .hover {
-        cursor: pointer;
+    cursor: pointer;
 }
 
 .reduceOpacity {

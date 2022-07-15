@@ -416,7 +416,7 @@ function appendChangesToMainContainer(changeMainContainer, statContainer, change
 
 
 function replaceStatString(stat){
-    replaceStringObject = {
+    const replaceStringObject = {
         "type1": "Type",
         "type2": "Type",
         "eggGroup1": "Egg Group",

@@ -199,14 +199,16 @@ function createFilter(list , obj, objInputArray, filterCount, element, labelStri
         const button = document.createElement("button")
 
         filter.setAttribute("id", `filter${filterCount}`)
+        filter.className = "flex"
 
         label.setAttribute("for", `input${filterCount}`)
-        label.style.width = "200px"
+        label.className = "filterLabel"
         label.innerText = labelString
 
         input.setAttribute("type", "search")
         input.setAttribute("id", `input${filterCount}`)
         input.setAttribute("list", `datalist${filterCount}`)
+        input.className = "filterInput"
         
         datalist.setAttribute("id", `datalist${filterCount}`)
 
