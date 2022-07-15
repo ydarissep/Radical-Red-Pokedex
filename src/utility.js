@@ -42,9 +42,9 @@ async function fetchData(){
 
 async function forceUpdate(){
     const update = 9
-    if(localStorage.getItem("update") != `${update} IR`){
+    if(localStorage.getItem("update") != `${update} RR`){
         await localStorage.clear()
-        await localStorage.setItem("update", `${update} IR`)
+        await localStorage.setItem("update", `${update} RR`)
         await footerP("Fetching data please wait... this is only run once")
     }
 }

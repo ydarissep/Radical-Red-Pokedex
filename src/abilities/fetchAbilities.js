@@ -1,6 +1,6 @@
 async function getAbilities(abilities){
     footerP("Fetching abilities")
-    const rawAbilities = await fetch(`https://raw.githubusercontent.com/${repo1}/master/include/constants/abilities.h`)
+    const rawAbilities = await fetch(`https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/abilities/abilities.h`)
     const textAbilities = await rawAbilities.text()
 
     return regexAbilities(textAbilities, abilities)
@@ -16,7 +16,7 @@ async function getVanillaAbilitiesDescription(abilities){
 
 async function getAbilitiesIngameName(abilities){
     footerP("Fetching abilities ingame name")
-    const rawAbilitiesIngameName = await fetch(`https://raw.githubusercontent.com/${repo1}/master/strings/ability_name_table.string`)
+    const rawAbilitiesIngameName = await fetch(`https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/abilities/ability_name_table.string`)
     const textAbilitiesIngameName = await rawAbilitiesIngameName.text()
 
     return regexAbilitiesIngameName(textAbilitiesIngameName, abilities)
@@ -24,14 +24,14 @@ async function getAbilitiesIngameName(abilities){
 
 async function getAbilitiesDescription(abilities){
     footerP("Fetching abilities description")
-    const rawAbilitiesDescription = await fetch(`https://raw.githubusercontent.com/${repo1}/master/strings/ability_descriptions.string`)
+    const rawAbilitiesDescription = await fetch(`https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/abilities/ability_descriptions.string`)
     const textAbilitiesDescription = await rawAbilitiesDescription.text()
 
     return regexAbilitiesDescription(textAbilitiesDescription, abilities)
 }
 
 async function getNewAbilities(abilities){
-    const rawNewAbilities = await fetch(`https://raw.githubusercontent.com/${repo1}/master/src/Tables/replace_abilities.h`)
+    const rawNewAbilities = await fetch(`https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/abilities/duplicate_abilities.h`)
     const textNewAbilities = await rawNewAbilities.text()
 
     return regexNewAbilities(textNewAbilities, abilities)   
@@ -45,10 +45,12 @@ async function buildAbilitiesObj(){
     abilities = await getAbilitiesDescription(abilities)
     abilities = await getNewAbilities(abilities)
 
+    /*
     abilities["ABILITY_NEUTRALIZINGGAS"]["description"] = "All Abilities are nullified."
     abilities["ABILITY_WANDERING_SPIRIT"]["description"] = "Trades Abilities on contact."
     abilities["ABILITY_PERISH_BODY"]["description"] = "Gives a perish count on contact."
     abilities["ABILITY_STEELY_SPIRIT"]["description"] = "Boosts ally Steel moves."
+    */
     //abilities["ABILITY_GULPMISSLE"]["description"] = "Spits prey if damaged after a swim." // fixed
     delete abilities["ABILITY_NONE"]
     delete abilities["ABILITY_NAME_LENGTH"]

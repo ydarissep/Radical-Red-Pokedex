@@ -146,9 +146,9 @@ function regexLevelUpLearnsets(textLevelUpLearnsets, conversionTable, species){
     for (const name of Object.keys(conversionTable)){
 
         if(conversionTable[name].length >= 2){
-                for (let j = 0; j < conversionTable[name].length; j++){
-                    species[conversionTable[name][j]]["forms"] = conversionTable[name]
-                }
+            for (let j = 0; j < conversionTable[name].length; j++){
+                species[conversionTable[name][j]]["forms"] = conversionTable[name]
+            }
         }
     }
     return species
@@ -180,14 +180,19 @@ function regexTMHMLearnsets(textTMHMLearnsets, species, start, end){
                 let move = moves[matchMove[0]]["ingameName"]
                 count++
 
+
                 if(move === "Solar Beam")
                     move = "Solarbeam"
                 else if(move === "Will-O-Wisp")
                     move = "Will-o-Wisp"
                 else if(move === "U-turn")
                     move = "U-Turn"
+                else if(move === "Drainingkiss")
+                    move = "Draining Kiss"
+                else if(move === "Acrobatics")
+                    move = "Smart Strike"
 
-                const rawTMHM = fetch(`https://raw.githubusercontent.com/${repo2}/master/src/tm_compatibility/${count} - ${move}.txt`)
+                const rawTMHM = fetch(`https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/species/tm_compatibility/${count} - ${move}.txt`)
                 .then(promises => {
                     const textTMHM = promises.text()
                     .then(promises => {
@@ -237,13 +242,15 @@ function regexTutorLearnsets(textTutorLearnsets, species, start, end){
                 let move = moves[matchMove[0]]["ingameName"]
                 count++
 
+                /*
                 if(move === "Buring Jealousy")
                     move = "Burning Jealousy"
                 else if(move === "Soft-Boiled")
                     move = "Softboiled"
+                */
 
-                if(move !== "Block"){ // Could be removed later
-                    const rawTutor = fetch(`https://raw.githubusercontent.com/${repo2}/master/src/tutor_compatibility/${count} - ${move}.txt`)
+                //if(move !== "Block"){ // Could be removed later
+                    const rawTutor = fetch(`https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/species/tutor_compatibility/${count} - ${move}.txt`)
                     .then(promises => {
                         const textTutor = promises.text()
                         .then(promises => {
@@ -263,7 +270,7 @@ function regexTutorLearnsets(textTutorLearnsets, species, start, end){
                             })
                         })
                     })
-                } 
+                //} 
             }
         }
         
@@ -458,10 +465,12 @@ function regexSprite(textSprite, species){
 
             const matchURL = line.match(/gFrontSprite\w+Tiles/i)
             if(matchURL !== null){
-                let url = `https://raw.githubusercontent.com/${repo2}/master/graphics/frontspr/${matchURL[0].replace("Tiles", ".png")}`
+                let url = `https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/species/frontspr/${matchURL[0].replace("Tiles", ".png")}`
 
+                /*
                 if(name === "SPECIES_CASTFORM")
                     url = `https://raw.githubusercontent.com/${repo2}/master/graphics/castform/gFrontSprite385Castform.png`
+                */
 
                 species[name]["sprite"] = url
             }

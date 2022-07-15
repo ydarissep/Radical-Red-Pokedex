@@ -1,6 +1,4 @@
-window.repo = "BuffelSaft/pokeemerald"
-window.repo1 = "Greenphx9/Complete-Fire-Red-Upgrade"
-window.repo2 = "Greenphx9/Dynamic-Pokemon-Expansion"
+window.repo = "ydarissep/Radical-Red-Pokedex"
 
 window.panelSpecies = ""
 

@@ -65,7 +65,7 @@ function displaySpecies(){
         typesContainer.append(types)
         row.append(typesContainer)
 
-
+        
         let abilitiesContainer = document.createElement("td")
         abilitiesContainer.className = "abilities"
         let abilitiesArray = []

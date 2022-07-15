@@ -278,10 +278,13 @@ function regexVanillaMovesDescription(textVanillaMovesDescription, moves){
         if(move !== null){
             move = move[0].replace(/_/g, "").replace(/MOVE/i, "MOVE_")
 
+
+            /*
             if(move === "MOVE_FAINTATTACK")
                 move = "MOVE_FEINTATTACK"
             else if(move === "MOVE_HIJUMPKICK")
                 move = "MOVE_JUMPKICK"
+            */
 
         }
 
