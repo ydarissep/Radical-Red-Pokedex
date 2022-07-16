@@ -308,7 +308,7 @@ function regexEvolution(textEvolution, species){
             const targetSpecies = matchEvoInfo[3]
             const matchHisuian = line.match(/EVO_HISUIAN/)
             if(matchHisuian != null){
-                method = "EVO_HISUIAN_POTENTIAL"
+                method += "_HISUIAN_POTENTIAL"
             }
             species[name]["evolution"].push([method, condition, targetSpecies])
         }
