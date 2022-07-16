@@ -303,9 +303,13 @@ function regexEvolution(textEvolution, species){
 
         const matchEvoInfo = line.match(/(\w+), *(\w+), *(\w+)/)
         if(matchEvoInfo !== null){
-            const method = matchEvoInfo[1]
+            let method = matchEvoInfo[1]
             const condition = matchEvoInfo[2]
             const targetSpecies = matchEvoInfo[3]
+            const matchHisuian = line.match(/EVO_HISUIAN/)
+            if(matchHisuian != null){
+                method = "EVO_HISUIAN_POTENTIAL"
+            }
             species[name]["evolution"].push([method, condition, targetSpecies])
         }
     })
