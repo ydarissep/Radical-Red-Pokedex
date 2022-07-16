@@ -125,7 +125,7 @@ async function createSpeciesPanel(name){
         }
     }
 
-    if(species[name]["evolution"].length === 0){
+    if(species[name]["evolution"].length === 0 || (species[name]["evolution"][0][0] === "EVO_MEGA" && species[name]["evolution"][0][1] === "ITEM_NONE")){
         const evoMethod = document.createElement("div")
         evoMethod.innerText = "Does not evolve"
         evoMethod.className = "italic"

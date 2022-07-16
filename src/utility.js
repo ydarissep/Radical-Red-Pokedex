@@ -1,5 +1,15 @@
 function sanitizeString(string){
     const regex = /^SPECIES_|^TYPE_|ABILITY_NONE|ABILITY_|^SPECIES_NONE|^MOVE_|^SPLIT_|FLAG_|^EFFECT_|^Z_EFFECT_|^ITEM_|^EGG_GROUP_|^EVO_/ig
+
+    if(typeof species != "undefined" && string in species){
+        for (let i = 0; i < species[string]["evolution"].length; i++){
+            if(species[string]["evolution"][i][0] === "EVO_MEGA"){
+                string = string.replace(/_GIGA$/i, "_MEGA")
+                break
+            }
+        }
+    }
+
     const unsanitizedString = string.toString().replace(regex, "")
     let matchArray = unsanitizedString.match(/\w+/g)
     if(matchArray !== null){
@@ -41,7 +51,7 @@ async function fetchData(){
 
 
 async function forceUpdate(){
-    const update = 10
+    const update = 11
     if(localStorage.getItem("update") != `${update} RR`){
         await localStorage.clear()
         await localStorage.setItem("update", `${update} RR`)
