@@ -90,7 +90,56 @@ function regexBaseStats(textBaseStats, species){
 
 
 
+function regexChanges(textChanges, species){
+    const lines = textChanges.split("\n")
 
+    const regex = /baseHP|baseAttack|baseDefense|baseSpeed|baseSpAttack|baseSpDefense|type1|type2|ability1|ability2|hiddenAbility/i
+    let value, name, abilities = []
+
+    lines.forEach(line => {
+
+        const matchSpecies = line.match(/SPECIES_\w+/i)
+        if(matchSpecies !== null){
+            if(name in species && abilities.length >= species[name]["abilities"].length && abilities !== species[name]["abilities"]){
+                species[name]["changes"].push(["abilities", abilities])
+            }
+            name = matchSpecies[0]
+            abilities = []
+        }
+
+
+        if(name in species){
+            const matchRegex = line.match(regex)
+            if(matchRegex !== null){
+                const match = matchRegex[0]
+
+
+
+                if(match === "baseHP" || match === "baseAttack" || match === "baseDefense" || match === "baseSpeed" || match === "baseSpAttack" || match === "baseSpDefense"){
+                    const matchInt = line.match(/\d+/)
+                    if(matchInt !== null)
+                        value = parseInt(matchInt[0])
+                }
+                else if(match === "type1" || match === "type2"){
+                    value = line.match(/\w+_\w+/i)
+                    if(value !== null)
+                        value = value[0]
+                }
+                else if(match === "ability1" || match === "ability2" || match === "hiddenAbility"){
+                    value = line.match(/\w+_\w+/i)
+                    if(value !== null)
+                        value = value[0]
+                    abilities.push(value)
+                }
+
+                if(match in species[name] && species[name][match] !== value){
+                    species[name]["changes"].push([match, value])
+                }
+            }
+        }
+    })
+    return species
+}
 
 
 

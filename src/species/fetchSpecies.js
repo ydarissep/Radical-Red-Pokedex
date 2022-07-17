@@ -85,9 +85,16 @@ async function getReplaceAbilities(species){
     return regexReplaceAbilities(textReplaceAbilities, species)
 }
 
+async function getChanges(species, url){
+    footerP("Fetching species changes")
+    const rawChanges = await fetch(url)
+    const textChanges = await rawChanges.text()
+    return regexChanges(textChanges, species)
+}
+
 
 async function cleanSpecies(species){
-
+    footerP("Cleaning up...")
     Object.keys(species).forEach(name => {
         if(species[name]["baseSpeed"] <= 0){
             for (let i = 0; i < species[name]["forms"].length; i++){
@@ -106,6 +113,34 @@ async function cleanSpecies(species){
                     }
                 }
             }
+        }
+        if(name.match(/_GIGA$/i) !== null && species[name]["evolution"].toString().includes("EVO_MEGA")){
+            const replaceName = name.replace(/_GIGA$/i, "_MEGA")
+            species[name]["name"] = replaceName
+            species[name]["changes"] = []
+            species[name]["evolution"] = []
+            species[replaceName] = species[name]
+            let arraySpeciesToClean = []
+            species[name]["forms"].forEach(targetSpecies => {
+                if(!arraySpeciesToClean.includes(targetSpecies)){
+                    arraySpeciesToClean.push(targetSpecies)
+                }
+            })
+            species[name]["evolutionLine"].forEach(targetSpecies => {
+                if(!arraySpeciesToClean.includes(targetSpecies)){
+                    arraySpeciesToClean.push(targetSpecies)
+                }
+            })
+            arraySpeciesToClean.forEach(speciesToClean => {
+                species[speciesToClean]["forms"] = JSON.parse(JSON.stringify(species[speciesToClean]["forms"]).replaceAll(name, replaceName))
+                species[speciesToClean]["evolution"] = JSON.parse(JSON.stringify(species[speciesToClean]["evolution"]).replaceAll(name, replaceName))
+                species[speciesToClean]["evolutionLine"] = JSON.parse(JSON.stringify(species[speciesToClean]["evolutionLine"]).replaceAll(name, replaceName))
+            })
+            species[replaceName] = species[name]
+            delete species[name]
+        }
+        else if(name.match(/_MEGA$|_MEGA_Y$|MEGA_X$/i) !== null && species[name]["evolution"].toString().includes("EVO_MEGA")){
+            species[name]["evolution"] = []
         }
     })
     Object.keys(species).forEach(name => {
@@ -126,6 +161,8 @@ async function buildSpeciesObj(){
     species = await getSpecies(species)
     
     species = await initializeSpeciesObj(species)
+
+    species = await getChanges(species, "https://raw.githubusercontent.com/Skeli789/Dynamic-Pokemon-Expansion/master/src/Base_Stats.c")
     species = await getEvolution(species)
     //species = await getForms(species) // should be called in that order until here    // done in getLevelUpLearnsets for RR
     species = await getBaseStats(species)
@@ -147,10 +184,12 @@ async function buildSpeciesObj(){
     species = await cleanSpecies(species)
 
 
+
     delete species["SPECIES_ZYGARDE_CORE"]
     delete species["SPECIES_ZYGARDE_CELL"]
     delete species["SPECIES_SHADOW_WARRIOR"]
     delete species["SPECIES_UNKNOWN_MYTHICAL"]
+
 
     Object.keys(species).forEach(name => {
         species[name]["tutorLearnsets"].sort((a,b) => a[1] - b[1])
