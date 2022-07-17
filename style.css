@@ -101,10 +101,6 @@ input[type="search"]:focus, input[type="search"]:hover {
   background: rgba(255, 255, 255, 0.144);
 }
 
-canvas {
-  padding: 0.5rem;
-}
-
 @media (hover: hover) {
     #table > table > thead > tr > th:hover {
         background: rgba(113, 117, 126, 0.336);

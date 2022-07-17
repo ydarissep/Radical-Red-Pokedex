@@ -71,7 +71,7 @@ async function createSpeciesPanel(name){
         abilityName.innerText = `${abilities[abilitiesArray[i]]["ingameName"]}`
         abilityDescription.innerText = abilities[abilitiesArray[i]]["description"]
 
-        if(i === abilitiesArray.length - 1 && i > 0)
+        if(i === species[name]["abilities"].length - 1 && i > 0)
             abilityName.className = "bold"
         else
             abilityName.className = "italic"
