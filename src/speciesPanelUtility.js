@@ -56,33 +56,27 @@ async function createSpeciesPanel(name){
     while (speciesAbilities.firstChild)
         speciesAbilities.removeChild(speciesAbilities.firstChild)
 
-    let abilitiesArray = []
-
     for (let i = 0; i < species[name]["abilities"].length; i++){
-        if(species[name]["abilities"][i] !== "ABILITY_NONE")
-            abilitiesArray.push(species[name]["abilities"][i])
+        if(species[name]["abilities"][i] !== "ABILITY_NONE"){
+            const abilityContainer = document.createElement("div")
+            const abilityName = document.createElement("span")
+            const abilityDescription = document.createElement("span")
+
+            abilityName.innerText = `${abilities[species[name]["abilities"][i]]["ingameName"]}`
+            abilityDescription.innerText = abilities[species[name]["abilities"][i]]["description"]
+
+            if(i === species[name]["abilities"].length - 1 && i > 0)
+                abilityName.className = "bold"
+            else
+                abilityName.className = "italic"
+            abilityDescription.className = "speciesPanelAbilitiesDescriptionPadding"
+            abilityContainer.className = "flex wrap"
+
+            abilityContainer.append(abilityName)
+            abilityContainer.append(abilityDescription)
+            speciesAbilities.append(abilityContainer)
+        }
     }
-
-    for (let i = 0; i < abilitiesArray.length; i++){
-        const abilityContainer = document.createElement("div")
-        const abilityName = document.createElement("span")
-        const abilityDescription = document.createElement("span")
-
-        abilityName.innerText = `${abilities[abilitiesArray[i]]["ingameName"]}`
-        abilityDescription.innerText = abilities[abilitiesArray[i]]["description"]
-
-        if(i === species[name]["abilities"].length - 1 && i > 0)
-            abilityName.className = "bold"
-        else
-            abilityName.className = "italic"
-        abilityDescription.className = "speciesPanelAbilitiesDescriptionPadding"
-        abilityContainer.className = "flex wrap"
-
-        abilityContainer.append(abilityName)
-        abilityContainer.append(abilityDescription)
-        speciesAbilities.append(abilityContainer)
-    }
-
 
 
 
