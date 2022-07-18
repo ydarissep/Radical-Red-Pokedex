@@ -186,7 +186,7 @@ only screen and (max-width: 500px) {
     text-shadow: 1px 1px rgba(54, 61, 61, 0.788);
 }
 
-.backgroundChange {
+.background2 {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -196,6 +196,21 @@ only screen and (max-width: 500px) {
     border-radius: 5px;
     font-weight: bold;
     font-size: 0.6rem;
+    text-transform: uppercase;
+    text-shadow: 1px 1px rgba(54, 61, 61, 0.788);
+}
+
+.background3 {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2px;
+    border: none;
+    width: 3rem;
+    height: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    /*font-size: 0.6rem;*/
     text-transform: uppercase;
     text-shadow: 1px 1px rgba(54, 61, 61, 0.788);
 }

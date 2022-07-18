@@ -21,6 +21,7 @@ const speciesHeldItems = document.getElementById("speciesHeldItems")
 const speciesChanges = document.getElementById("speciesChanges")
 const speciesHeldItemsContainer = document.getElementById("speciesHeldItemsContainer")
 const speciesChangesContainer = document.getElementById("speciesChangesContainer")
+const speciesTypeChart = document.getElementById("speciesTypeChart")
 const speciesPanelLevelUpTableTbody = document.getElementById("speciesPanelLevelUpTableTbody")
 const speciesPanelTMHMTableTbody = document.getElementById("speciesPanelTMHMTableTbody")
 const speciesPanelTutorTableTbody = document.getElementById("speciesPanelTutorTableTbody")
@@ -238,6 +239,27 @@ async function createSpeciesPanel(name){
 
 
 
+    while (speciesTypeChart.firstChild)
+        speciesTypeChart.removeChild(speciesTypeChart.firstChild)
+
+    Object.keys(typeChart).forEach(type => {
+        const typeEffectivenessContainer = document.createElement("span")
+        const checkType = document.createElement("span")
+        const typeEffectivenessValue = document.createElement("span")
+        typeEffectivenessContainer.className = "flex flexCenter flexColumn speciesTypeChartMarginTop"
+        checkType.innerText = sanitizeString(type)
+        checkType.className = `background2 ${type}`
+        if((species[name]["type1"] !== species[name]["type2"]) && species[name]["type2"] !== undefined){
+            typeEffectivenessValue.innerText = typeChart[type][species[name]["type1"]]*typeChart[type][species[name]["type2"]]
+        }
+        else{
+            typeEffectivenessValue.innerText = typeChart[type][species[name]["type1"]]
+        }
+        typeEffectivenessValue.className = `typeChart${typeEffectivenessValue.innerText} background3`
+        typeEffectivenessContainer.append(checkType)
+        typeEffectivenessContainer.append(typeEffectivenessValue)
+        speciesTypeChart.append(typeEffectivenessContainer)
+    })    
 
 
 
@@ -370,8 +392,8 @@ function createChange(stat, oldStat = [""], newStat = [""], speciesName){
             }
         }
         else if(stat === "type1" || stat === "type2"){
-            oldStatContainer.className = `${oldStat} backgroundChange`
-            newStatContainer.className = `${newStat} backgroundChange`
+            oldStatContainer.className = `${oldStat} background2`
+            newStatContainer.className = `${newStat} background2`
         }
         appendChangesToMainContainer(changeMainContainer, statContainer, changeContainer, oldStatContainer, newStatContainer)   
     }

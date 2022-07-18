@@ -183,6 +183,40 @@
 }
 
 
+#speciesTypeChartContainer {
+	padding-top: 50px;
+}
+
+#speciesTypeChart {
+	justify-content: center;
+	padding: 10px 0px 10px 0px;
+}
+
+.typeChart0 {
+	background: rgba(0, 0, 0, 0.7);
+}
+
+.typeChart0\.25 {
+	background: rgb(100, 221, 23);
+}
+
+.typeChart0\.5 {
+	background: rgba(100, 221, 23, 0.7);
+}
+
+.typeChart2 {
+	background: rgba(239, 83, 80, 0.7);
+}
+
+.typeChart4 {
+	background: rgb(239, 83, 80);
+}
+
+.speciesTypeChartMarginTop {
+	margin: 10px 1px 0px 1px;
+}
+
+
 
 
 
