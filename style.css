@@ -180,10 +180,10 @@ only screen and (max-width: 500px) {
     height: 23px;
     border-radius: 5px;
     font-weight: bold;
-    padding-bottom: 2px;
     font-size: 0.6rem;
     text-transform: uppercase;
     text-shadow: 1px 1px rgba(54, 61, 61, 0.788);
+    padding: 1px 0px 1px 0px;
 }
 
 .background2 {
@@ -198,6 +198,7 @@ only screen and (max-width: 500px) {
     font-size: 0.6rem;
     text-transform: uppercase;
     text-shadow: 1px 1px rgba(54, 61, 61, 0.788);
+    padding: 0px 2px 0px 2px;
 }
 
 .background3 {
@@ -213,6 +214,7 @@ only screen and (max-width: 500px) {
     /*font-size: 0.6rem;*/
     text-transform: uppercase;
     text-shadow: 1px 1px rgba(54, 61, 61, 0.788);
+    padding: 0px 2px 0px 2px;
 }
 
 .TYPE_NORMAL {background: #A8A77A;}
