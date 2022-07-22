@@ -245,14 +245,23 @@ headerSpeciesBST.addEventListener("click", () => {
 
 speciesInput.addEventListener("input", e => {
     const value = e.target.value
+    if(speciesIngameNameArray.includes(value)){
+        speciesInput.blur()
+    }
     filterTableInput(value, [2, 3, 4], speciesTableTbody)
 })
 abilitiesInput.addEventListener("input", e => {
     const value = e.target.value
+    if(abilitiesIngameNameArray.includes(value)){
+        abilitiesInput.blur()
+    }
     filterTableInput(value, [0, 1], abilitiesTableTbody)
 })
 movesInput.addEventListener("input", e => {
     const value = e.target.value
+    if(movesIngameNameArray.includes(value)){
+        movesInput.blur()
+    }
     filterTableInput(value, [0, 1, 6], movesTableTbody)
 })
 
@@ -288,11 +297,11 @@ speciesFilterType.addEventListener("click", () => {
     createFilter(list, species, ["type1", "type2"], filterCount++, speciesFilterButton, "Type")
 })
 speciesFilterAbility.addEventListener("click", () => {
-    const list = createOptionArray(["name"], abilities)
+    let list = abilitiesIngameNameArray
     createFilter(list, species, ["abilities"], filterCount++, speciesFilterButton, "Ability")
 })
 speciesFilterLearnset.addEventListener("click", () => {
-    const list = createOptionArray(["name"], moves)
+    const list = movesIngameNameArray
     createFilter(list, species, ["levelUpLearnsets", "TMHMLearnsets", "tutorLearnsets", "eggMovesLearnsets"], filterCount++, speciesFilterButton, "Learnset")
 })
 speciesFilterHeldItem.addEventListener("click", () => {

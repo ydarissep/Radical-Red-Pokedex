@@ -319,7 +319,7 @@ function filterInput(value, objInputArray, rows, filterCount, obj, isInt = false
             }
             else{
                 compareValue = JSON.stringify(compareValue).toLowerCase()
-                if(compareValue.includes(value.replace(/ /g, "_"))){
+                if(compareValue.includes(value.replace(/ /g, "_")) || compareValue.includes(value.replace(/ /g, ""))){
                     hideRows[j] = "show"
                     break
                 }
