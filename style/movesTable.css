@@ -40,6 +40,10 @@
 }
 
 
+#movesFilterButton {
+    padding-bottom: 10px;
+}
+
 #movesTable .background {
     margin: 5px auto;   
 }

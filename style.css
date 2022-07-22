@@ -154,6 +154,10 @@ td, th {
     */
 }
 
+.tableFilter {
+    padding-top: 5px;
+}
+
 .filterLabel {
     width: calc(50vw - 150px);
     display: flex;

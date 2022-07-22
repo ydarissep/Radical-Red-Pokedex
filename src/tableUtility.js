@@ -199,7 +199,7 @@ function createFilter(list , obj, objInputArray, filterCount, element, labelStri
         const button = document.createElement("button")
 
         filter.setAttribute("id", `filter${filterCount}`)
-        filter.className = "flex"
+        filter.className = "flex tableFilter"
 
         label.setAttribute("for", `input${filterCount}`)
         label.className = "filterLabel"

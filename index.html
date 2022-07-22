@@ -210,9 +210,12 @@
 
 
   <div id="tableInput" class="hide">
-    <input type="search" id="abilitiesInput" class="hide" placeholder="Name/Description">
-    <input type="search" id="speciesInput" class="activeInput" placeholder="Name/Types/Abilities">
-    <input type="search" id="movesInput" class="hide" placeholder="Name/Type/Split/Effect">
+    <input type="search" id="abilitiesInput" class="hide" list="abilitiesInputDataList">
+    <input type="search" id="speciesInput" class="activeInput" list="speciesInputDataList">
+    <input type="search" id="movesInput" class="hide" list="movesInputDataList">
+    <datalist id="abilitiesInputDataList"></datalist>
+    <datalist id="speciesInputDataList"></datalist>
+    <datalist id="movesInputDataList"></datalist>
   </div>
 
 
@@ -232,10 +235,14 @@
     <div id="abilitiesFilter" class="hide"></div>
 
     <div id="speciesFilter" class="activeFilter">
-      <label for="speciesFilterCheckbox">Show Filters</label>
-      <input type="checkbox" id="speciesFilterCheckbox">
-
-      <div id="speciesFilterButton" class="hide">
+      <div id="speciesFilterMainButton">
+        <button type="button" id="speciesFilterType">Type</button>
+        <button type="button" id="speciesFilterAbility">Ability</button>
+        <button type="button" id="speciesFilterLearnset">Learnset</button>
+        <button type="button" id="speciesFilterHeldItem">Held Item</button>
+        <button type="button" id="speciesFilterEggGroup">Egg Group</button>
+      </div>
+      <div id="speciesFilterButton">
         <button type="button" id="speciesFilterHP">HP</button>
         <button type="button" id="speciesFilterAtk">Atk</button>
         <button type="button" id="speciesFilterDef">Def</button>
@@ -243,25 +250,18 @@
         <button type="button" id="speciesFilterSpD">SpD</button>
         <button type="button" id="speciesFilterSpe">Spe</button>
         <button type="button" id="speciesFilterBST">BST</button>
-        <button type="button" id="speciesFilterLearnset">Learnset</button>
-        <button type="button" id="speciesFilterEggGroup">Egg Group</button>
-        <button type="button" id="speciesFilterHeldItem">Held Item</button>
       </div>
     </div>
 
     <div id="movesFilter" class="hide">
-      <label for="movesFilterCheckbox">Show Filters</label>
-      <input type="checkbox" id="movesFilterCheckbox">
-
-      <div id="movesFilterButton" class="hide">
-        <button type="button" id="movesFilterMaxPower">MaxPower</button>
+      <div id="movesFilterButton">
+        <button type="button" id="movesFilterType">Type</button>
+        <button type="button" id="movesFilterPower">Power</button>
         <button type="button" id="movesFilterFlag">Flag</button>
         <button type="button" id="movesFilterPriority">Priority</button>
         <button type="button" id="movesFilterEffect">Effect</button>
         <button type="button" id="movesFilterTarget">Target</button>
-        <button type="button" id="movesFilterPower">Power</button>
       </div>
-
     </div>
 
   </div>

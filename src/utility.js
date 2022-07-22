@@ -33,7 +33,9 @@ async function fetchData(){
     await fetchTypeChart()
 
 
+    await setDataList()
     await displaySetup()
+
     await window.scrollTo(0, 0)
 }
 
@@ -66,4 +68,28 @@ function footerP(input){
     const footer = document.getElementById("footer")
     paragraph.innerText = input
     footer.append(paragraph)
+}
+
+
+
+
+
+function setDataList(){
+    Object.keys(species).forEach(speciesName => {
+        const option = document.createElement("option")
+        option.innerText = sanitizeString(speciesName)
+        speciesInputDataList.append(option)
+    })
+
+    Object.keys(abilities).forEach(abilityName => {
+        const option = document.createElement("option")
+        option.innerText = abilities[abilityName]["ingameName"]
+        abilitiesInputDataList.append(option)
+    })
+
+    Object.keys(moves).forEach(movesName => {
+        const option = document.createElement("option")
+        option.innerText = moves[movesName]["ingameName"]
+        movesInputDataList.append(option)
+    })
 }
