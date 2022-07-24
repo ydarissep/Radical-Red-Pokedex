@@ -100,7 +100,7 @@ function regexChanges(textChanges, species){
 
         const matchSpecies = line.match(/SPECIES_\w+/i)
         if(matchSpecies !== null){
-            if(name in species && abilities.length >= species[name]["abilities"].length && abilities !== species[name]["abilities"]){
+            if(name in species && abilities.length >= species[name]["abilities"].length && JSON.stringify(abilities) !== JSON.stringify(species[name]["abilities"])){
                 species[name]["changes"].push(["abilities", abilities])
             }
             name = matchSpecies[0]
