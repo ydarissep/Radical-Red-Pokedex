@@ -12,7 +12,8 @@ const closeCredits = document.getElementById("closeCredits")
 const modal = document.getElementById("modal")
 const update = document.getElementById("update")
 
-const showOnlyChangedPokemonCheckbox = document.getElementById("showOnlyChangedPokemonCheckbox")
+const patchnoteModeCheckbox = document.getElementById("patchnoteModeCheckbox")
+const onlyShowChangedPokemonCheckbox = document.getElementById("onlyShowChangedPokemonCheckbox")
 
 const speciesFilterType = document.getElementById("speciesFilterType")
 const speciesFilterAbility = document.getElementById("speciesFilterAbility")
@@ -285,20 +286,39 @@ movesButton.addEventListener("click", () => {
 
 
 
-showOnlyChangedPokemonCheckbox.addEventListener("change", e => {
+patchnoteModeCheckbox.addEventListener("change", e => {
+    if(e.target.checked){
+        document.querySelectorAll(".changelogType").forEach(el => el.classList.add("whatever"))
+        document.querySelectorAll(".changelogAbilities").forEach(el => el.classList.remove("hide"))
+        document.querySelectorAll(".changelogBuff").forEach(el => el.classList.add("buff", "bold"))
+        document.querySelectorAll(".changelogNerf").forEach(el => el.classList.add("nerf", "bold"))
+    }
+    else{
+        document.querySelectorAll(".changelogType").forEach(el => el.classList.remove("whatever"))
+        document.querySelectorAll(".changelogAbilities").forEach(el => el.classList.add("hide"))
+        document.querySelectorAll(".changelogBuff").forEach(el => el.classList.remove("buff", "bold"))
+        document.querySelectorAll(".changelogNerf").forEach(el => el.classList.remove("nerf", "bold"))
+    }
+    lazyLoading(reset = true)
+})
+
+onlyShowChangedPokemonCheckbox.addEventListener("change", e => {
     Object.keys(species).forEach(name => {
         const row = document.getElementById(name)
-        if((e.target.checked && species[name]["changes"].length > 0) || !e.target.checked){
-            row.classList.remove("hideChanged")
+        if(e.target.checked){
+            if(species[name]["changes"].length <= 0){
+                row.classList.add("hideChanged")
+            }
+            else{
+                row.classList.remove("hideChanged")
+            }
         }
         else{
-            row.classList.add("hideChanged")
+            row.classList.remove("hideChanged")
         }
     })
     lazyLoading(reset = true)
 })
-
-
 
 
 

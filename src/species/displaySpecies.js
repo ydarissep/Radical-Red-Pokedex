@@ -27,6 +27,9 @@ function displaySpecies(){
             sprite.src = spritesObj[speciesName]
             sprite.className = "src"
             spriteContainer.append(sprite)
+            if(i === speciesArray.length - 1){
+                delete spritesObj
+            }
         }
         else{
             let canvas = renderSprite(speciesName)
@@ -56,9 +59,23 @@ function displaySpecies(){
         let type2 = document.createElement("div")
         typesContainer.className = "types"
         type1.innerText = `${sanitizeString(species[speciesName]["type1"])} `
-        type2.innerText = sanitizeString(species[speciesName]["type2"])
+        type2.innerText = `${sanitizeString(species[speciesName]["type2"])} `
         type1.className = `${species[speciesName]["type1"]} background`
         type2.className = `${species[speciesName]["type2"]} background`
+
+        for (let k = 0; k < species[speciesName]["changes"].length; k++){
+            if(species[speciesName]["changes"][k][0] === "type1"){
+                if(species[speciesName]["type1"] !== species[speciesName]["changes"][k][1]){
+                    type1.classList.add("changelogType")
+                }
+            }
+            else if(species[speciesName]["changes"][k][0] === "type2"){
+                if(species[speciesName]["type2"] !== species[speciesName]["changes"][k][1]){
+                    type2.classList.add("changelogType")
+                }
+            }
+        }
+
         types.append(type1)
         if(species[speciesName]["type1"] !== species[speciesName]["type2"])
             types.append(type2)
@@ -74,13 +91,26 @@ function displaySpecies(){
                 abilitiesArray.push(abilities[species[speciesName]["abilities"][j]]["ingameName"])
         }
 
-        abilitiesArray = Array.from(new Set(abilitiesArray))
         for (let j = 0; j < abilitiesArray.length; j++){
             let ability = document.createElement("div")
             ability.innerText = `${abilitiesArray[j]} `
             if(j >= 1 && j === abilitiesArray.length - 1){
                 ability.style.fontWeight = "bold"
             }
+
+
+            for (let k = 0; k < species[speciesName]["changes"].length; k++){
+                if(species[speciesName]["changes"][k][0] === "abilities"){
+                    if(species[speciesName]["abilities"][j] !== species[speciesName]["changes"][k][1][j]){
+                        const changelogAbilities = document.createElement("span")
+                        changelogAbilities.className = "changelogAbilities hide"
+                        changelogAbilities.innerText += "new"
+                        ability.append(changelogAbilities)
+                    }
+                }
+            }
+
+
             abilitiesContainer.append(ability)
         }
         row.append(abilitiesContainer)
@@ -112,16 +142,27 @@ function displaySpecies(){
 function createBaseStatsContainer(headerText, stats, speciesObj){
     let baseStatsContainer = document.createElement("td")
     let baseStats = document.createElement("div")
-    let baseStatsHeader = document.createElement("div") //only used for mobile view
+    let baseStatsHeader = document.createElement("em")
 
 
-    baseStatsHeader.innerText = headerText //only used for mobile view
-    baseStatsHeader.style.display = "none" //only used for mobile view
-    baseStatsHeader.className = "baseStatsHeader" //only used for mobile view
+    baseStatsHeader.innerText = headerText
+    baseStatsHeader.className = "baseStatsHeader"
 
-    baseStats.className = `baseStatsBold ${stats}` //only used for mobile view
+    baseStats.className = `baseStatsBold ${stats}`
 
     baseStats.innerText = speciesObj[stats]
+
+
+    for (let k = 0; k < speciesObj["changes"].length; k++){
+        if(speciesObj["changes"][k][0] === stats){
+            if(speciesObj[stats] > speciesObj["changes"][k][1]){
+                baseStats.classList.add("changelogBuff")
+            }
+            else{
+                baseStats.classList.add("changelogNerf")   
+            }
+        }
+    }
 
     baseStatsContainer.append(baseStatsHeader)
     baseStatsContainer.append(baseStats)
@@ -163,6 +204,7 @@ function renderSprite(speciesName){
 
         if(Object.keys(spritesObj).length == Object.keys(species).length){
             setItemSprites(spritesObj)
+            delete spritesObj
         }
     }
     return canvas

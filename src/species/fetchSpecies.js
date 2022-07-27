@@ -165,12 +165,12 @@ async function buildSpeciesObj(){
     species = await getEvolution(species)
     //species = await getForms(species) // should be called in that order until here    // done in getLevelUpLearnsets for RR
     species = await getBaseStats(species)
+    species = await getReplaceAbilities(species)
     species = await getChanges(species, "https://raw.githubusercontent.com/Skeli789/Dynamic-Pokemon-Expansion/master/src/Base_Stats.c")
     species = await getLevelUpLearnsets(species)
     species = await getTMHMLearnsets(species)
     species = await getEggMovesLearnsets(species)
     species = await getTutorLearnsets(species)
-    species = await getReplaceAbilities(species)
     species = await getSprite(species)
 
 

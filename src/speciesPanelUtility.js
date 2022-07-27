@@ -178,7 +178,7 @@ async function createSpeciesPanel(name){
 
 
     while (speciesEggGroups.firstChild) 
-        speciesEggGroups.removeChild(speciesEggGroups.firstChild);
+        speciesEggGroups.removeChild(speciesEggGroups.firstChild)
     while (speciesHeldItems.firstChild)
         speciesHeldItems.removeChild(speciesHeldItems.firstChild)
     while (speciesChanges.firstChild)
@@ -226,7 +226,7 @@ async function createSpeciesPanel(name){
             const stat = species[name]["changes"][i][0]
             const oldStat = species[name]["changes"][i][1]
             const newStat = species[name][stat]
-            createChange(stat, oldStat, newStat, name)
+            createChange(stat, oldStat, newStat, name, speciesChanges)
         }
     }
     if(speciesChanges.firstChild)
@@ -333,7 +333,7 @@ function createClickableImgAndName(speciesName){
 
 
 
-function createChange(stat, oldStat = [""], newStat = [""], speciesName){
+function createChange(stat, oldStat = [""], newStat = [""], speciesName, objectToAppend){
 
     if(typeof newStat == "object"){
         for (let i = 0; i < newStat.length; i++){
@@ -362,7 +362,7 @@ function createChange(stat, oldStat = [""], newStat = [""], speciesName){
                 else{
                     newStatContainer.innerText = `${sanitizeString(newStat[i])}`
                 }
-                appendChangesToMainContainer(changeMainContainer, statContainer, changeContainer, oldStatContainer, newStatContainer)   
+                appendChangesToMainContainer(changeMainContainer, statContainer, changeContainer, oldStatContainer, newStatContainer, objectToAppend)   
             }
 
 
@@ -395,13 +395,13 @@ function createChange(stat, oldStat = [""], newStat = [""], speciesName){
             oldStatContainer.className = `${oldStat} background2`
             newStatContainer.className = `${newStat} background2`
         }
-        appendChangesToMainContainer(changeMainContainer, statContainer, changeContainer, oldStatContainer, newStatContainer)   
+        appendChangesToMainContainer(changeMainContainer, statContainer, changeContainer, oldStatContainer, newStatContainer, objectToAppend)   
     }
 }
 
 
 
-function appendChangesToMainContainer(changeMainContainer, statContainer, changeContainer, oldStatContainer, newStatContainer){
+function appendChangesToMainContainer(changeMainContainer, statContainer, changeContainer, oldStatContainer, newStatContainer, objectToAppend){
     changeMainContainer.className = "flex flexAlign"
     changeContainer.classList.add("textAlign")
     changeContainer.classList.add("changeTextAlignFlex")
@@ -415,7 +415,7 @@ function appendChangesToMainContainer(changeMainContainer, statContainer, change
     changeContainer.append(oldStatContainer, changeContainerTransition, newStatContainer)
 
     changeMainContainer.append(statContainer, changeContainer)
-    speciesChanges.append(changeMainContainer)
+    objectToAppend.append(changeMainContainer)
 }
 
 
