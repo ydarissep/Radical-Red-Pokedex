@@ -53,7 +53,7 @@
     font-weight: 600;
 }
 
-.baseStatsHeader, .changelogAbilities {
+.changelogAbilities {
     font-size: 11px !important;
     font-weight: bold;
     opacity: 75%;
@@ -120,7 +120,7 @@ only screen and (max-width: 700px) {
         box-sizing: border-box;
     }
 
-    #speciesTable [class*="TYPE_"], .baseStatsHeader {
+    #speciesTable [class*="TYPE_"] {
         display: inline-flex !important;
         font-weight: bold;
     }

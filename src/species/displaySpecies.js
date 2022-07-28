@@ -85,33 +85,36 @@ function displaySpecies(){
         
         let abilitiesContainer = document.createElement("td")
         abilitiesContainer.className = "abilities"
-        let abilitiesArray = []
         for (let j = 0; j < species[speciesName]["abilities"].length; j++){
-            if(abilities[species[speciesName]["abilities"][j]] !== undefined)
-                abilitiesArray.push(abilities[species[speciesName]["abilities"][j]]["ingameName"])
-        }
-
-        for (let j = 0; j < abilitiesArray.length; j++){
             let ability = document.createElement("div")
-            ability.innerText = `${abilitiesArray[j]} `
-            if(j >= 1 && j === abilitiesArray.length - 1){
-                ability.style.fontWeight = "bold"
+            let abilityName = species[speciesName]["abilities"][j]
+            if(j === 1 && abilityName === species[speciesName]["abilities"][0]){
+                continue
             }
+            else if(j === 2 && (abilityName === species[speciesName]["abilities"][0] || abilityName === "ABILITY_NONE") && (abilityName === species[speciesName]["abilities"][1] || abilityName === "ABILITY_NONE")){
+                continue
+            }
+            if(abilityName !== "ABILITY_NONE"){
+                ability.innerText = `${abilities[abilityName]["ingameName"]} `
+                if(j === 2){
+                    ability.style.fontWeight = "bold"
+                }
 
 
-            for (let k = 0; k < species[speciesName]["changes"].length; k++){
-                if(species[speciesName]["changes"][k][0] === "abilities"){
-                    if(species[speciesName]["abilities"][j] !== species[speciesName]["changes"][k][1][j]){
-                        const changelogAbilities = document.createElement("span")
-                        changelogAbilities.className = "changelogAbilities hide"
-                        changelogAbilities.innerText = "new"
-                        ability.append(changelogAbilities)
+                for (let k = 0; k < species[speciesName]["changes"].length; k++){
+                    if(species[speciesName]["changes"][k][0] === "abilities"){
+                        if(species[speciesName]["abilities"][j] !== species[speciesName]["changes"][k][1][j]){
+                            const changelogAbilities = document.createElement("span")
+                            changelogAbilities.className = "changelogAbilities hide"
+                            changelogAbilities.innerText = "new"
+                            ability.append(changelogAbilities)
+                        }
                     }
                 }
+
+
+                abilitiesContainer.append(ability)
             }
-
-
-            abilitiesContainer.append(ability)
         }
         row.append(abilitiesContainer)
 
@@ -146,7 +149,6 @@ function createBaseStatsContainer(headerText, stats, speciesObj){
 
 
     baseStatsHeader.innerText = headerText
-    baseStatsHeader.className = "baseStatsHeader"
 
     baseStats.className = `baseStatsBold ${stats}`
 
@@ -157,9 +159,11 @@ function createBaseStatsContainer(headerText, stats, speciesObj){
         if(speciesObj["changes"][k][0] === stats){
             if(speciesObj[stats] > speciesObj["changes"][k][1]){
                 baseStats.classList.add("changelogBuff")
+                baseStatsHeader.classList.add("changelogBuff")
             }
             else{
-                baseStats.classList.add("changelogNerf")   
+                baseStats.classList.add("changelogNerf")
+                baseStatsHeader.classList.add("changelogNerf")
             }
         }
     }
