@@ -333,7 +333,7 @@ function createClickableImgAndName(speciesName){
 
 
 
-function createChange(stat, oldStat = [""], newStat = [""], speciesName, objectToAppend){
+function createChange(stat, oldStat = [""], newStat = [""], speciesName, obj){
 
     if(typeof newStat == "object"){
         for (let i = 0; i < newStat.length; i++){
@@ -362,7 +362,7 @@ function createChange(stat, oldStat = [""], newStat = [""], speciesName, objectT
                 else{
                     newStatContainer.innerText = `${sanitizeString(newStat[i])}`
                 }
-                appendChangesToMainContainer(changeMainContainer, statContainer, changeContainer, oldStatContainer, newStatContainer, objectToAppend)   
+                appendChangesToMainContainer(changeMainContainer, statContainer, changeContainer, oldStatContainer, newStatContainer, obj)   
             }
 
 
@@ -395,13 +395,13 @@ function createChange(stat, oldStat = [""], newStat = [""], speciesName, objectT
             oldStatContainer.className = `${oldStat} background2`
             newStatContainer.className = `${newStat} background2`
         }
-        appendChangesToMainContainer(changeMainContainer, statContainer, changeContainer, oldStatContainer, newStatContainer, objectToAppend)   
+        appendChangesToMainContainer(changeMainContainer, statContainer, changeContainer, oldStatContainer, newStatContainer, obj)   
     }
 }
 
 
 
-function appendChangesToMainContainer(changeMainContainer, statContainer, changeContainer, oldStatContainer, newStatContainer, objectToAppend){
+function appendChangesToMainContainer(changeMainContainer, statContainer, changeContainer, oldStatContainer, newStatContainer, obj){
     changeMainContainer.className = "flex flexAlign"
     changeContainer.classList.add("textAlign")
     changeContainer.classList.add("changeTextAlignFlex")
@@ -415,7 +415,7 @@ function appendChangesToMainContainer(changeMainContainer, statContainer, change
     changeContainer.append(oldStatContainer, changeContainerTransition, newStatContainer)
 
     changeMainContainer.append(statContainer, changeContainer)
-    objectToAppend.append(changeMainContainer)
+    obj.append(changeMainContainer)
 }
 
 

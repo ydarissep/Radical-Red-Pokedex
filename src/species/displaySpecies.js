@@ -104,7 +104,7 @@ function displaySpecies(){
                     if(species[speciesName]["abilities"][j] !== species[speciesName]["changes"][k][1][j]){
                         const changelogAbilities = document.createElement("span")
                         changelogAbilities.className = "changelogAbilities hide"
-                        changelogAbilities.innerText += "new"
+                        changelogAbilities.innerText = "new"
                         ability.append(changelogAbilities)
                     }
                 }

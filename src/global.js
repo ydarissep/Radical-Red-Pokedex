@@ -288,13 +288,13 @@ movesButton.addEventListener("click", () => {
 
 patchnoteModeCheckbox.addEventListener("change", e => {
     if(e.target.checked){
-        document.querySelectorAll(".changelogType").forEach(el => el.classList.add("whatever"))
+        document.querySelectorAll(".changelogType").forEach(el => el.classList.add("typeChanged"))
         document.querySelectorAll(".changelogAbilities").forEach(el => el.classList.remove("hide"))
         document.querySelectorAll(".changelogBuff").forEach(el => el.classList.add("buff", "bold"))
         document.querySelectorAll(".changelogNerf").forEach(el => el.classList.add("nerf", "bold"))
     }
     else{
-        document.querySelectorAll(".changelogType").forEach(el => el.classList.remove("whatever"))
+        document.querySelectorAll(".changelogType").forEach(el => el.classList.remove("typeChanged"))
         document.querySelectorAll(".changelogAbilities").forEach(el => el.classList.add("hide"))
         document.querySelectorAll(".changelogBuff").forEach(el => el.classList.remove("buff", "bold"))
         document.querySelectorAll(".changelogNerf").forEach(el => el.classList.remove("nerf", "bold"))
