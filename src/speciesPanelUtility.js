@@ -7,6 +7,8 @@ const speciesPanelMainContainer = document.getElementById("speciesPanelMainConta
 const speciesPanelCloseButton = document.getElementById("speciesPanelCloseButton")
 const speciesName = document.getElementById("speciesName")
 const speciesID = document.getElementById("speciesID")
+const speciesPanelInputSpecies = document.getElementById("speciesPanelInputSpecies")
+const speciesPanelInputSpeciesDataList = document.getElementById("speciesPanelInputSpeciesDataList")
 const speciesSprite = document.getElementById("speciesSprite")
 const speciesType1 = document.getElementById("speciesType1")
 const speciesType2 = document.getElementById("speciesType2")
@@ -70,7 +72,7 @@ async function createSpeciesPanel(name){
             const abilityName = document.createElement("span")
             const abilityDescription = document.createElement("span")
 
-            abilityName.innerText = abilities[ability]["ingameName"]
+            abilityName.innerText = sanitizeString(ability)
             abilityDescription.innerText = abilities[ability]["description"]
 
             if(i === 2)
@@ -293,6 +295,19 @@ async function createSpeciesPanel(name){
 }
 
 
+
+
+
+speciesPanelInputSpecies.addEventListener("input", e => {
+    const value = e.target.value
+    if(speciesIngameNameArray.includes(value)){
+        const species = `SPECIES_${value.replaceAll(" ", "_").toUpperCase()}`
+        createSpeciesPanel(species)
+        window.scrollTo(0, 0)
+        speciesPanelInputSpecies.blur()
+        speciesPanelInputSpecies.value = ""
+    }
+})
 
 
 

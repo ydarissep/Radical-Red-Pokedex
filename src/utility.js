@@ -81,6 +81,7 @@ function setDataList(){
         option.innerText = sanitizeString(speciesName)
         speciesIngameNameArray.push(option.innerText)
         speciesInputDataList.append(option)
+        speciesPanelInputSpeciesDataList.append(option)
     })
 
     window.abilitiesIngameNameArray = []
