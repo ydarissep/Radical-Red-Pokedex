@@ -224,6 +224,10 @@ function createFilter(list , obj, objInputArray, filterCount, element, labelStri
         button.setAttribute("id", `button${filterCount}`)
         button.innerText = "X"
 
+        if(isOperator){
+            input.value = ">= "
+        }
+
         input.addEventListener("input", e => {
             let value = e.target.value
             if(!isInt)
