@@ -204,11 +204,13 @@ function renderSprite(speciesName){
         }
         context.putImageData(imageData, 0, 0) 
 
-        spritesObj[speciesName] = LZString.compressToUTF16(canvas.toDataURL())
+        if(!window.matchMedia("(any-pointer:coarse)").matches){
+            spritesObj[speciesName] = LZString.compressToUTF16(canvas.toDataURL())
 
-        if(Object.keys(spritesObj).length == Object.keys(species).length){
-            setItemSprites(spritesObj)
-            delete spritesObj
+            if(Object.keys(spritesObj).length == Object.keys(species).length){
+                setItemSprites(spritesObj)
+                delete spritesObj
+            }
         }
     }
     return canvas
