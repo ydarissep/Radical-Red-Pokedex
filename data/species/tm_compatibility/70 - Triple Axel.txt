@@ -1,4 +1,4 @@
-TM16: Triple Axel 
+TM70: Triple Axel 
 SANDSHREW_A
 SANDSLASH_A 
 NINETALES_A 
