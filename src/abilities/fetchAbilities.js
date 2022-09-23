@@ -45,12 +45,11 @@ async function buildAbilitiesObj(){
     abilities = await getAbilitiesDescription(abilities)
     abilities = await getNewAbilities(abilities)
 
-    /*
     abilities["ABILITY_NEUTRALIZINGGAS"]["description"] = "All Abilities are nullified."
     abilities["ABILITY_WANDERING_SPIRIT"]["description"] = "Trades Abilities on contact."
     abilities["ABILITY_PERISH_BODY"]["description"] = "Gives a perish count on contact."
     abilities["ABILITY_STEELY_SPIRIT"]["description"] = "Boosts ally Steel moves."
-    */
+    
     //abilities["ABILITY_GULPMISSLE"]["description"] = "Spits prey if damaged after a swim." // fixed
     delete abilities["ABILITY_NONE"]
     delete abilities["ABILITY_NAME_LENGTH"]
