@@ -26,11 +26,13 @@ function sanitizeString(string){
 
 async function fetchData(){
     await forceUpdate()
-
+    
+    /*
     await fetchMovesObj()
     await fetchAbilitiesObj()
     await fetchSpeciesObj()
     await fetchTypeChart()
+    */
 
 
     await setDataList()
