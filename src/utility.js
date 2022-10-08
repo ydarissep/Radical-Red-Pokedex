@@ -30,6 +30,8 @@ async function fetchData(){
     await fetchMovesObj()
     await fetchAbilitiesObj()
     await fetchSpeciesObj()
+    await fetchLocationsObj()
+    
     await fetchTypeChart()
 
 
@@ -48,7 +50,7 @@ async function fetchTypeChart(){
 
 
 async function forceUpdate(){
-    const update = 19
+    const update = 20
     if(localStorage.getItem("update") != `${update} RR`){
         await localStorage.clear()
         await localStorage.setItem("update", `${update} RR`)
