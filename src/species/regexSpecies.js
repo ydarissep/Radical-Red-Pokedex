@@ -278,6 +278,12 @@ function regexTutorLearnsets(textTutorLearnsets, species, start, end){
     const lines = textTutorLearnsets.split("\n")
     let name = null, startFound = false, tutor = 0, count = 0
 
+    const filterUnusedTutor = ["Bug Bite", "Stomping Tantrum", "Fire Punch", "Ice Punch", "Thunder Punch", "Fire Fang", "Ice Fang", "Thunder Fang", "Psychic Fangs", "Play Rough", "Iron Head", "Liquidation", "Hydro Pump", "Drill Run", "Blaze Kick", "Pain Split", 
+    "Zen Headbutt", "Weather Ball", "Air Slash", "Hex", "Mystical Fire", "Seed Bomb", "Leaf Blade", "Knock Off", "Power Gem", "Rock Blast", "Pin Missile", "Icicle Spear", "Tail Slap", "Body Slam", "Foul Play", "Iron Defense", "Nasty Plot", "Earth Power", 
+    "Aura Sphere", "Heat Wave", "Hurricane", "Power Whip", "High Horsepower", "Bug Buzz", "Phantom Force", "Flare Blitz", "Stored Power", "Gunk Shot", "Tailwind", "Megahorn", "Draco Meteor", "Close Combat", "Dark Hole", "Frenzy Plant", "Hydro Cannon", "Blast Burn"]
+
+    console.log(filterUnusedTutor.length)
+
     lines.forEach(line => {
         if(line.includes(start))
             startFound = true
@@ -298,7 +304,7 @@ function regexTutorLearnsets(textTutorLearnsets, species, start, end){
                     move = "Softboiled"
                 */
 
-                //if(move !== "Block"){ // Could be removed later
+                if(filterUnusedTutor.includes(move)){ // filter unused tutors
                     const rawTutor = fetch(`https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/species/tutor_compatibility/${count} - ${move}.txt`)
                     .then(promises => {
                         const textTutor = promises.text()
@@ -319,7 +325,7 @@ function regexTutorLearnsets(textTutorLearnsets, species, start, end){
                             })
                         })
                     })
-                //} 
+                } 
             }
         }
         
