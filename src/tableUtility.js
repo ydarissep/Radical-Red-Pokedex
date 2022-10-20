@@ -96,6 +96,38 @@ function filterTableInput(input, columns, tbody){
 
 
 
+function filterTableInputParse(input, obj, keyArray, tbody){
+    const inputArray = input.toUpperCase().replace(/-|'/g, " ").split(" ")
+    let hideRows = {}
+    for (let j = 0; j < tbody.rows.length; j++){
+        const key = tbody.rows[j].getElementsByClassName("key")[0].innerText
+                let compareValue = ""
+        for (let i = 0; i < keyArray.length; i++){
+            compareValue += `${JSON.stringify(obj[key][keyArray[i]])} `
+        }
+        for (let i = 0; i < inputArray.length; i++){
+            if(!compareValue.includes(inputArray[i])){
+                hideRows[j] = "hide"
+                break
+            }
+        }
+    }
+    for(let i = 0; i < tbody.rows.length; i++){
+        if(hideRows[i] !== undefined)
+            tbody.rows[i].classList.add("hide")
+        else
+            tbody.rows[i].classList.remove("hide")
+    }
+    lazyLoading(true)
+}
+
+
+
+
+
+
+
+
 function lazyLoading(reset = false){
     const activeTables = document.getElementsByClassName("activeTable")
     let rows = []
