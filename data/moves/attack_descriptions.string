@@ -1079,10 +1079,10 @@ The user becomes a\nsword and strikes.\nDouble damage on\nDynamaxed targets.
 The user becomes a\nshield and strikes.\nDouble damage on\nDynamaxed targets.
 
 #org @DESC_AURA_WHEEL
-Morpeko raises its\nSpeed and attacks.\nThe move's Type is\nbased on its form.
+The user raises its\nSpeed and attacks.\nThe move's Type can\nchange based on its\nform.
 
 #org @DESC_BREAKING_SWIPE
-The user attacks\nby swinging its\ntail, lowering the\nboth targets' Attack.
+The user attacks\nby swinging its\ntail, lowering both\nthe targets' Attack.
 
 #org @DESC_BRANCH_POKE
 The user attacks\nthe target by\npoking it with a\npointed branch.
@@ -1196,7 +1196,7 @@ The user delivers\na fierce kick that\nlower's the target's\ndefense stat.
 The user attacks\nwith intense, dark\nflames. It may also\nmake the foe\nflinch.
 
 #org @DESC_THUNDER_CAGE
-A cage made of\nelectricity that traps\nthe target for four\nto five turns.
+A cage made of elec-\ntricity that traps\nthe target for four\nto five turns.
 
 #org @DESC_DRAGON_ENERGY
 The higher the\nuser's HP, the\nmore powerful this\nattack becomes.
@@ -1269,6 +1269,18 @@ This attack deals\ndouble damage to a\ntarget with a status\nproblem, and can\nf
 
 #org @DESC_ESPERWING
 The user slashes the\ntarget with aura-\nenriched wings that\nstrike first. Can\nlower Special Defense. 
+
+#org @DESC_DIRECLAW
+A slash that may\npoison, paralyze, or\nburn the foe. It\nhas a high crit ratio.
+
+#org @DESC_MOUNTAINGALE
+The user hurls giant\nchunks of ice at\nthe foe that may\ncause it to flinch.
+
+#org @DESC_PSYSHIELDBASH
+The user slams into\nthe foe with psychic\nenergy. It raises the\nuser's Defense too.
+
+#org @DESC_MYSTICALPOWER
+After dealing damage,\nthe user raises the\nhigher stats of its\noffenses or defenses.
 
 #org @DESC_PLACEHOLDER
 Unknown.

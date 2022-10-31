@@ -74,8 +74,8 @@ Intimidate
 #org @NAME_SHADOW_TAG
 Shadow Tag
 
-#org @NAME_ROUGH_SKIN
-Rough Skin
+#org @NAME_QUICK_DRAW
+Quick Draw
 
 #org @NAME_WONDER_GUARD
 Wonder Guard
@@ -659,8 +659,8 @@ Primal Armor
 #org @NAME_LIQUID_VOICE
 Liquid Voice
 
-#org @NAME_QUEENLY_MAJESTY
-Queenly Majesty
+#org @NAME_PHOENIXDOWN
+Phoenix Down
 
 #org @NAME_INNARDS_OUT
 Innards Out
@@ -811,3 +811,9 @@ Quill Rush
 
 #org @NAME_CASHSPLASH
 Cash Splash
+
+#org @NAME_POWER_OF_ALCHEMY
+Power of Alchemy
+
+#org @NAME_ROUGH_SKIN
+Rough Skin

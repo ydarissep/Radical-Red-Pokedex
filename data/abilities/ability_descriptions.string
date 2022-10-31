@@ -1,14 +1,55 @@
 #include "src/config.h"
 
+#org @DESC_MAGMAARMOR
+Prevents frostbite.
+
+#org @DESC_PICKUP
+10% chance to pickup items\nafter battle.
+
+#org @DESC_PLUS
+Boosts Sp. Atk by 50% with Minus.
+
+#org @DESC_MINUS
+Boosts Sp. Atk by 50% with Plus.
+
+#org @DESC_GUTS
+Boosts Atk by 50% if statused.
+
+#org @DESC_HUSTLE
+Reduces accuracy by 20% but\nboosts Atk by 50%.
+
+#org @DESC_THICKFAT
+Ups resistance to Fire and Ice\nmoves by 50%.
 
 #org @DESC_DRAGONSMAW
-Powers up Dragon-type moves.
+Powers up Dragon-type moves\nby 50%.
+
+#org @DESC_CUTECHARM
+Has a 30% chance to infatuate\non contact.
+
+#org @DESC_SHEDSKIN
+Has a 30% chance to heal its own\nstatus problem.
 
 #org @DESC_BADCOMPANY
-Stops self-lowering stats/recoil.
+Stops self-lowering stats and\nprevents recoil.
+
+#org @DESC_BLAZE
+Boosts Fire moves by 50%\nat 1/3 or less HP.
+
+#org @DESC_TORRENT
+Boosts Water moves by 50%\nat 1/3 or less HP.
+
+#org @DESC_OVERGROW
+Boosts Grass moves by 50%\nat 1/3 or less HP.
+
+#org @DESC_SWARM
+Boosts Bug moves by 50%\nat 1/3 or less HP.
+
+#org @DESC_MARVELSCALE
+Boosts Defense by 50% if statused.
 
 #org @DESC_SHIELDDUST
-Stops added effects/hazard dmg.  
+Stops added effects and entry\nhazard damage.
 
 #org @DESC_AS_ONE_SHADOW
 Both Unnerve and Grim Neigh.
@@ -26,7 +67,7 @@ Keeps user and allies awake.
 Multi-hit moves hit five times.
 
 #org @DESC_MOTORDRIVE
-Turns electricity into Speed.
+Raises Speed if hit by an\nElectric-type move.
 
 #org @DESC_MULTISCALE
 #org @DESC_FULLMETALBODY
@@ -36,73 +77,76 @@ Reduces damage at full HP.
 Boosts weaker moves.
 
 #org @DESC_SCRAPPY
-Moves hit Ghost-type Pok\emon.
+Enables moves to hit Ghost-type\nfoes.
 
 #org @DESC_SUPERLUCK
 Critical hits land more often.
 
 #org @DESC_SNIPER
-Boosts critical hits.
+Critical hits deal 2.25x instead of\n1.5x.
 
 #org @DESC_REGENERATOR
-Heals upon switching out.
+Heals 1/3 of HP when\nswitching out.
 
 #org @DESC_PRANKSTER
-Status moves hit first.
+Gives +1 priority to status\nmoves.
 
 #org @DESC_ADAPTABILITY
-Boosts same type attacks.
+Boosts same type attacks by\n2x instead of 1.5x.
+
+#org @DESC_COMPOUNDEYES
+Raises accuracy by 30%.
 
 #org @DESC_ILLUMINATE
-Raises accuracy.
+Raises accuracy by 20%.
 
 #org @DESC_MAGICBOUNCE
 Reflects status moves.
 
 #org @DESC_RECKLESS
-Boosts moves with recoil.
+Boosts moves with recoil by\n20%.
 
 #org @DESC_SHEERFORCE
-Trades added effects for power.
+Removes added effects to\nboost damage by 30%.
 
 #org @DESC_IRONFIST
-Boosts punching moves.
+Boosts punching moves by 30%.
 
 #org @DESC_RIVALRY
-Boosts moves against rivals.
+Boosts moves by 1.25x if foe\nis of same gender.
 
 #org @DESC_SANDFORCE
-Boosts moves in a sandstorm.
+Boosts Rock, Ground, and Steel\nmoves in sand.
 
 #org @DESC_SOLARPOWER
-Boosts Sp. Atk in sun.
+Boosts Sp. Atk by 50% in Sun.
 
 #org @DESC_HEATPROOF
-Heat protection.
+Weakens the power of Fire-type\nmoves.
 
 #org @DESC_DRYSKIN
-Prefers the rain to heat.
+Reduces HP if it is hot.\nWater restores HP.
 
 #org @DESC_TINTEDLENS
-Boosts not very effective moves.
+Doubles the damage of\nnot very effective moves.
 
 #org @DESC_SOLIDROCK
-Weakens super-effective moves.
+Weakens super effective moves by\n25%.
 
 #org @DESC_INFILTRATOR
-Passes through barriers.
+Passes through the foe's barriers.
 
 #org @DESC_DOWNLOAD
-Adjusts power from foe's stats.
+Adjusts power based on the foe's\nstats.
 
 #org @DESC_POISONHEAL
-Restores HP if poisoned.
+Restores 1/8 of maximum HP if\npoisoned.
 
 #org @DESC_ICEBODY
 HP heals in hail, can freeze on hit.
 
 #org @DESC_BULLRUSH
-Boosts power&Speed in first turn.
+Boosts power by 20% & Speed\nby 50% in first turn.
 
 #org @DESC_HYDRATION
 Heals status problems in rain.
@@ -117,13 +161,22 @@ Ups evasion in hail.
 Ups evasion if confused.
 
 #org @DESC_SNOWWARNING
-Summons a hailstorm in battle.
+Summons Hail for 5 turns.
+
+#org @DESC_SANDSTREAM
+Summons Sand for 5 turns.
+
+#org @DESC_DRIZZLE
+Summons Rain for 5 turns.
+
+#org @DESC_DROUGHT
+Summons Sun for 5 turns.
 
 #org @DESC_QUICKFEET
-Doubles Speed if suffering.
+Doubles Speed if it has a\nstatus condition.
 
 #org @DESC_SAPSIPPER
-Boosts Attack if hit by Grass.
+Boosts Attack if hit by a Grass\n-type move.
 
 #org @DESC_OVERCOAT
 Immune to weather and powder.
@@ -132,71 +185,77 @@ Immune to weather and powder.
 Only damaged by attacks.
 
 #org @DESC_BULLETPROOF
-Avoids ball and bomb moves.
+Immune to some ball and bomb\nmoves.
 
 #org @DESC_GALEWINGS
-Flying moves hit first at full HP.
+Gives +1 priority to Flying\nmoves at full HP.
 
 #org @DESC_MOXIE
-Knockouts boost Attack.
+Boosts Attack after knocking\nout a Pok\emon.
 
 #org @DESC_AFTERMATH
-Fainting damages the foe.
+Fainting damages the foe by\n1/4 its max HP.
 
 #org @DESC_CURSEDBODY
-May disable a foe's move.
+30% chance to disable a foe's\nmove when hit.
 
 #org @DESC_GOOEY
 #org @DESC_TANGLINGHAIR
-Lowers the foe's Speed if hit.
+Lowers the foe's Speed if hit by\na contact move.
 
 #org @DESC_MUMMY
-Spreads with contact.
+Contact with this Pok\emon\nspreads this Ability.
 
 #org @DESC_IRONBARBS
-Hurts to touch.
+Inflicts damage (1/8 HP) to a foe\non contact.
+
+#org @DESC_SWIFTSWIM
+Doubles Speed in Rain.
+
+#org @DESC_CHLOROPHYLL
+Doubles Speed in Sun.
 
 #org @DESC_SANDRUSH
-Raises Speed in a sandstorm.
+Doubles Speed in Sand.
 
 #org @DESC_ANALYTIC
-Moving last boosts power.
+Moving last boosts power\nby 30%.
 
 #org @DESC_NOGUARD
 Ensures that all moves land.
 
 #org @DESC_MEGALAUNCHER
-Boosts aura and pulse moves.
+Boosts aura and pulse moves\nby 50%.
 
 #org @DESC_TOUGHCLAWS
-Boosts moves that make contact.
+Boosts moves that make contact\nby 30%.
 
 #org @DESC_STRONGJAW
-Boosts biting moves.
+Boosts biting moves by 50%.
 
 #org @DESC_VICTORYSTAR
-Slightly raises accuracy.
+Raises own and ally's accuracy\nby 10%.
 
 #org @DESC_STORMDRAIN
-Draws in Water-type moves.
+Immune to & draws in Water moves\nto boost Sp. Atk
 
 #org @DESC_DARKAURA
-Powers up Dark-type moves.
+Powers up all Dark-type moves\nby 33%.
 
 #org @DESC_FAIRYAURA
-Powers up Fairy-type moves.
+Powers up all Fairy-type moves\nby 33%.
 
 #org @DESC_AURABREAK
 Reverses Aura Abilities.
 
 #org @DESC_REFRIGERATE
-Normal moves become Ice.
+Normal moves become Ice\n& boosted by 20%.
 
 #org @DESC_PIXILATE
-Normal moves become Fairy.
+Normal moves become Fairy\n& boosted by 20%.
 
 #org @DESC_AERILATE
-Normal moves become Flying.
+Normal moves become Flying\n& boosted by 20%.
 
 #org @DESC_FELINEPOWER
 Doubles Special Attack stat.
@@ -211,25 +270,25 @@ Doubles stat changes.
 Ignores foe's stat changes.
 
 #org @DESC_DEFIANT
-Attack rises when stats fall.
+Attack rises when its stats are\nlowered.
 
 #org @DESC_COMPETITIVE
-Sp. Atk rises when stats fall.
+Raises Sp. Atk when its stats are\nlowered.
 
 #org @DESC_DEFEATIST
-Gives up at a third HP.
+Halves Atk/Sp.Atk when its HP\nis at 1/3 or less.
 
 #org @DESC_SLOWSTART
 Takes a while to get going.
 
 #org @DESC_TOXICBOOST
-Attack rises when poisoned.
+Boosts Attack by 50% when\npoisoned.
 
 #org @DESC_FLAREBOOST
-Sp. Atk rises when burned.
+Boosts Sp. Atk by 50% when burned.
 
 #org @DESC_FURCOAT
-Raises Defense.
+Halves physical damage.
 
 #org @DESC_WONDERSKIN
 Ups status move evasion.
@@ -239,21 +298,21 @@ Ups status move evasion.
 Changes type to match move.
 
 #org @DESC_PARENTALBOND
-Parent and child attack together.
+Moves hit a second time\nfor 25% damage.
 
 #org @DESC_MOLDBREAKER
 #org @DESC_TURBOBLAZE
 #org @DESC_TERAVOLT
-Moves ignore Abilities.
+Moves can be used regardless\nof abilities.
 
 #org @DESC_ZENMODE
 Transforms into Zen Mode.
 
 #org @DESC_BATTLEBOND
-Transforms after a KO.
+Transforms into Ash Greninja\nafter it KOs a foe.
 
 #org @DESC_BEASTBOOST
-KOing a foe ups highest stat.
+KOing a foe boosts its highest\nstat.
 
 #org @DESC_CORROSION
 Poison can hit Steel types.
@@ -266,23 +325,23 @@ Takes one hit with no damage.
 Switches out below half HP.
 
 #org @DESC_FLUFFY
-Halves contact damage.
+Halves contact hits.\nTakes 2x to Fire moves.
 
 #org @DESC_BROKEN_1
 #org @DESC_BROKEN_2
 No special Ability.
 
 #org @DESC_POWERCONSTRUCT
-Transforms below half HP.
+Transforms to Complete form\nwhen below half HP.
 
 #org @DESC_PRISMARMOR
-Weakens super-effective moves.
+Weakens super effective moves\nby 25%.
 
 #org @DESC_RAGING_BOXER
-Punch moves hit twice. 
+Punch moves hit a second\ntime for 50% dmg.
 
 #org @DESC_SCHOOLING
-Schools up with high HP.
+Schools up when above 25% HP.
 
 #org @DESC_SHADOWSHIELD
 Reduces damage at full HP.
@@ -291,25 +350,25 @@ Reduces damage at full HP.
 Lowers shields below half HP.
 
 #org @DESC_SLUSHRUSH
-Boosts speed in Hail.
+Doubles Speed in Hail.
 
 #org @DESC_SOULHEART
-Knockouts boost Sp. Atk.
+Boosts Sp. Atk every time a\nPok\emon faints.
 
 #org @DESC_STAMINA
-Taking a hit raises Defense.
+Boosts Defense when hit by an\nattack.
 
 #org @DESC_STEELWORKER
-Powers up Steel-type moves.
+Powers up Steel-type moves\nby 50%.
 
 #org @DESC_TRIAGE
-Gives priority to healing moves.
+Gives +1 priority to healing\nmoves.
 
 #org @DESC_WATERBUBBLE
-Ups Water attacks. Prevents burn.
+Doubles Water moves.\nTakes half from Fire moves.
 
 #org @DESC_WATERCOMPACTION
-Halves Water dmg & raises Def.
+Halves Water damage\n& raises Defense.
 
 #org @DESC_PARASITICGOO
 Attacks that poison also drain. 
@@ -318,28 +377,28 @@ Attacks that poison also drain.
 Changes type to match held Plate.
 
 #org @DESC_ELECTRICSURGE
-Creates an Electric Terrain.
+Sets Electric Terrain for\n5 turns.
 
 #org @DESC_GRASSYSURGE
-Creates a Grassy Terrain.
+Creates Grassy Terrain for\n5 turns.
 
 #org @DESC_MISTYSURGE
-Creates a Misty Terrain.
+Creates Misty Terrain for\n5 turns.
 
 #org @DESC_PSYCHICSURGE
-Creates a Psychic Terrain.
+Creates a Psychic Terrain for\n5 turns.
 
 #org @DESC_SURGESURFER
-Boosts Speed on Electric Terrain.
+Doubles Speed in Electric Terrain.
 
 #org @DESC_GRASSPELT
-Ups Defense on Grassy Terrain.
+Ups Defense by 50% in Grassy\nTerrain.
 
 #org @DESC_ANGERPOINT
 Maxes Attack after a critical hit.
 
 #org @DESC_ANTICIPATION
-Senses super-effective moves.
+Senses super effective moves.
 
 #org @DESC_FOREWARN
 Warns of the foe's strongest move.
@@ -354,7 +413,7 @@ Reverses stat changes.
 Stops the foe from eating Berries.
 
 #org @DESC_WEAKARMOR
-Hits plus Speed but drop Defense.
+Hits by physical moves\ndrop Def but raises Speed.
 
 #org @DESC_HEAVYMETAL
 Doubles weight.
@@ -363,10 +422,10 @@ Doubles weight.
 Halves weight.
 
 #org @DESC_STEADFAST
-Flinching raises Speed.
+Being flinched raises Speed.
 
 #org @DESC_IMPOSTER
-Transforms upon entering battle.
+Transforms into foe upon\nentering battle.
 
 #org @DESC_JUSTIFIED
 Dark-type hits raise Attack.
@@ -375,7 +434,7 @@ Dark-type hits raise Attack.
 Contact moves bypass Protect.
 
 #org @DESC_MERCILESS
-Critically hits poisoned foes.
+Guarantees critical-hits on\npoisoned foes.
 
 #org @DESC_AROMAVEIL
 Protects against mental problems.
@@ -384,25 +443,25 @@ Protects against mental problems.
 Shields Grass-types from status.
 
 #org @DESC_LEAFGUARD
-Protects from status when sunny.
+Protects from status in Sun.
 
 #org @DESC_KLUTZ
-Can't use items.
+Held items don't work on\nthis Pok\emon.
 
 #org @DESC_FLOWERGIFT
-Boosts Atk and Speed when sunny.
+Boosts Atk and Speed by 50%\nin Sun.
 
 #org @DESC_BADDREAMS
-Hurts sleeping foes.
+Reduces sleeping foe's HP\nby 1/8 at end of turn.
 
 #org @DESC_GRIMNEIGH
-Knockouts boost Sp Atk.
+Boosts Sp. Atk after knocking\nout a Pok\emon.
 
 #org @DESC_TRANSISTOR
-Powers up Electric-type moves.
+Powers up Electric-type moves\nby 50%.
 
 #org @DESC_POISONTOUCH
-Can poison foe on contact.
+30% chance to poison foe on\ncontact.
 
 #org @DESC_MAGICIAN
 Can steal foe's item after attack.
@@ -411,43 +470,43 @@ Can steal foe's item after attack.
 Switches form when attacking.
 
 #org @DESC_PRIMORDIALSEA
-Summons a heavy rainstorm.
+Summons Heavy Rain that\nnulliifies Fire moves.
 
 #org @DESC_DESOLATELAND
-Summons extremely harsh sunlight.
+Summons Harsh Sun that\nnullifies Water moves.
 
 #org @DESC_DELTASTREAM
-Summons a mysterious air current.
+Changes weather to remove\nFlying-type weaknesses.
 
 #org @DESC_BERSERK
-Ups Sp. Atk below half HP.
+Raises Sp. Atk if hit sends\nit below half HP.
 
 #org @DESC_PRIMALARMOR
-Decreases super-effective moves.
+Decreases super effective moves\nby 50%.
 
 #org @DESC_LIQUIDVOICE
-Sound moves become Water-type.
+Sound moves become Water-type\n& boosted by 20%.
 
-#org @DESC_QUEENLYMAJESTY
-Blocks priority moves.
+#org @DESC_PHOENIXDOWN
+Revives to half health on first\nfaint.
 
 #org @DESC_INNARDSOUT
-Fainting damages the foe.
+Fainting damages the foe\nequal to its last HP.
 
 #org @DESC_DAZZLING
 Blocks priority moves.
 
 #org @DESC_GLUTTONY
-Eats Berries early.
+Eats Berries at 50% HP instead\nof 25%.
 
 #org @DESC_MOUNTAINEER
-Immune to Rock attacks & hazards.
+Immune to Rock attacks and\nStealth Rocks.
 
 #org @DESC_FRIENDGUARD
 Reduces damage done to allies.
 
 #org @DESC_HARVEST
-Can regain consumed Berries.
+50% chance to restore\nberry.
 
 #org @DESC_TELEPATHY
 Protects from allies' moves.
@@ -456,13 +515,13 @@ Protects from allies' moves.
 Enters battle disguised.
 
 #org @DESC_CHEEKPOUCH
-Eating Berries restores HP.
+Eating Berries restores HP by\n1/3.
 
 #org @DESC_SYMBIOSIS
 Gives item to ally after use.
 
 #org @DESC_STAKEOUT
-Doubles damage on replacements.
+Doubles damage if foe\nswitches out.
 
 #org @DESC_COMATOSE
 Acts as if asleep.
@@ -471,30 +530,30 @@ Acts as if asleep.
 Copies dance moves.
 
 #org @DESC_BONE_ZONE
-Bone moves ignore immunity/resists
+Bone moves ignore immunity\nand resistances.
 
 #org @DESC_RECEIVER
 Takes over a KOed ally's Ability.
 
 #org @DESC_SELFSUFFICIENT
-Slight HP recovery at end of turn.
+Recover 1/16 HP at end of turn.
 
 #org @DESC_NEUROFORCE
-Powers up super-effective hits.
+Powers up super effective hits\nby 25%.
 
 #org @DESC_GALVANIZE
-Normal moves become Electric.
+Normal moves become Electric\n& boosted by 20%.
 
 //Sword and Shield Abilities.
 
 #org @DESC_INTREPIDSWORD
-Ups Attack on entry.
+Raises Attack on entry.
 
 #org @DESC_DAUNTLESSSHIELD
-Ups Defense on entry.
+Raises Defense on entry.
 
 #org @DESC_STRIKER
-Boosts kicking moves.
+Boosts kicking moves by 30%.
 
 #org @DESC_COTTONDOWN
 Lowers everyone's Speed when hit.
@@ -503,55 +562,55 @@ Lowers everyone's Speed when hit.
 Bounces back stat decreases.
 
 #org @DESC_BLADEMASTER
-Powers up sword moves.
+Boosts sword moves by 20%\n& ups their crit rates.
 
 #org @DESC_SURPRISE
 Random effect on switch in.
 
 #org @DESC_STEAMENGINE
-Fire and Water hits boost Speed.
+Being hit by Fire/Water moves\nmaxes Speed.
 
 #org @DESC_PUNKROCK
-Ups and resists sound moves.
+Boosts sound moves by 30%\n& resists them by 50%.
 
 #org @DESC_SANDSPIT
-Creates a sandstorm when hit.
+Summons Sand for 5 turns\nwhen hit.
 
 #org @DESC_ICESCALES
-Halves special damage.
+Halves Special damage.
 
 #org @DESC_RIPEN
 Doubles Berry effects.
 
 #org @DESC_ICEFACE
-Takes one free physical hit.
+Takes one free physical hit\nand changes form.
 
 #org @DESC_POWERSPOT
-Powers up ally moves.
+Powers up ally moves by 30%.
 
 #org @DESC_FLAMINGSOUL
-Fire moves hit first at full HP.
+Gives +1 priority to Fire\nmoves at full HP.
 
 #org @DESC_SCREENCLEANER
 Screens are removed on entry.
 
 #org @DESC_STEELYSPIRIT
-Boosts ally Steel moves.
+Boosts own and ally Steel moves\nby 50%.
 
 #org @DESC_PERISHBODY
-Gives a perish count on contact.
+Gives a perish count when hit\nby a contact move.
 
 #org @DESC_WANDERINGSPIRIT
 Trades Abilities on contact.
 
 #org @DESC_GORILLATACTICS
-Ups Attack, but allows one move.
+Ups  Atk by 50% but\nonly uses 1st picked move.
 
 #org @DESC_NEUTRALISINGGAS
 All Abilities are nullified.
 
 #org @DESC_LETHALPRECISION
-Can't miss super-effective moves.
+Super effective moves\ncan't miss & boosted by 20%
 
 #org @DESC_PASTEL_VEIL
 Protects team from poison.
@@ -560,7 +619,10 @@ Protects team from poison.
 Changes form each turn.
 
 #org @DESC_SAGEPOWER
-Ups Sp Atk, but allows one move.
+Ups SpAtk by 50% but\nonly uses 1st picked move.
 
 #org @DESC_STALWART
 Moves ignore redirection.
+
+#org @DESC_QUICK_DRAW
+Has a 30% chance to move first.

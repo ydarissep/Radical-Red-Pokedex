@@ -17,6 +17,9 @@ extern const u8 NAME_BLUBBERDEFENSE[];
 extern const u8 NAME_FULLMETALBODY[];
 extern const u8 NAME_QUILLRUSH[];
 extern const u8 NAME_CASHSPLASH[];
+extern const u8 NAME_ROUGH_SKIN[];
+extern const u8 NAME_POWER_OF_ALCHEMY[];
+extern const u8 NAME_TANGLING_HAIR[];
 
 static struct DuplicateAbility sDuplicateAbilities[] =
 {
@@ -284,5 +287,60 @@ static struct DuplicateAbility sDuplicateAbilities[] =
         .species = SPECIES_WHISCASH,
         .currAbility = ABILITY_WATERBUBBLE,
         .replaceAbilityString = NAME_CASHSPLASH,
+    },
+    {
+        .species = SPECIES_GIBLE,
+        .currAbility = ABILITY_IRONBARBS,
+        .replaceAbilityString = NAME_ROUGH_SKIN,
+    },
+    {
+        .species = SPECIES_GABITE,
+        .currAbility = ABILITY_IRONBARBS,
+        .replaceAbilityString = NAME_ROUGH_SKIN,
+    },
+    {
+        .species = SPECIES_GARCHOMP,
+        .currAbility = ABILITY_IRONBARBS,
+        .replaceAbilityString = NAME_ROUGH_SKIN,
+    },
+    {
+        .species = SPECIES_CARVANHA,
+        .currAbility = ABILITY_IRONBARBS,
+        .replaceAbilityString = NAME_ROUGH_SKIN,
+    },
+    {
+        .species = SPECIES_SHARPEDO,
+        .currAbility = ABILITY_IRONBARBS,
+        .replaceAbilityString = NAME_ROUGH_SKIN,
+    },
+    {
+        .species = SPECIES_DRUDDIGON,
+        .currAbility = ABILITY_IRONBARBS,
+        .replaceAbilityString = NAME_ROUGH_SKIN,
+    },
+    {
+        .species = SPECIES_GRIMER_A,
+        .currAbility = ABILITY_RECEIVER,
+        .replaceAbilityString = NAME_POWER_OF_ALCHEMY,
+    },
+    {
+        .species = SPECIES_MUK_A,
+        .currAbility = ABILITY_RECEIVER,
+        .replaceAbilityString = NAME_POWER_OF_ALCHEMY,
+    },
+    {
+        .species = SPECIES_DIGLETT_A,
+        .currAbility = ABILITY_GOOEY,
+        .replaceAbilityString = NAME_TANGLING_HAIR,
+    },
+    {
+        .species = SPECIES_MUDSDALE,
+        .currAbility = ABILITY_GOOEY,
+        .replaceAbilityString = NAME_TANGLING_HAIR,
+    },
+    {
+        .species = SPECIES_DUGTRIO_A,
+        .currAbility = ABILITY_GOOEY,
+        .replaceAbilityString = NAME_TANGLING_HAIR,
     },
 };
