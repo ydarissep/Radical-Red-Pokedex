@@ -8256,9 +8256,9 @@ const struct BaseStats gBaseStats[] =
 		.eggGroup1 = EGG_GROUP_UNDISCOVERED,
 		.eggGroup2 = EGG_GROUP_UNDISCOVERED,
 		.ability1 = ABILITY_PRESSURE,
-		.ability2 = ABILITY_NONE,
+		.ability2 = ABILITY_REGENERATOR,
 		.safariZoneFleeRate = 0,
-		.hiddenAbility = ABILITY_REGENERATOR,
+		.hiddenAbility = ABILITY_PHOENIXDOWN,
 		.noFlip = TRUE,
 	},
 
@@ -10070,7 +10070,7 @@ const struct BaseStats gBaseStats[] =
 		.growthRate = GROWTH_SLOW,
 		.eggGroup1 = EGG_GROUP_WATER_2,
 		.eggGroup2 = EGG_GROUP_WATER_2,
-		.ability1 = ABILITY_ROUGHSKIN,
+		.ability1 = ABILITY_IRONBARBS, //ROUGHSKIN 
 		.ability2 = ABILITY_NONE,
 		.safariZoneFleeRate = 0,
 		.hiddenAbility = ABILITY_SPEEDBOOST,
@@ -10103,7 +10103,7 @@ const struct BaseStats gBaseStats[] =
 		.growthRate = GROWTH_SLOW,
 		.eggGroup1 = EGG_GROUP_WATER_2,
 		.eggGroup2 = EGG_GROUP_WATER_2,
-		.ability1 = ABILITY_ROUGHSKIN,
+		.ability1 = ABILITY_IRONBARBS, //ROUGHSKIN
 		.ability2 = ABILITY_NONE,
 		.safariZoneFleeRate = 0,
 		.hiddenAbility = ABILITY_SPEEDBOOST,
@@ -10657,7 +10657,7 @@ const struct BaseStats gBaseStats[] =
 		.evYield_SpDefense 	= 0,
 		.evYield_Speed 		= 0,
 		.item1 = ITEM_STARDUST,
-		.item2 = ITEM_MOON_STONE,
+		.item2 = ITEM_STAR_PIECE,
 		.genderRatio = MON_GENDERLESS,
 		.eggCycles = 25,
 		.friendship = 50,
@@ -10690,7 +10690,7 @@ const struct BaseStats gBaseStats[] =
 		.evYield_SpDefense 	= 0,
 		.evYield_Speed 		= 0,
 		.item1 = ITEM_STARDUST,
-		.item2 = ITEM_SUN_STONE,
+		.item2 = ITEM_STAR_PIECE,
 		.genderRatio = MON_GENDERLESS,
 		.eggCycles = 25,
 		.friendship = 50,
@@ -15551,7 +15551,7 @@ const struct BaseStats gBaseStats[] =
 		.ability1 = ABILITY_SANDVEIL,
 		.ability2 = ABILITY_NONE,
 		.safariZoneFleeRate = 0,
-		.hiddenAbility = ABILITY_ROUGHSKIN,
+		.hiddenAbility = ABILITY_IRONBARBS, //ROUGHSKIN
 		.noFlip = TRUE,
 	},
 
@@ -15584,7 +15584,7 @@ const struct BaseStats gBaseStats[] =
 		.ability1 = ABILITY_SANDVEIL,
 		.ability2 = ABILITY_NONE,
 		.safariZoneFleeRate = 0,
-		.hiddenAbility = ABILITY_ROUGHSKIN,
+		.hiddenAbility = ABILITY_IRONBARBS, //ROUGHSKIN
 		.noFlip = TRUE,
 	},
 
@@ -15617,7 +15617,7 @@ const struct BaseStats gBaseStats[] =
 		.ability1 = ABILITY_SANDVEIL,
 		.ability2 = ABILITY_NONE,
 		.safariZoneFleeRate = 0,
-		.hiddenAbility = ABILITY_ROUGHSKIN,
+		.hiddenAbility = ABILITY_IRONBARBS, //ROUGHSKIN
 		.noFlip = TRUE,
 	},
 
@@ -16341,7 +16341,7 @@ const struct BaseStats gBaseStats[] =
 		.eggGroup1 = EGG_GROUP_HUMAN_LIKE,
 		.eggGroup2 = EGG_GROUP_HUMAN_LIKE,
 		.ability1 = ABILITY_FLAMEBODY,
-		.ability2 = ABILITY_MAGMAARMOR,
+		.ability2 = ABILITY_QUICKDRAW,
 		.safariZoneFleeRate = 0,
 		.hiddenAbility = ABILITY_MEGALAUNCHER,
 		.noFlip = TRUE,
@@ -21489,7 +21489,7 @@ const struct BaseStats gBaseStats[] =
 		.growthRate = GROWTH_MEDIUM_FAST,
 		.eggGroup1 = EGG_GROUP_DRAGON,
 		.eggGroup2 = EGG_GROUP_MONSTER,
-		.ability1 = ABILITY_ROUGHSKIN,
+		.ability1 = ABILITY_IRONBARBS, //ROUGHSKIN
 		.ability2 = ABILITY_SHEERFORCE,
 		.safariZoneFleeRate = 0,
 		.hiddenAbility = ABILITY_MOLDBREAKER,
@@ -22423,11 +22423,11 @@ const struct BaseStats gBaseStats[] =
 	[SPECIES_UNFEZANT_F] =
 	{
 		.baseHP 		= 80,
-		.baseAttack 	= 115,
+		.baseAttack 	= 105,
 		.baseDefense 	= 80,
 		.baseSpAttack 	= 65,
 		.baseSpDefense 	= 55,
-		.baseSpeed 		= 108,
+		.baseSpeed 		= 93,
 		.type1 = TYPE_NORMAL,
 		.type2 = TYPE_FLYING,
 		.catchRate = 45,
@@ -27832,7 +27832,7 @@ const struct BaseStats gBaseStats[] =
 		.noFlip = TRUE,
 	},
 
-	[SPECIES_VIVILLON_FANCY] =
+	[SPECIES_FARIGIRAF] =
 	{
 		.baseHP 		= 80,
 		.baseAttack 	= 52,
@@ -29548,7 +29548,7 @@ const struct BaseStats gBaseStats[] =
 		.noFlip = TRUE,
 	},
 
-	[SPECIES_VIVILLON_ARCHIPELAGO] =
+	[SPECIES_SPRIGATITO] =
 	{
 		.baseHP 		= 80,
 		.baseAttack 	= 52,
@@ -29581,7 +29581,7 @@ const struct BaseStats gBaseStats[] =
 		.noFlip = TRUE,
 	},
 
-	[SPECIES_VIVILLON_CONTINENTAL] =
+	[SPECIES_GREENEVO2] =
 	{
 		.baseHP 		= 80,
 		.baseAttack 	= 52,
@@ -29614,7 +29614,7 @@ const struct BaseStats gBaseStats[] =
 		.noFlip = TRUE,
 	},
 
-	[SPECIES_VIVILLON_ELEGANT] =
+	[SPECIES_GREENEVO3] =
 	{
 		.baseHP 		= 80,
 		.baseAttack 	= 52,
@@ -29647,7 +29647,7 @@ const struct BaseStats gBaseStats[] =
 		.noFlip = TRUE,
 	},
 
-	[SPECIES_VIVILLON_GARDEN] =
+	[SPECIES_FUECOCO] =
 	{
 		.baseHP 		= 80,
 		.baseAttack 	= 52,
@@ -29680,7 +29680,7 @@ const struct BaseStats gBaseStats[] =
 		.noFlip = TRUE,
 	},
 
-	[SPECIES_VIVILLON_HIGH_PLAINS] =
+	[SPECIES_FIREEVO2] =
 	{
 		.baseHP 		= 80,
 		.baseAttack 	= 52,
@@ -29713,7 +29713,7 @@ const struct BaseStats gBaseStats[] =
 		.noFlip = TRUE,
 	},
 
-	[SPECIES_VIVILLON_ICY_SNOW] =
+	[SPECIES_FIREEVO3] =
 	{
 		.baseHP 		= 80,
 		.baseAttack 	= 52,
@@ -29746,7 +29746,7 @@ const struct BaseStats gBaseStats[] =
 		.noFlip = TRUE,
 	},
 
-	[SPECIES_VIVILLON_JUNGLE] =
+	[SPECIES_QUAXLY] =
 	{
 		.baseHP 		= 80,
 		.baseAttack 	= 52,
@@ -29779,7 +29779,7 @@ const struct BaseStats gBaseStats[] =
 		.noFlip = TRUE,
 	},
 
-	[SPECIES_VIVILLON_MARINE] =
+	[SPECIES_WATEREVO2] =
 	{
 		.baseHP 		= 80,
 		.baseAttack 	= 52,
@@ -29812,7 +29812,7 @@ const struct BaseStats gBaseStats[] =
 		.noFlip = TRUE,
 	},
 
-	[SPECIES_VIVILLON_MODERN] =
+	[SPECIES_WATEREVO3] =
 	{
 		.baseHP 		= 80,
 		.baseAttack 	= 52,
@@ -29845,7 +29845,7 @@ const struct BaseStats gBaseStats[] =
 		.noFlip = TRUE,
 	},
 
-	[SPECIES_VIVILLON_MONSOON] =
+	[SPECIES_WOOPER_P] =
 	{
 		.baseHP 		= 80,
 		.baseAttack 	= 52,
@@ -29878,7 +29878,7 @@ const struct BaseStats gBaseStats[] =
 		.noFlip = TRUE,
 	},
 
-	[SPECIES_VIVILLON_OCEAN] =
+	[SPECIES_QUAGSIRE_P] =
 	{
 		.baseHP 		= 80,
 		.baseAttack 	= 52,
@@ -29911,7 +29911,7 @@ const struct BaseStats gBaseStats[] =
 		.noFlip = TRUE,
 	},
 
-	[SPECIES_VIVILLON_POKEBALL] =
+	[SPECIES_WIGLETT] =
 	{
 		.baseHP 		= 80,
 		.baseAttack 	= 52,
@@ -29944,7 +29944,7 @@ const struct BaseStats gBaseStats[] =
 		.noFlip = TRUE,
 	},
 
-	[SPECIES_VIVILLON_POLAR] =
+	[SPECIES_WIGLETTEVO] =
 	{
 		.baseHP 		= 80,
 		.baseAttack 	= 52,
@@ -29977,7 +29977,7 @@ const struct BaseStats gBaseStats[] =
 		.noFlip = TRUE,
 	},
 
-	[SPECIES_VIVILLON_RIVER] =
+	[SPECIES_CERULEDGE] =
 	{
 		.baseHP 		= 80,
 		.baseAttack 	= 52,
@@ -30010,7 +30010,7 @@ const struct BaseStats gBaseStats[] =
 		.noFlip = TRUE,
 	},
 
-	[SPECIES_VIVILLON_SANDSTORM] =
+	[SPECIES_ARMAROUGE] =
 	{
 		.baseHP 		= 80,
 		.baseAttack 	= 52,
@@ -31095,7 +31095,7 @@ const struct BaseStats gBaseStats[] =
 		.ability1 = ABILITY_STRIKER,
 		.ability2 = ABILITY_STAMINA,
 		.safariZoneFleeRate = 0,
-		.hiddenAbility = ABILITY_TANGLINGHAIR,
+		.hiddenAbility = ABILITY_GOOEY,
 		.noFlip = TRUE,
 	},
 
@@ -33073,7 +33073,7 @@ const struct BaseStats gBaseStats[] =
 		.eggGroup1 = EGG_GROUP_FIELD,
 		.eggGroup2 = EGG_GROUP_FIELD,
 		.ability1 = ABILITY_SANDVEIL,
-		.ability2 = ABILITY_TANGLINGHAIR,
+		.ability2 = ABILITY_GOOEY,
 		.safariZoneFleeRate = 0,
 		.hiddenAbility = ABILITY_SANDFORCE,
 		.noFlip = TRUE,
@@ -33106,7 +33106,7 @@ const struct BaseStats gBaseStats[] =
 		.eggGroup1 = EGG_GROUP_FIELD,
 		.eggGroup2 = EGG_GROUP_FIELD,
 		.ability1 = ABILITY_SANDVEIL,
-		.ability2 = ABILITY_TANGLINGHAIR,
+		.ability2 = ABILITY_GOOEY,
 		.safariZoneFleeRate = 0,
 		.hiddenAbility = ABILITY_SANDFORCE,
 		.noFlip = TRUE,
@@ -37427,7 +37427,7 @@ const struct BaseStats gBaseStats[] =
 		.growthRate = GROWTH_MEDIUM_FAST,
 		.eggGroup1 = EGG_GROUP_MINERAL,
 		.eggGroup2 = EGG_GROUP_AMORPHOUS,
-		.ability1 = ABILITY_MUMMY,
+		.ability1 = ABILITY_WANDERING_SPIRIT,
 		.ability2 = ABILITY_NONE,
 		.safariZoneFleeRate = 0,
 		.hiddenAbility = ABILITY_SHADOWSHIELD,
@@ -39177,7 +39177,7 @@ const struct BaseStats gBaseStats[] =
 		.growthRate = GROWTH_MEDIUM_FAST,
 		.eggGroup1 = EGG_GROUP_MONSTER,
 		.eggGroup2 = EGG_GROUP_WATER_1,
-		.ability1 = ABILITY_GLUTTONY, //QUICK DRAW NOT DEFINED
+		.ability1 = ABILITY_QUICKDRAW, 
 		.ability2 = ABILITY_OWNTEMPO,
 		.safariZoneFleeRate = 0,
 		.hiddenAbility = ABILITY_REGENERATOR,
@@ -39705,7 +39705,7 @@ const struct BaseStats gBaseStats[] =
 		.growthRate = GROWTH_MEDIUM_FAST,
 		.eggGroup1 = EGG_GROUP_MINERAL,
 		.eggGroup2 = EGG_GROUP_AMORPHOUS,
-		.ability1 = ABILITY_MUMMY,
+		.ability1 = ABILITY_WANDERING_SPIRIT,
 		.ability2 = ABILITY_NONE,
 		.safariZoneFleeRate = 0,
 		.hiddenAbility = ABILITY_SHADOWSHIELD,
@@ -40210,7 +40210,7 @@ const struct BaseStats gBaseStats[] =
 		.baseDefense 	= 95,
 		.baseSpAttack 	= 136,
 		.baseSpDefense 	= 103,
-		.baseSpeed 		= // 0 29,
+		.baseSpeed 		= /* 0 */ 29,
 		.type1 = TYPE_PSYCHIC,
 		.type2 = TYPE_FAIRY,
 		.catchRate = 45,
@@ -40243,7 +40243,7 @@ const struct BaseStats gBaseStats[] =
 		.baseDefense 	= 65,
 		.baseSpAttack 	= 95,
 		.baseSpDefense 	= 75,
-		.baseSpeed 		= // 0 60,
+		.baseSpeed 		= /* 0 */ 60,
 		.type1 = TYPE_DARK,
 		.type2 = TYPE_FAIRY,
 		.catchRate = 45,
@@ -41934,4 +41934,303 @@ const struct BaseStats gBaseStats[] =
 		.hiddenAbility = ABILITY_NONE,
 		.noFlip = TRUE,
 	},
+
+	#ifdef GEN_9
+	[SPECIES_SPRIGATITO] =
+	{
+		.baseHP 		= 50,
+		.baseAttack 	= 65,
+		.baseDefense 	= 50,
+		.baseSpAttack 	= 40,
+		.baseSpDefense 	= 40,
+		.baseSpeed 		= 65,
+		.type1 = TYPE_GRASS,
+		.type2 = TYPE_GRASS,
+		.catchRate = 45,
+		.expYield = 62,
+		.evYield_HP 		= 0,
+		.evYield_Attack 	= 1,
+		.evYield_Defense 	= 0,
+		.evYield_SpAttack 	= 0,
+		.evYield_SpDefense 	= 0,
+		.evYield_Speed 		= 0,
+		.item1 = ITEM_NONE,
+		.item2 = ITEM_NONE,
+		.genderRatio = PERCENT_FEMALE(12.5),
+		.eggCycles = 20,
+		.friendship = 50,
+		.growthRate = GROWTH_MEDIUM_SLOW,
+		.eggGroup1 = EGG_GROUP_FIELD,
+		.eggGroup2 = EGG_GROUP_GRASS,
+		.ability1 = ABILITY_OVERGROW,
+		.ability2 = ABILITY_NONE,
+		.safariZoneFleeRate = 0,
+		.hiddenAbility = ABILITY_GRASSYSURGE,
+		.noFlip = TRUE,
+	},
+	
+	[SPECIES_GREENEVO2] =
+	{
+		.baseHP 		= 70,
+		.baseAttack 	= 85,
+		.baseDefense 	= 70,
+		.baseSpAttack 	= 55,
+		.baseSpDefense 	= 60,
+		.baseSpeed 		= 80,
+		.type1 = TYPE_GRASS,
+		.type2 = TYPE_GRASS,
+		.catchRate = 45,
+		.expYield = 147,
+		.evYield_HP 		= 0,
+		.evYield_Attack 	= 2,
+		.evYield_Defense 	= 0,
+		.evYield_SpAttack 	= 0,
+		.evYield_SpDefense 	= 0,
+		.evYield_Speed 		= 0,
+		.item1 = ITEM_NONE,
+		.item2 = ITEM_NONE,
+		.genderRatio = PERCENT_FEMALE(12.5),
+		.eggCycles = 20,
+		.friendship = 50,
+		.growthRate = GROWTH_MEDIUM_SLOW,
+		.eggGroup1 = EGG_GROUP_FIELD,
+		.eggGroup2 = EGG_GROUP_GRASS,
+		.ability1 = ABILITY_OVERGROW,
+		.ability2 = ABILITY_NONE,
+		.safariZoneFleeRate = 0,
+		.hiddenAbility = ABILITY_GRASSYSURGE,
+		.noFlip = TRUE,
+	},
+	
+	[SPECIES_GREENEVO3] =
+	{
+		.baseHP 		= 100,
+		.baseAttack 	= 125,
+		.baseDefense 	= 90,
+		.baseSpAttack 	= 60,
+		.baseSpDefense 	= 70,
+		.baseSpeed 		= 85,
+		.type1 = TYPE_GRASS,
+		.type2 = TYPE_GRASS,
+		.catchRate = 45,
+		.expYield = 210,
+		.evYield_HP 		= 0,
+		.evYield_Attack 	= 3,
+		.evYield_Defense 	= 0,
+		.evYield_SpAttack 	= 0,
+		.evYield_SpDefense 	= 0,
+		.evYield_Speed 		= 0,
+		.item1 = ITEM_NONE,
+		.item2 = ITEM_NONE,
+		.genderRatio = PERCENT_FEMALE(12.5),
+		.eggCycles = 20,
+		.friendship = 50,
+		.growthRate = GROWTH_MEDIUM_SLOW,
+		.eggGroup1 = EGG_GROUP_FIELD,
+		.eggGroup2 = EGG_GROUP_GRASS,
+		.ability1 = ABILITY_OVERGROW,
+		.ability2 = ABILITY_NONE,
+		.safariZoneFleeRate = 0,
+		.hiddenAbility = ABILITY_GRASSYSURGE,
+		.noFlip = TRUE,
+	},
+	
+	[SPECIES_FUECOCO] =
+	{
+		.baseHP 		= 50,
+		.baseAttack 	= 71,
+		.baseDefense 	= 40,
+		.baseSpAttack 	= 40,
+		.baseSpDefense 	= 40,
+		.baseSpeed 		= 69,
+		.type1 = TYPE_FIRE,
+		.type2 = TYPE_FIRE,
+		.catchRate = 45,
+		.expYield = 62,
+		.evYield_HP 		= 0,
+		.evYield_Attack 	= 0,
+		.evYield_Defense 	= 0,
+		.evYield_SpAttack 	= 0,
+		.evYield_SpDefense 	= 0,
+		.evYield_Speed 		= 1,
+		.item1 = ITEM_NONE,
+		.item2 = ITEM_NONE,
+		.genderRatio = PERCENT_FEMALE(12.5),
+		.eggCycles = 20,
+		.friendship = 50,
+		.growthRate = GROWTH_MEDIUM_SLOW,
+		.eggGroup1 = EGG_GROUP_FIELD,
+		.eggGroup2 = EGG_GROUP_HUMAN_LIKE,
+		.ability1 = ABILITY_BLAZE,
+		.ability2 = ABILITY_NONE,
+		.safariZoneFleeRate = 0,
+		.hiddenAbility = ABILITY_PROTEAN,
+		.noFlip = TRUE,
+	},
+	
+	[SPECIES_FIREEVO2] =
+	{
+		.baseHP 		= 65,
+		.baseAttack 	= 86,
+		.baseDefense 	= 60,
+		.baseSpAttack 	= 55,
+		.baseSpDefense 	= 60,
+		.baseSpeed 		= 94,
+		.type1 = TYPE_FIRE,
+		.type2 = TYPE_FIRE,
+		.catchRate = 45,
+		.expYield = 147,
+		.evYield_HP 		= 0,
+		.evYield_Attack 	= 0,
+		.evYield_Defense 	= 0,
+		.evYield_SpAttack 	= 0,
+		.evYield_SpDefense 	= 0,
+		.evYield_Speed 		= 2,
+		.item1 = ITEM_NONE,
+		.item2 = ITEM_NONE,
+		.genderRatio = PERCENT_FEMALE(12.5),
+		.eggCycles = 20,
+		.friendship = 50,
+		.growthRate = GROWTH_MEDIUM_SLOW,
+		.eggGroup1 = EGG_GROUP_FIELD,
+		.eggGroup2 = EGG_GROUP_HUMAN_LIKE,
+		.ability1 = ABILITY_BLAZE,
+		.ability2 = ABILITY_NONE,
+		.safariZoneFleeRate = 0,
+		.hiddenAbility = ABILITY_PROTEAN,
+		.noFlip = TRUE,
+	},
+	
+	[SPECIES_FIREEVO3] =
+	{
+		.baseHP 		= 80,
+		.baseAttack 	= 116,
+		.baseDefense 	= 75,
+		.baseSpAttack 	= 65,
+		.baseSpDefense 	= 75,
+		.baseSpeed 		= 119,
+		.type1 = TYPE_FIRE,
+		.type2 = TYPE_FIRE,
+		.catchRate = 45,
+		.expYield = 210,
+		.evYield_HP 		= 0,
+		.evYield_Attack 	= 0,
+		.evYield_Defense 	= 0,
+		.evYield_SpAttack 	= 0,
+		.evYield_SpDefense 	= 0,
+		.evYield_Speed 		= 3,
+		.item1 = ITEM_NONE,
+		.item2 = ITEM_NONE,
+		.genderRatio = PERCENT_FEMALE(12.5),
+		.eggCycles = 20,
+		.friendship = 50,
+		.growthRate = GROWTH_MEDIUM_SLOW,
+		.eggGroup1 = EGG_GROUP_FIELD,
+		.eggGroup2 = EGG_GROUP_HUMAN_LIKE,
+		.ability1 = ABILITY_BLAZE,
+		.ability2 = ABILITY_NONE,
+		.safariZoneFleeRate = 0,
+		.hiddenAbility = ABILITY_PROTEAN,
+		.noFlip = TRUE,
+	},
+	
+	[SPECIES_QUAXLY] =
+	{
+		.baseHP 		= 50,
+		.baseAttack 	= 40,
+		.baseDefense 	= 40,
+		.baseSpAttack 	= 70,
+		.baseSpDefense 	= 40,
+		.baseSpeed 		= 70,
+		.type1 = TYPE_WATER,
+		.type2 = TYPE_WATER,
+		.catchRate = 45,
+		.expYield = 62,
+		.evYield_HP 		= 0,
+		.evYield_Attack 	= 0,
+		.evYield_Defense 	= 0,
+		.evYield_SpAttack 	= 0,
+		.evYield_SpDefense 	= 1,
+		.evYield_Speed 		= 1,
+		.item1 = ITEM_NONE,
+		.item2 = ITEM_NONE,
+		.genderRatio = PERCENT_FEMALE(12.5),
+		.eggCycles = 20,
+		.friendship = 50,
+		.growthRate = GROWTH_MEDIUM_SLOW,
+		.eggGroup1 = EGG_GROUP_WATER_1,
+		.eggGroup2 = EGG_GROUP_FIELD,
+		.ability1 = ABILITY_TORRENT,
+		.ability2 = ABILITY_NONE,
+		.safariZoneFleeRate = 0,
+		.hiddenAbility = ABILITY_SNIPER,
+		.noFlip = TRUE,
+	},
+	
+	[SPECIES_WATEREVO2] =
+	{
+		.baseHP 		= 65,
+		.baseAttack 	= 60,
+		.baseDefense 	= 55,
+		.baseSpAttack 	= 95,
+		.baseSpDefense 	= 55,
+		.baseSpeed 		= 90,
+		.type1 = TYPE_WATER,
+		.type2 = TYPE_WATER,
+		.catchRate = 45,
+		.expYield = 147,
+		.evYield_HP 		= 0,
+		.evYield_Attack 	= 0,
+		.evYield_Defense 	= 0,
+		.evYield_SpAttack 	= 2,
+		.evYield_SpDefense 	= 0,
+		.evYield_Speed 		= 0,
+		.item1 = ITEM_NONE,
+		.item2 = ITEM_NONE,
+		.genderRatio = PERCENT_FEMALE(12.5),
+		.eggCycles = 20,
+		.friendship = 50,
+		.growthRate = GROWTH_MEDIUM_SLOW,
+		.eggGroup1 = EGG_GROUP_WATER_1,
+		.eggGroup2 = EGG_GROUP_FIELD,
+		.ability1 = ABILITY_TORRENT,
+		.ability2 = ABILITY_NONE,
+		.safariZoneFleeRate = 0,
+		.hiddenAbility = ABILITY_SNIPER,
+		.noFlip = TRUE,
+	},
+	
+	[SPECIES_WATEREVO3] =
+	{
+		.baseHP 		= 70,
+		.baseAttack 	= 85,
+		.baseDefense 	= 65,
+		.baseSpAttack 	= 125,
+		.baseSpDefense 	= 65,
+		.baseSpeed 		= 120,
+		.type1 = TYPE_WATER,
+		.type2 = TYPE_WATER,
+		.catchRate = 45,
+		.expYield = 210,
+		.evYield_HP 		= 0,
+		.evYield_Attack 	= 0,
+		.evYield_Defense 	= 0,
+		.evYield_SpAttack 	= 0,
+		.evYield_SpDefense 	= 0,
+		.evYield_Speed 		= 3,
+		.item1 = ITEM_NONE,
+		.item2 = ITEM_NONE,
+		.genderRatio = PERCENT_FEMALE(12.5),
+		.eggCycles = 20,
+		.friendship = 50,
+		.growthRate = GROWTH_MEDIUM_SLOW,
+		.eggGroup1 = EGG_GROUP_WATER_1,
+		.eggGroup2 = EGG_GROUP_FIELD,
+		.ability1 = ABILITY_TORRENT,
+		.ability2 = ABILITY_NONE,
+		.safariZoneFleeRate = 0,
+		.hiddenAbility = ABILITY_SNIPER,
+		.noFlip = TRUE,
+	},
+	#endif
 };
