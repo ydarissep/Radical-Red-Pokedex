@@ -117,6 +117,9 @@ function returnMethodSprite(method){
     else if(method.match(/shard/i) !== null){
         return "Egg"
     }
+    else if(method.match(/sprouted|taller|flowering|berries/i) !== null){
+        return "Berry"
+    }
     else{
         return method
     }
