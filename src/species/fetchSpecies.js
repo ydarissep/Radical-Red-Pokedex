@@ -1,56 +1,56 @@
 async function getSpecies(species){
     footerP("Fetching species")
-    const rawSpecies = await fetch(`https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/species/species.h`)
+    const rawSpecies = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/species/species.h`)
     const textSpecies = await rawSpecies.text()
 
-    return regexSpecies(textSpecies, species)
+    return await regexSpecies(textSpecies, species)
 }
 
 
 async function getBaseStats(species){
     footerP("Fetching base stats")
-    const rawBaseStats = await fetch(`https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/species/Base_Stats.c`)
+    const rawBaseStats = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/species/Base_Stats.c`)
     const textBaseStats = await rawBaseStats.text()
-    return regexBaseStats(textBaseStats, species)
+    return await regexBaseStats(textBaseStats, species)
 }
 
 async function getLevelUpLearnsets(species){
     footerP("Fetching level up learnsets")
-    const rawLevelUpLearnsets = await fetch(`https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/species/Learnsets.c`)
+    const rawLevelUpLearnsets = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/species/Learnsets.c`)
     const textLevelUpLearnsets = await rawLevelUpLearnsets.text()
 
-    const rawLevelUpLearnsetsPointers = await fetch(`https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/species/Learnsets.c`)
+    const rawLevelUpLearnsetsPointers = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/species/Learnsets.c`)
     const textLevelUpLearnsetsPointers = await rawLevelUpLearnsetsPointers.text()
 
 
-    const levelUpLearnsetsConversionTable = getLevelUpLearnsetsConversionTable(textLevelUpLearnsetsPointers, species)
+    const levelUpLearnsetsConversionTable = await getLevelUpLearnsetsConversionTable(textLevelUpLearnsetsPointers, species)
 
 
-    return regexLevelUpLearnsets(textLevelUpLearnsets, levelUpLearnsetsConversionTable, species)
+    return await regexLevelUpLearnsets(textLevelUpLearnsets, levelUpLearnsetsConversionTable, species)
 }
 
 async function getTMHMLearnsets(species){
     footerP("Fetching TMHM learnsets")
-    const rawTMHMLearnsets = await fetch(`https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/species/TM_Tutor_Tables.c`)
+    const rawTMHMLearnsets = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/species/TM_Tutor_Tables.c`)
     const textTMHMLearnsets = await rawTMHMLearnsets.text()
 
-    return regexTMHMLearnsets(textTMHMLearnsets, species, "gTMHMMoves", "gMoveTutorMoves")
+    return await regexTMHMLearnsets(textTMHMLearnsets, species, "gTMHMMoves", "gMoveTutorMoves")
 }
 
 async function getTutorLearnsets(species){
     footerP("Fetching tutor learnsets")
-    const rawTutorLearnsets = await fetch(`https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/species/TM_Tutor_Tables.c`)
+    const rawTutorLearnsets = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/species/TM_Tutor_Tables.c`)
     const textTutorLearnsets = await rawTutorLearnsets.text()
 
-    return regexTutorLearnsets(textTutorLearnsets, species, "gMoveTutorMoves", "gTMHMMoves")
+    return await regexTutorLearnsets(textTutorLearnsets, species, "gMoveTutorMoves", "gTMHMMoves")
 }
 
 async function getEvolution(species){
     footerP("Fetching evolution line")
-    const rawEvolution = await fetch(`https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/species/Evolution%20Table.c`)
+    const rawEvolution = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/species/Evolution%20Table.c`)
     const textEvolution = await rawEvolution.text()
 
-    return regexEvolution(textEvolution, species)
+    return await regexEvolution(textEvolution, species)
 }
 
 async function getForms(species){
@@ -58,44 +58,44 @@ async function getForms(species){
     const rawForms = await fetch(`https://raw.githubusercontent.com/${repo}/master/src/data/pokemon/form_species_tables.h`)
     const textForms = await rawForms.text()
 
-    return regexForms(textForms, species)
+    return await regexForms(textForms, species)
 }
 
 async function getEggMovesLearnsets(species){
     footerP("Fetching egg moves learnsets")
-    const rawEggMoves = await fetch(`https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/species/Egg_Moves.c`)
+    const rawEggMoves = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/species/Egg_Moves.c`)
     const textEggMoves = await rawEggMoves.text()
 
-    return regexEggMovesLearnsets(textEggMoves, species)
+    return await regexEggMovesLearnsets(textEggMoves, species)
 }
 
 async function getSprite(species){
     footerP("Fetching sprites... this could take a while")
 
-    const rawSprite = await fetch(`https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/species/Front_Pic_Table.c`)
+    const rawSprite = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/species/Front_Pic_Table.c`)
     const textSprite = await rawSprite.text()
 
-    return regexSprite(textSprite, species)
+    return await regexSprite(textSprite, species)
 }
 
 async function getReplaceAbilities(species){
-    const rawReplaceAbilities = await fetch(`https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/abilities/duplicate_abilities.h`)
+    const rawReplaceAbilities = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/abilities/duplicate_abilities.h`)
     const textReplaceAbilities = await rawReplaceAbilities.text()
 
-    return regexReplaceAbilities(textReplaceAbilities, species)
+    return await regexReplaceAbilities(textReplaceAbilities, species)
 }
 
 async function getChanges(species, url){
     footerP("Fetching species changes")
     const rawChanges = await fetch(url)
     const textChanges = await rawChanges.text()
-    return regexChanges(textChanges, species)
+    return await regexChanges(textChanges, species)
 }
 
 
 async function cleanSpecies(species){
     footerP("Cleaning up...")
-    Object.keys(species).forEach(name => {
+    await Object.keys(species).forEach(name => {
         if(species[name]["baseSpeed"] <= 0){
             for (let i = 0; i < species[name]["forms"].length; i++){
                 const targetSpecies = species[name]["forms"][i]
@@ -143,7 +143,7 @@ async function cleanSpecies(species){
             species[name]["evolution"] = []
         }
     })
-    Object.keys(species).forEach(name => {
+    await Object.keys(species).forEach(name => {
         if(species[name]["baseSpeed"] <= 0){
             delete species[name]
         }

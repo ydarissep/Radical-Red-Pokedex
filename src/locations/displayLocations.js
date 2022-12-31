@@ -86,7 +86,7 @@ function createRow(location, method){
     let spriteHeaderContainer = document.createElement("td")
     let spriteHeader = document.createElement("img")
     spriteHeaderContainer.className = "sprite"
-    spriteHeader.src = `https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/src/locations/sprites/${returnMethodSprite(method).replaceAll(" ", "_")}.png`
+    spriteHeader.src = `https://raw.githubusercontent.com/${repo}/main/src/locations/sprites/${returnMethodSprite(method).replaceAll(" ", "_")}.png`
     spriteHeaderContainer.append(spriteHeader)
     rowZoneHeader.append(spriteHeaderContainer)
 

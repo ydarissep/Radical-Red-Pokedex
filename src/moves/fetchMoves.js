@@ -1,6 +1,6 @@
 async function getMoves(moves){
     footerP("Fetching moves")
-    const rawMoves = await fetch(`https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/moves/battle_moves.c`)
+    const rawMoves = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/moves/battle_moves.c`)
     const textMoves = await rawMoves.text()
 
     return regexMoves(textMoves, moves)
@@ -8,7 +8,7 @@ async function getMoves(moves){
 
 async function getMovesDescription(moves){
     footerP("Fetching moves descriptions")
-    const rawMovesDescription = await fetch(`https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/moves/attack_descriptions.string`)
+    const rawMovesDescription = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/moves/attack_descriptions.string`)
     const textMovesDescription = await rawMovesDescription.text()
 
     return regexMovesDescription(textMovesDescription, moves)
@@ -16,7 +16,7 @@ async function getMovesDescription(moves){
 
 async function getMovesIngameName(moves){
     footerP("Fetching moves ingame name")
-    const rawMovesIngameName = await fetch(`https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/moves/attack_name_table%20long.string`)
+    const rawMovesIngameName = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/moves/attack_name_table%20long.string`)
     const textMovesIngameName = await rawMovesIngameName.text()
 
     return regexMovesIngameName(textMovesIngameName, moves)
