@@ -25,6 +25,11 @@ function displayMoves(){
             ingameName.innerText = sanitizeString(moves[moveName]["name"])
         nameContainer.append(name)
         nameContainer.append(ingameName)
+
+        if(hardcoreRestricted.includes(moves[moveName]["name"])){
+                    ingameName.style.color = "#FF8F8F"
+        }
+
         row.append(nameContainer)
 
 

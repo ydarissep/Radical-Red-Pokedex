@@ -83,6 +83,10 @@ async function createSpeciesPanel(name){
             abilityDescription.className = "speciesPanelAbilitiesDescriptionPadding"
             abilityContainer.className = "flex wrap"
 
+            if(hardcoreRestricted.includes(abilities[ability]["name"])){
+                    abilityName.style.color = "#FF8F8F"
+            }
+
             abilityContainer.append(abilityName)
             abilityContainer.append(abilityDescription)
             speciesAbilities.append(abilityContainer)
@@ -501,6 +505,11 @@ function buildSpeciesPanelLearnsetsTable(Tbody, name, input){
         const moveName = document.createElement("td")
         moveName.innerText = moves[species[name][input][i][0]]["ingameName"]
         moveName.className = "bold"
+
+        if(hardcoreRestricted.includes(moves[species[name][input][i][0]]["name"])){
+            moveName.style.color = "#FF8F8F"
+        }
+
         row.append(moveName)
 
         const typeContainer = document.createElement("td")
@@ -561,6 +570,11 @@ function buildSpeciesPanelEggMovesTable(Tbody, name, input){
         const moveName = document.createElement("td")
         moveName.innerText = moves[species[name][input][i]]["ingameName"]
         moveName.className = "bold"
+
+        if(hardcoreRestricted.includes(moves[species[name][input][i]]["name"])){
+            moveName.style.color = "#FF8F8F"
+        }
+
         row.append(moveName)
 
         const typeContainer = document.createElement("td")

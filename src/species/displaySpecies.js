@@ -112,6 +112,9 @@ function displaySpecies(){
                     }
                 }
 
+                if(hardcoreRestricted.includes(abilityName)){
+                    ability.style.color = "#FF8F8F"
+                }
 
                 abilitiesContainer.append(ability)
             }
