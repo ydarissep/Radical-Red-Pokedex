@@ -140,7 +140,7 @@ function lazyLoading(reset = false){
                     rows[i].classList.add("hideTemp")
             }
             else{
-                if(!rows[i].classList.contains("hide") && !rows[i].className.includes("hideFilter")){
+                if(!rows[i].classList.contains("hide") && !rows[i].className.includes("hideFilter") && !rows[i].className.includes("hideChanged")){
                     if(rows[i].classList.contains("hideTemp")){
                         count++
                         rows[i].classList.remove("hideTemp")

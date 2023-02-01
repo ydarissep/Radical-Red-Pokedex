@@ -127,7 +127,38 @@ function filterMovesSplit(value, label){
     }
 }
 
+function filterBaseStats(value, label){
+    if(value === "HP"){
+        value = "baseHP"
+        label = "HP"
+    }
+    else if(value === "Atk"){
+        value = "baseAttack"
+        label = "Atk"
+    }
+    else if(value === "Def"){
+        value = "baseDefense"
+        label = "Def"
+    }
+    else if(value === "SpA"){
+        value = "baseSpAttack"
+        label = "SpA"
+    }
+    else if(value === "SpD"){
+        value = "baseSpDefense"
+        label = "SpD"
+    }
+    else if(value === "Spe"){
+        value = "baseSpeed"
+        label = "Speed"
+    }
+    else if(value === "BST"){
+        value = "BST"
+        label = "BST"
+    }
 
+    filterOperators(value, label, species)
+}
 
 
 
@@ -185,7 +216,10 @@ function selectFilter(value, label){
         filterSpeciesForm(value, label)   
     }
     else if(label === "Split"){
-        filterMovesSplit(value, label)   
+        filterMovesSplit(value, label)
+    }
+    else if(label === "Base Stats"){
+        filterBaseStats(value, label)
     }
 }
 
@@ -202,6 +236,7 @@ async function setFilters(){
     createFilterGroup(createFilterArray(["ingameName"], abilities, false), "Ability", [speciesFilterList, locationsFilterList])
     createFilterGroup(createFilterArray(["ingameName"], moves, false), "Move", [speciesFilterList, locationsFilterList])
     createFilterGroup(createFilterArray(["eggGroup1", "eggGroup2"], species), "Egg Group", [speciesFilterList, locationsFilterList])
+    createFilterGroup(["HP", "Atk", "Def", "SpA", "SpD", "Spe", "BST"], "Base Stats", [speciesFilterList, locationsFilterList], true)
 }
 
 
@@ -262,7 +297,7 @@ function hideFilterList(){
 
 
 
-function createFilterGroup(values, labelValue, tableFilterListArray){
+function createFilterGroup(values, labelValue, tableFilterListArray, operator = false){
     for(let i = 0; i < tableFilterListArray.length; i++){
         const mainContainer = document.createElement("div")
         values.forEach(value => {
@@ -275,7 +310,7 @@ function createFilterGroup(values, labelValue, tableFilterListArray){
 
             container.className = `tableFilter hide`
 
-            valueContainer.innerText = sanitizeString(value)
+            valueContainer.innerText = value
             valueContainer.className = "filterValue"
             if(labelValue.includes("Type")){
                 valueContainer.className = `TYPE_${value.toUpperCase()} background4 filterValue`
@@ -287,9 +322,17 @@ function createFilterGroup(values, labelValue, tableFilterListArray){
             mainContainer.append(container)
             mainContainer.className = "filterListContainer"
 
-            container.addEventListener("click", () => {
-                createFilter(value, labelValue)
-            })
+            if(operator){
+                container.classList.add("operator")
+                container.addEventListener("click", () => {
+                    selectFilter(value, labelValue)
+                })
+            }
+            else{
+                container.addEventListener("click", () => {
+                    createFilter(value, labelValue)
+                })
+            }
         })
         tableFilterListArray[i].append(mainContainer)
     }
@@ -306,7 +349,10 @@ function filterFilters(input){
         const filters = activeFilter[0].getElementsByClassName("tableFilter")
         for(let i = 0; i < filters.length; i++){
             const filterValue = filters[i].getElementsByClassName("filterValue")
-            if(sanitizedInput.length >= 3 && filterValue[0].innerText.replaceAll(/-|'| |_/g, "").toLowerCase().includes(sanitizedInput)){
+            if(filters[i].classList.contains("operator") && /\d+/.test(input)){
+                filters[i].classList.remove("hide")
+            }
+            else if(sanitizedInput.length >= 3 && filterValue[0].innerText.replaceAll(/-|'| |_/g, "").toLowerCase().includes(sanitizedInput)){
                 filters[i].classList.remove("hide")
             }
             else{
@@ -366,6 +412,32 @@ function createFilter(value, label){
 
 
 
+function createOperatorFilter(label, operator, number){
+    const activeFilter = document.getElementsByClassName("activeFilter")[0]
+    const tableFilterContainer = activeFilter.getElementsByClassName("filterContainer")[0]
+    const newFilter = document.createElement("div")
+    newFilter.innerText = `${label} ${operator} ${number}`
+    newFilter.classList = "filter crossOnHover newFilter"
+    tableFilterContainer.append(newFilter)
+
+    newFilter.addEventListener("click", () => {
+        const currentTable = document.getElementsByClassName("activeTable")[0]
+        const rows = currentTable.getElementsByClassName(`hideFilter${label}${operator}${number}`.replaceAll(" ", ""))
+        while(rows.length){
+            rows[0].classList.remove(`hideFilter${label}${operator}${number}`.replaceAll(" ", ""))
+        }
+        newFilter.remove()
+        refreshLocationsTables()
+        lazyLoading(true)
+    })
+
+    hideFilterList()
+    refreshLocationsTables()
+    lazyLoading(true)
+}
+
+
+
 function deleteFiltersFromTable(){
     const activeFilter = document.getElementsByClassName("activeFilter")[0]
     const tableFilterContainer = activeFilter.getElementsByClassName("filterContainer")[0]
@@ -386,3 +458,118 @@ function deleteFiltersFromTable(){
         tableFilterContainer.removeChild(tableFilterContainer.firstChild)
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function filterOperators(value, label, obj){
+    let operator = document.getElementsByClassName("activeInput")[0].value.match(/>=|<=|=>|=<|=|>|</)
+    if(!operator){
+        operator = ">="
+    }
+    else{
+        operator = operator[0]   
+    }
+    const number = document.getElementsByClassName("activeInput")[0].value.match(/\d+/)[0]
+
+    const table = document.getElementsByClassName("activeTable")[0]
+    const rows = table.querySelectorAll("tbody > tr")
+    for(let i = 0; i < rows.length; i++){
+        const key = rows[i].getElementsByClassName("key")[0].innerText
+        if(operator === ">=" || operator === "=>"){
+            if(!(obj[key][value] >= number)){
+                rows[i].classList.add(`hideFilter${label}${operator}${number}`.replaceAll(" ", ""))
+            }
+        }
+        else if(operator === "<=" || operator === "=<"){
+            if(!(obj[key][value] <= number)){
+                rows[i].classList.add(`hideFilter${label}${operator}${number}`.replaceAll(" ", ""))
+            }
+        }
+        else if(operator === "="){
+            if(!(obj[key][value] == number)){
+                rows[i].classList.add(`hideFilter${label}${operator}${number}`.replaceAll(" ", ""))
+            }
+        }
+        else if(operator === ">"){
+            if(!(obj[key][value] > number)){
+                rows[i].classList.add(`hideFilter${label}${operator}${number}`.replaceAll(" ", ""))
+            }
+        }
+        else if(operator === "<"){
+            if(!(obj[key][value] < number)){
+                rows[i].classList.add(`hideFilter${label}${operator}${number}`.replaceAll(" ", ""))
+            }
+        }
+        rows[i].classList.remove("hide")
+    }
+
+    createOperatorFilter(label, operator, number)
+}
