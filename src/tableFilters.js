@@ -352,7 +352,7 @@ function filterFilters(input){
             if(filters[i].classList.contains("operator") && /\d+/.test(input)){
                 filters[i].classList.remove("hide")
             }
-            else if(sanitizedInput.length >= 3 && filterValue[0].innerText.replaceAll(/-|'| |_/g, "").toLowerCase().includes(sanitizedInput)){
+            else if(sanitizedInput.length >= 3 && filterValue[0].innerText.replaceAll(/-|'| |_/g, "").toLowerCase().includes(sanitizedInput) && !filters[i].classList.contains("operator")){
                 filters[i].classList.remove("hide")
             }
             else{
