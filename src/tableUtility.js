@@ -1,6 +1,7 @@
 async function displaySetup(){    
     await footerP("")
 
+    lazyLoading(true)
 
     await tableInput.classList.remove("hide")
 
@@ -115,7 +116,7 @@ function filterLocationsTableInput(input, obj, keyArray){
 
 function lazyLoading(reset = false){
     const activeTable = document.querySelectorAll(".activeTable > tbody")[0]
-    if(activeTable)
+    if(activeTable && typeof tracker !== 'undefined')
     {
         if(reset){
             while (activeTable.firstChild) {
