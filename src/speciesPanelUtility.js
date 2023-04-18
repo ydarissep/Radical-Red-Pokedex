@@ -318,7 +318,12 @@ speciesPanelInputSpecies.addEventListener("input", e => {
 
 function getSpeciesSpriteSrc(speciesName){
     if(sprites[speciesName]){
-        return sprites[speciesName]
+        if(sprites[speciesName].length < 500){
+            return species[speciesName]["sprite"]
+        }
+        else{
+            return sprites[speciesName]
+        }
     }
     else{
         return species[speciesName]["sprite"]
