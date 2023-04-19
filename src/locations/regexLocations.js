@@ -4,7 +4,7 @@ function regexWildLocations(textWildLocations, locations){
 
     lines.forEach(line => {
     	const matchWildPokemon = line.match(/WildPokemon *g?(\w+)_(\w+)/i)
-    	if(matchWildPokemon !== null){
+    	if(matchWildPokemon){
     		zone = matchWildPokemon[1].replace(/([A-Z])/g, " $1").replace(/(\d+)/g, " $1").trim()
     		method = matchWildPokemon[2]
 
@@ -21,7 +21,7 @@ function regexWildLocations(textWildLocations, locations){
     		index = 0
     	}
     	const matchSpecies = line.match(/SPECIES_\w+/i)
-    	if(matchSpecies !== null && matchSpecies[0] in species){
+    	if(matchSpecies && matchSpecies[0] in species){
     		const tempMethod = replaceMethodString(method, index)
     		if(!(tempMethod in locations[zone])){
     			locations[zone][tempMethod] = {}
@@ -49,7 +49,7 @@ function regexRaidLocations(textRaidLocations, locations){
 
     lines.forEach(line => {
     	const matchRaid = line.match(/Raid *s(\w+)Raids(\d+Star)/i)
-    	if(matchRaid !== null){
+    	if(matchRaid){
     		zone = matchRaid[1].replace(/([A-Z])/g, " $1").replace(/(\d+)/g, " $1").trim()
     		method = `Raid ${matchRaid[2].replace(/([A-Z])/g, " $1").replace(/(\d+)/g, " $1").trim()}`
 
@@ -58,7 +58,7 @@ function regexRaidLocations(textRaidLocations, locations){
     		}
     	}
     	const matchSpecies = line.match(/SPECIES_\w+/i)
-    	if(matchSpecies !== null){
+    	if(matchSpecies){
     		if(!(method in locations[zone])){
     			locations[zone][method] = {}
     		}
@@ -95,7 +95,7 @@ function regexRaidLocations(textRaidLocations, locations){
 
 
 function replaceMethodString(method, index){
-	if(method.match(/fish/i) !== null){
+	if(method.match(/fish/i)){
 		if(index >=0 && index <= 1)
 			return "Old Rod"
 		else if(index >= 2 && index <= 4)
@@ -105,19 +105,19 @@ function replaceMethodString(method, index){
 		else
 			return "Fishing"
 	}
-	else if(method.match(/surf/i) !== null){
+	else if(method.match(/surf/i)){
 		return "Surfing"
 	}
-	else if(method.match(/smash/i) !== null){
+	else if(method.match(/smash/i)){
 		return "Rock Smash"
 	}
-	else if(method.match(/night/i) !== null){
+	else if(method.match(/night/i)){
 		return "Night"
 	}
-	else if(method.match(/day/i) !== null){
+	else if(method.match(/day/i)){
 		return "Day"
 	}
-	else if(method.match(/LandMons/i) !== null){
+	else if(method.match(/LandMons/i)){
 		return "Day"
 	}
     else{

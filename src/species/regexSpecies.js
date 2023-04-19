@@ -249,7 +249,7 @@ async function regexTMHMLearnsets(textTMHMLearnsets, species, start, end){
 
                         lines.forEach(line => {
                             const matchTMHM = line.match(/TM\d+|HM\d+/i)
-                            if(matchTMHM !== null)
+                            if(matchTMHM)
                                 TMHM = matchTMHM[0]
 
 
@@ -504,7 +504,7 @@ async function regexSprite(textSprite, species){
                 name = "SPECIES_ENAMORUS_THERIAN"
 
             const matchURL = line.match(/gFrontSprite\w+Tiles/i)
-            if(matchURL !== null){
+            if(matchURL){
                 let url = `https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/species/frontspr/${matchURL[0].replace("Tiles", ".png")}`
 
                 species[name]["sprite"] = url
