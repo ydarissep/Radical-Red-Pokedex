@@ -107,6 +107,8 @@ function setDataList(){
 function getSpeciesSpriteSrc(speciesName){
     if(sprites[speciesName]){
         if(sprites[speciesName].length < 500){
+            localStorage.removeItem(speciesName)
+            spriteRemoveBgReturnBase64(speciesName, species)
             return species[speciesName]["sprite"]
         }
         else{
@@ -114,8 +116,6 @@ function getSpeciesSpriteSrc(speciesName){
         }
     }
     else{
-        localStorage.removeItem(speciesName)
-        spriteRemoveBgReturnBase64(speciesName, species)
         return species[speciesName]["sprite"]
     }
 }
