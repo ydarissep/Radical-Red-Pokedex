@@ -94,7 +94,7 @@ function setDataList(){
             continue
         }
         const option = document.createElement("option")
-        option.innerText = sanitizeString(abilityName)
+        option.innerText = abilities[abilityName]["ingameName"]
         abilitiesIngameNameArray.push(option.innerText)
         abilitiesInputDataList.append(option)
     }
