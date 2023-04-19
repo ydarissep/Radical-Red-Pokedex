@@ -114,6 +114,8 @@ function getSpeciesSpriteSrc(speciesName){
         }
     }
     else{
+        localStorage.removeItem(speciesName)
+        spriteRemoveBgReturnBase64(speciesName, species)
         return species[speciesName]["sprite"]
     }
 }
