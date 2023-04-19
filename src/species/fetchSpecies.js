@@ -249,6 +249,10 @@ async function fetchSpeciesObj(){
         }
         if(localStorage.getItem(`${name}`)){
             sprites[name] = await LZString.decompressFromUTF16(localStorage.getItem(`${name}`))
+            if(sprites[name].length < 500){
+                localStorage.removeItem(name)
+                spriteRemoveBgReturnBase64(name, species)
+            }
         }
     })
     for(let i = 0, j = Object.keys(species).length; i < j; i++){
