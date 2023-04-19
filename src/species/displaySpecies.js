@@ -198,5 +198,11 @@ async function spriteRemoveBgReturnBase64(speciesName, species){
             await localStorage.setItem(`${speciesName}`, LZString.compressToUTF16(canvas.toDataURL()))
             sprites[speciesName] = canvas.toDataURL()
         }
+        if(document.querySelectorAll(`[id*=${speciesName}]`).length > 0){
+            const els = document.querySelectorAll(`[id*=${speciesName}] > .sprite`)
+            els.forEach(el => {
+                el.firstChild.src = canvas.toDataURL()
+            })
+        }
     }
 }

@@ -70,7 +70,7 @@ async function getEggMovesLearnsets(species){
 }
 
 async function getSprite(species){
-    footerP("Fetching sprites... this could take a while")
+    footerP("Fetching sprites")
 
     const rawSprite = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/species/Front_Pic_Table.c`)
     const textSprite = await rawSprite.text()
@@ -244,9 +244,6 @@ async function fetchSpeciesObj(){
     window.speciesTracker = []
 
     await Object.keys(species).forEach(async name => {
-        if(!localStorage.getItem(`${name}`)){
-            await spriteRemoveBgReturnBase64(name, species)
-        }
         if(localStorage.getItem(`${name}`)){
             sprites[name] = await LZString.decompressFromUTF16(localStorage.getItem(`${name}`))
             if(sprites[name].length < 500){
@@ -254,6 +251,7 @@ async function fetchSpeciesObj(){
                 spriteRemoveBgReturnBase64(name, species)
             }
         }
+        
     })
     for(let i = 0, j = Object.keys(species).length; i < j; i++){
         speciesTracker[i] = {}

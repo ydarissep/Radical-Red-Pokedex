@@ -116,6 +116,7 @@ function getSpeciesSpriteSrc(speciesName){
         }
     }
     else{
+        spriteRemoveBgReturnBase64(speciesName, species)
         return species[speciesName]["sprite"]
     }
 }
