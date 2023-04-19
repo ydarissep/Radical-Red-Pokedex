@@ -199,11 +199,11 @@ async function spriteRemoveBgReturnBase64(speciesName, species){
             await localStorage.setItem(`${speciesName}`, LZString.compressToUTF16(canvas.toDataURL()))
             sprites[speciesName] = canvas.toDataURL()
         }
-        if(document.querySelectorAll(`.sprite${speciesName}`).length > 0){
-            const els = document.querySelectorAll(`.sprite${speciesName}`)
-            els.forEach(el => {
-                el.src = canvas.toDataURL()
-            })
+        if(document.getElementsByClassName(`sprite${speciesName}`).length > 0){
+            const els = document.getElementsByClassName(`sprite${speciesName}`)
+            for(let i = 0; i < els.length; i++){
+                els[i].src = canvas.toDataURL()
+            }
         }
     }
 }
