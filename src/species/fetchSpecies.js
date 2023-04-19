@@ -143,12 +143,6 @@ async function cleanSpecies(species){
             species[name]["evolution"] = []
         }
     })
-    await Object.keys(species).forEach(name => {
-        if(species[name]["baseSpeed"] <= 0){
-            delete species[name]
-        }
-    })
-
 
     return species
 }
@@ -173,22 +167,10 @@ async function buildSpeciesObj(){
     species = await getTutorLearnsets(species)
     species = await getSprite(species)
 
-
-
-
-
     species = await altFormsLearnsets(species, "forms", "tutorLearnsets")
     species = await altFormsLearnsets(species, "forms", "TMHMLearnsets")
 
-
     species = await cleanSpecies(species)
-
-
-    delete species["SPECIES_ZYGARDE_CORE"]
-    delete species["SPECIES_ZYGARDE_CELL"]
-    delete species["SPECIES_SHADOW_WARRIOR"]
-    delete species["SPECIES_UNKNOWN_MYTHICAL"]
-
 
     Object.keys(species).forEach(name => {
         species[name]["tutorLearnsets"].sort((a,b) => a[1] - b[1])
@@ -215,7 +197,6 @@ async function buildSpeciesObj(){
             return a - b
         })
     })
-
     await localStorage.setItem("species", LZString.compressToUTF16(JSON.stringify(species)))
     return species
 }
@@ -248,7 +229,6 @@ function initializeSpeciesObj(species){
         species[name]["forms"] = []
         species[name]["sprite"] = ""
     }
-    
     return species
 }
 

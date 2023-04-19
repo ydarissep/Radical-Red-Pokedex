@@ -51,9 +51,6 @@ async function buildAbilitiesObj(){
     abilities["ABILITY_STEELY_SPIRIT"]["description"] = "Boosts ally Steel moves."
     
     //abilities["ABILITY_GULPMISSLE"]["description"] = "Spits prey if damaged after a swim." // fixed
-    delete abilities["ABILITY_NONE"]
-    delete abilities["ABILITY_NAME_LENGTH"]
-    delete abilities["ABILITY_NAMELENGTH"]
 
     await localStorage.setItem("abilities", LZString.compressToUTF16(JSON.stringify(abilities)))
     return abilities
