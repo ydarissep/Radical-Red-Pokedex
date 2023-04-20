@@ -122,6 +122,7 @@ function lazyLoading(reset = false){
             while (activeTable.firstChild) {
                 activeTable.removeChild(activeTable.firstChild)
             }
+            refreshURLParams()
         }
         let target = 75
         let counter = 0
@@ -208,6 +209,6 @@ async function tableButtonClick(input){
     targetFilter.classList.remove("hide")
     targetFilter.classList.add("activeFilter")
 
-    await lazyLoading(reset = true)
+    await lazyLoading(true)
 }
 

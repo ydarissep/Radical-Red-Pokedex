@@ -25,6 +25,9 @@ function sanitizeString(string){
 
 
 async function fetchData(){
+    const queryString = window.location.search
+    const urlParams = new URLSearchParams(queryString)
+
     await forceUpdate()
 
     await fetchMovesObj()
@@ -37,6 +40,7 @@ async function fetchData(){
     await setDataList()
     await setFilters()
     await displaySetup()
+    displayParams(urlParams)
 
     await window.scrollTo(0, 0)
 }
@@ -120,6 +124,39 @@ function getSpeciesSpriteSrc(speciesName){
         return species[speciesName]["sprite"]
     }
 }
+
+
+
+
+
+
+
+
+function refreshURLParams(){
+    const url = "file:///home/ydarissep/Desktop/Dexes/RR%20dex/index.html?"
+    let params = ""
+    if(!speciesPanelMainContainer.classList.contains("hide")){
+        params += `species=${panelSpecies}`
+    }
+    window.history.pushState(null, null, `${url}${params}`)
+}
+
+
+
+
+
+
+
+
+
+function displayParams(urlParams){
+    if(urlParams.get("species")){
+        createSpeciesPanel(urlParams.get("species"))
+        scrollToSpecies = urlParams.get("species")
+    }
+}
+
+
 
 
 

@@ -374,7 +374,7 @@ function speciesPanelIsTouching(entries){
     }
     else{
 
-        speciesPanelMainContainer.classList.add("hide")
+        speciesPanel("hide")
 
         if(table.getBoundingClientRect().top < 0){
             utilityButton.innerText = "↑"
@@ -431,23 +431,23 @@ document.addEventListener("keydown", e => {
             utilityButtonOnClick()
         }    
         else if(e.code === "Enter" && panelSpecies !== ""){
-            speciesPanelMainContainer.classList.toggle("hide")
+            speciesPanel("toggle")
             window.scrollTo({ top: 0})
         }
         else if(e.code === "Backspace" || e.code === "Escape" || e.code === "Delete"){
-            speciesPanelMainContainer.classList.add("hide")
+            speciesPanel("hide")
         }
     }
 })
 function utilityButtonOnClick(){
     if(utilityButton.innerText === "↓"){
-        speciesPanelMainContainer.classList.add("hide")
+        speciesPanel("hide")
         if(document.getElementById(`${scrollToSpecies}`)){
             document.getElementById(`${scrollToSpecies}`).scrollIntoView({ block: "center" })
         }
     }
     else if(utilityButton.innerText === "☰" && panelSpecies !== ""){
-        speciesPanelMainContainer.classList.remove("hide")
+        speciesPanel("show")
         window.scrollTo({ top: 0})
     }
     else{
