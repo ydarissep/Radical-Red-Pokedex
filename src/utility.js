@@ -133,7 +133,7 @@ function getSpeciesSpriteSrc(speciesName){
 
 
 function refreshURLParams(){
-    const url = `${window.location.protocol}${window.location.host}${window.location.pathname}?`
+    const url = `https://ydarissep.github.io/Radical-Red-Pokedex/?`
     let params = ""
     if(!speciesPanelMainContainer.classList.contains("hide")){
         params += `species=${panelSpecies}`
