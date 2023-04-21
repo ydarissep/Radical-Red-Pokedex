@@ -63,7 +63,7 @@ function filterTableInput(input, obj, keyArray){
     for(let i = 0, j = Object.keys(tracker).length; i < j; i++){
         tracker[i]["filter"].push("input")
         for (let k = 0; k < keyArray.length; k++){
-            if(regexInput.test(("" + obj[tracker[i]["key"]][keyArray[k]]).replaceAll(/-|'| |_/g, ""))){
+            if(regexInput.test(sanitizeString("" + obj[tracker[i]["key"]][keyArray[k]]).replaceAll(/-|'| |_/g, ""))){
                 tracker[i]["filter"] = tracker[i]["filter"].filter(value => value !== "input")
                 break
             }
@@ -93,9 +93,9 @@ function filterLocationsTableInput(input, obj, keyArray){
             if(name in species){
                 if(regexInput.test(zone) || regexInput.test(method)){
                     tracker[i]["filter"] = tracker[i]["filter"].filter(value => value !== "input")
-                    continue
+                    break
                 }
-                if(regexInput.test(("" + obj[name][keyArray[k]]).replaceAll(/-|'| |_/g, ""))){
+                if(regexInput.test(sanitizeString("" + obj[name][keyArray[k]]).replaceAll(/-|'| |_|species/ig, ""))){
                     tracker[i]["filter"] = tracker[i]["filter"].filter(value => value !== "input")
                     break
                 }
@@ -114,7 +114,7 @@ function filterLocationsTableInput(input, obj, keyArray){
 
 
 
-function lazyLoading(reset = false){
+async function lazyLoading(reset = false){
     const activeTable = document.querySelectorAll(".activeTable > tbody")[0]
     if(activeTable && typeof tracker !== 'undefined')
     {
@@ -177,7 +177,6 @@ async function tableButtonClick(input){
         table.classList.add("hide")
     })
 
-
     activeButton.forEach(button => {
         button.classList.remove("activeButton")
     })
@@ -197,7 +196,7 @@ async function tableButtonClick(input){
     const targetButton = await document.getElementById(`${input}Button`)
     const targetInput = await document.getElementById(`${input}Input`)
     const targetFilter = await document.getElementById(`${input}Filter`)
-
+    
     targetTable.classList.remove("hide")
     targetTable.classList.add("activeTable")
 
@@ -208,6 +207,8 @@ async function tableButtonClick(input){
 
     targetFilter.classList.remove("hide")
     targetFilter.classList.add("activeFilter")
+
+    tracker = window[`${input}Tracker`]
 
     await lazyLoading(true)
 }

@@ -625,7 +625,7 @@ speciesPanelCloseButton.addEventListener("click", () => {
         speciesPanel("hide")
 })
 
-function speciesPanel(param){
+async function speciesPanel(param){
     if(param === "hide"){
         speciesPanelMainContainer.classList.add("hide")
     }
