@@ -82,6 +82,7 @@ function filterTableInput(input, obj, keyArray){
 
 function filterLocationsTableInput(input, obj, keyArray){
     const sanitizedInput = input.trim().replaceAll(/-|'| |_/g, "").toLowerCase()
+    const arraySanitizedInput = input.trim().split(/-|'| |_/g)
     const regexInput = new RegExp(sanitizedInput, "i")
 
     for(let i = 0, j = Object.keys(tracker).length; i < j; i++){
@@ -91,14 +92,16 @@ function filterLocationsTableInput(input, obj, keyArray){
         tracker[i]["filter"].push("input")
         for (let k = 0; k < keyArray.length; k++){
             if(name in species){
-                if(regexInput.test(zone) || regexInput.test(method)){
-                    tracker[i]["filter"] = tracker[i]["filter"].filter(value => value !== "input")
-                    break
-                }
                 if(regexInput.test(sanitizeString("" + obj[name][keyArray[k]]).replaceAll(/-|'| |_|species/ig, ""))){
                     tracker[i]["filter"] = tracker[i]["filter"].filter(value => value !== "input")
                     break
                 }
+            }
+        }
+        tracker[i]["filter"] = tracker[i]["filter"].filter(value => value !== "input")
+        for(splitInput of arraySanitizedInput){
+            if(!(zone+method).includes(splitInput.toLowerCase())){
+                tracker[i]["filter"].push("input")
             }
         }
     }
