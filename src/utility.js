@@ -25,7 +25,7 @@ function sanitizeString(string){
 
 
 async function fetchData(){
-    history.pushState(null, document.title, location.href)
+    history.pushState(null, null, location.href)
     const queryString = window.location.search
     const urlParams = new URLSearchParams(queryString)
 
@@ -157,6 +157,9 @@ async function refreshURLParams(){
         }
         params += "&"
     }
+    if(document.getElementsByClassName("activeInput")[0].value !== ""){
+        params += `input=${document.getElementsByClassName("activeInput")[0].value}&`
+    }
     
     await getHistoryState()
     window.history.replaceState(`${url}${params}`, null, `${url}${params}`)
@@ -184,6 +187,10 @@ async function displayParams(urlParams){
             createFilter(filter.split(":")[1], filter.split(":")[0])
         })
     }
+    if(urlParams.get("input")){
+        document.getElementsByClassName("activeInput")[0].value = urlParams.get("input")
+    }
+    await refreshURLParams()
 }
 
 
