@@ -471,7 +471,7 @@ window.addEventListener('popstate', async () => {
     historyObj.pop()
     const temp = historyObj.length
     await displayHistoryObj(historyObj.slice(-1)[0])
-    if(historyObj.length > 1){
+    if(historyObj.length > 0){
         window.history.pushState(null, null, await refreshURLParams())
     }
     else{
