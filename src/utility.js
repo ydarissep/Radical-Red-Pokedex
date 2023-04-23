@@ -190,8 +190,8 @@ async function displayParams(urlParams){
     if(urlParams.get("input")){
         document.getElementsByClassName("activeInput")[0].value = urlParams.get("input")
         document.getElementsByClassName("activeInput")[0].dispatchEvent(new Event("input"))
-
     }
+    
     await refreshURLParams()
 }
 

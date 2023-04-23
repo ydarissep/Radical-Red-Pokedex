@@ -169,10 +169,10 @@ function regexNewAbilities(textNewAbilities, abilities){
         }
         const matchReplaceAbility = line.match(/NAME_\w+/i)
         if(matchReplaceAbility){
-            replaceAbility = matchReplaceAbility[0].replace("NAME_", "ABILITY_")
+            replaceAbility = matchReplaceAbility[0].replaceAll("_", "").replace("NAME", "ABILITY_")
         }
 
-        if(speciesName !== "" && ability !== "" && replaceAbility !== ""){
+        if(speciesName !== "" && ability !== "" && replaceAbility !== "" && !(replaceAbility in abilities)){
             if(abilities[replaceAbility] == undefined){
                 abilities[replaceAbility] = {}
                 abilities[replaceAbility]["description"] = abilities[ability]["description"]

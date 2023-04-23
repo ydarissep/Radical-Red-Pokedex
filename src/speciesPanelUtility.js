@@ -622,7 +622,7 @@ function buildSpeciesPanelEggMovesTable(Tbody, name, input){
 
 
 speciesPanelCloseButton.addEventListener("click", () => {
-        speciesPanel("hide")
+    speciesPanel("hide")
 })
 
 async function speciesPanel(param){
