@@ -276,9 +276,6 @@ only screen and (max-width: 525px) {
 	.speciesPanelLearnsetsEffect {
 		display: none;
 	}
-	#speciesEvoTable {
-		display: table-caption !important;
-	}
 	.miniSprite3 {
 		width: 32px;
 		height: 32px;
@@ -290,6 +287,9 @@ only screen and (max-width: 525px) {
 only screen and (max-width: 400px) {
 	.speciesPanelLearnsetsPP {
 		display: none;
+	}
+	#speciesEvoTable {
+		display: table-caption !important;
 	}
 }
 
