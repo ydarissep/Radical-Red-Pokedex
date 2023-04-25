@@ -135,13 +135,16 @@ async function createSpeciesPanel(name){
         rootContainer.append(createClickableImgAndName(species[name]["evolutionLine"][0], false, false, false))
         speciesEvoTable.append(rootContainer)
 
-        while(speciesArray.length > 0){
+        mainLoop: while(speciesArray.length > 0){
 
             let speciesEvoTableContainer = document.createElement("td")
 
             for(let i = 0; i < speciesArray.length; i++){
                 const targetSpecies = speciesArray[i]
                 for(let j = 0; j < species[targetSpecies]["evolution"].length; j++){
+                    if(species[targetSpecies]["evolutionLine"].indexOf(targetSpecies) >= species[targetSpecies]["evolutionLine"].indexOf(species[targetSpecies]["evolution"][j][2])){ // prevent infinite loop (dialga)
+                        break mainLoop
+                    }
                     speciesEvoTableContainer.append(createClickableImgAndName(species[targetSpecies]["evolution"][j][2], species[targetSpecies]["evolution"][j], false, false))
                     speciesEvoTable.append(speciesEvoTableContainer)
 
