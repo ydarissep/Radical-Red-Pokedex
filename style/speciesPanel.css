@@ -90,7 +90,14 @@
 	padding: 5px 0px 5px 0px;
 }
 
+#speciesEvoTable {
+	background: none !important;
+}
 
+#speciesEvoTableContainer {
+	box-shadow: none !important;
+	margin: 0% !important;
+}
 
 
 
@@ -169,7 +176,7 @@
 
 
 .miniSprite {
-	padding: 0px 5px 5px 15px;
+	padding: 0px 15px 5px 15px;
 	width: 32px;
   height: 32px;
   aspect-ratio: auto 32 / 32;
@@ -182,6 +189,12 @@
   aspect-ratio: auto 32 / 32;
 }
 
+.miniSprite3 {
+	padding: 0px 15px 5px 15px;
+	width: 48px;
+  height: 48px;
+  aspect-ratio: auto 48 / 48;
+}
 
 #speciesTypeChartContainer {
 	padding-top: 50px;
@@ -247,7 +260,9 @@
 
 @media 
 only screen and (max-width: 700px) {
-
+	.miniSprite, .miniSprite3 {
+		padding: 0px 5px 5px 5px !important;
+	}
 	#speciesPanelSubcontainer4 {
 		flex-direction: column;
 	}
@@ -261,24 +276,32 @@ only screen and (max-width: 525px) {
 	.speciesPanelLearnsetsEffect {
 		display: none;
 	}
+	#speciesEvoTable {
+		display: table-caption !important;
+	}
+	.miniSprite3 {
+		width: 32px;
+		height: 32px;
+		aspect-ratio: auto 32 / 32;
+	}
 }
 
 @media 
-only screen and (max-width: 350px) {
+only screen and (max-width: 400px) {
 	.speciesPanelLearnsetsPP {
 		display: none;
 	}
 }
 
 @media 
-only screen and (max-width: 325px) {
+only screen and (max-width: 350px) {
 	.speciesPanelLearnsetsAccuracy {
 		display: none;
 	}
 }
 
 @media 
-only screen and (max-width: 275px) {
+only screen and (max-width: 300px) {
 	.speciesPanelLearnsetsPower {
 		display: none;
 	}
