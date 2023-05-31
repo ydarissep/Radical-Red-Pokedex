@@ -172,6 +172,11 @@ async function tableButtonClick(input){
     const activeFilter = await document.querySelectorAll(".activeFilter")
 
     activeTable.forEach(table => {
+        const tbody = table.querySelector("tbody")
+        while(tbody.firstChild){
+            tbody.removeChild(tbody.firstChild)
+        }
+        
         table.classList.remove("activeTable")
         table.classList.add("hide")
     })

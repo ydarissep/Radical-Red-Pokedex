@@ -162,8 +162,22 @@ async function createSpeciesPanel(name){
         speciesEvolutionsText.classList.add("hide")
     }
 
-    
+    speciesEvoTable.style.display = "ruby"
+    speciesEvoTable.className = ""
 
+    if(speciesEvoTable.offsetWidth > 525){
+        speciesEvoTable.classList.add("resizeEvo1")
+    }
+    if(speciesEvoTable.offsetWidth > 400){
+        speciesEvoTable.classList.add("resizeEvo2")
+    }
+    if(speciesEvoTable.offsetWidth > 350){
+        speciesEvoTable.classList.add("resizeEvo3")
+    }
+
+
+
+    
 
     while (speciesFormes.firstChild)
         speciesFormes.removeChild(speciesFormes.firstChild)
