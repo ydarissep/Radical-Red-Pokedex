@@ -1,19 +1,21 @@
-async function regexSpecies(textSpecies, species){
+function regexSpecies(textSpecies, species){
     const lines = textSpecies.split("\n")
     let ID = 0
 
-    await lines.forEach(line => {
+    lines.forEach(line => {
 
         const matchSpecies = line.match(/#define *(SPECIES_\w+)/i)
         if(matchSpecies){
             const name = matchSpecies[1]
 
-            const matchID = line.match(/0[xX]?[0-9a-fA-F]+/i)
+            matchID = line.trim().match(/0[xX][0-9a-fA-F]+|\d+$/i)
             if(matchID){
                 ID = parseInt(matchID[0])
 
                 species[name] = {}
                 species[name]["name"] = name
+
+
                 species[name]["ID"] = ID
             }
         }
@@ -29,72 +31,70 @@ async function regexSpecies(textSpecies, species){
 
 
 
-async function regexBaseStats(textBaseStats, species){
+function regexBaseStats(textBaseStats, species){
     const lines = textBaseStats.split("\n")
 
     const regex = /baseHP|baseAttack|baseDefense|baseSpeed|baseSpAttack|baseSpDefense|type1|type2|item1|item2|eggGroup1|eggGroup2|ability1|ability2|hiddenAbility/
-    let stop = true, value, name
+    let change = false, value, name
 
-    await lines.forEach(line => {
+    lines.forEach(line => {
 
-        if(/#else/i.test(line)){
-            stop = true
-        }
-        else if(/#endif/i.test(line)){
-            stop = false
-        }
+        if(/#else/i.test(line))
+                change = true
+        if(/#endif/i.test(line))
+                change = false
 
 
         const matchSpecies = line.match(/SPECIES_\w+/i)
         if(matchSpecies){
             name = matchSpecies[0]
-            stop = false
+            change = false
         }
 
 
-        if(name){
-            const matchRegex = line.match(regex)
-            if(matchRegex){
-                const match = matchRegex[0]
+        const matchRegex = line.match(regex)
+        if(matchRegex){
+            const match = matchRegex[0]
 
 
 
-                if(match === "baseHP" || match === "baseAttack" || match === "baseDefense" || match === "baseSpeed" || match === "baseSpAttack" || match === "baseSpDefense"){
-                    const matchInt = line.match(/\d+/)
-                    if(matchInt)
-                        value = parseInt(matchInt[0])
+            if(match === "baseHP" || match === "baseAttack" || match === "baseDefense" || match === "baseSpeed" || match === "baseSpAttack" || match === "baseSpDefense"){
+                const matchInt = line.match(/\d+/)
+                if(matchInt)
+                    value = parseInt(matchInt[0])
+            }
+            else if(match === "type1" || match === "type2" || match === "item1" || match === "item2" || match === "eggGroup1" || match === "eggGroup2" || match === "ability1" || match === "ability2" || match === "hiddenAbility"){
+                value = line.match(/\w+_\w+/i)
+                if(value)
+                    value = value[0]
+            }
+
+
+
+            if(change === true)
+                species[name]["changes"].push([match, value])
+            else if(change === false){
+                if(match === "ability1" || match === "ability2" || match === "hiddenAbility"){
+                    species[name]["abilities"].push(value)
                 }
-                else if(match === "type1" || match === "type2" || match === "item1" || match === "item2" || match === "eggGroup1" || match === "eggGroup2" || match === "ability1" || match === "ability2" || match === "hiddenAbility"){
-                    value = line.match(/\w+_\w+/i)
-                    if(value)
-                        value = value[0]
-                }
-
-
-
-                if(!stop){
-                    if(match === "ability1" || match === "ability2" || match === "hiddenAbility"){
-                        species[name]["abilities"].push(value)
-                    }
-                    else{
-                        species[name][match] = value
-                    }
+                else{
+                    species[name][match] = value
                 }
             }
         }
     })
-    return await getBST(species)
+    return getBST(species)
 }
 
 
 
-async function regexChanges(textChanges, species){
+function regexChanges(textChanges, species){
     const lines = textChanges.split("\n")
 
-    const regex = /baseHP|baseAttack|baseDefense|baseSpeed|baseSpAttack|baseSpDefense|type1|type2|ability1|ability2|hiddenAbility/
+    const regex = /baseHP|baseAttack|baseDefense|baseSpeed|baseSpAttack|baseSpDefense|type1|type2|ability1|ability2|hiddenAbility/i
     let value, name, abilities = []
 
-    await lines.forEach(line => {
+    lines.forEach(line => {
 
         const matchSpecies = line.match(/SPECIES_\w+/i)
         if(matchSpecies){
@@ -108,7 +108,7 @@ async function regexChanges(textChanges, species){
 
         if(name in species){
             const matchRegex = line.match(regex)
-            if(matchRegex && !/NOT DEFINED/i.test(line)){
+            if(matchRegex){
                 const match = matchRegex[0]
 
 
@@ -144,11 +144,11 @@ async function regexChanges(textChanges, species){
 
 
 
-async function getLevelUpLearnsetsConversionTable(textLevelUpLearnsetsPointers){
+function getLevelUpLearnsetsConversionTable(textLevelUpLearnsetsPointers){
     const lines = textLevelUpLearnsetsPointers.split("\n")
     let conversionTable = {}
 
-    await lines.forEach(line => {
+    lines.forEach(line => {
 
         const matchSpecies = line.match(/SPECIES_\w+/i)
         if(matchSpecies){
@@ -160,26 +160,27 @@ async function getLevelUpLearnsetsConversionTable(textLevelUpLearnsetsPointers){
                 const index = matchConversion[0]
 
 
-                if(conversionTable[index] === undefined){
+                if(conversionTable[index] === undefined) // DO NOT TOUCH THAT FUTURE ME, THIS IS THE WAY, DON'T QUESTION ME
                     conversionTable[index] = [value]
-                }
-                else{
-                    conversionTable[index].push(value)   
-                }
+                else // DO NOT TOUCH THAT FUTURE ME, THIS IS THE WAY, DON'T QUESTION ME
+                    conversionTable[index].push(value)
             }
         }
     })
     return conversionTable
 }
 
-async function regexLevelUpLearnsets(textLevelUpLearnsets, conversionTable, species){
+function regexLevelUpLearnsets(textLevelUpLearnsets, conversionTable, species){
     const lines = textLevelUpLearnsets.split("\n")
     let speciesArray = []
 
-    await lines.forEach(line => {
+    lines.forEach(line => {
         const matchConversion = line.match(/s\w+LevelUpLearnset/i)
         if(matchConversion){
-            speciesArray = conversionTable[matchConversion[0]]
+            const index = matchConversion[0]
+            if(index in conversionTable){
+                speciesArray = conversionTable[index]
+            }
         }
 
 
@@ -191,15 +192,14 @@ async function regexLevelUpLearnsets(textLevelUpLearnsets, conversionTable, spec
                 species[speciesArray[i]]["levelUpLearnsets"].push([move, level])
         }
     })
+    for (const name of Object.keys(conversionTable)){
 
-    for(const name of Object.keys(conversionTable)){
         if(conversionTable[name].length >= 2){
             for (let j = 0; j < conversionTable[name].length; j++){
                 species[conversionTable[name][j]]["forms"] = conversionTable[name]
             }
         }
     }
-
     return species
 }
 
@@ -212,11 +212,11 @@ async function regexLevelUpLearnsets(textLevelUpLearnsets, conversionTable, spec
 
 
 
-async function regexTMHMLearnsets(textTMHMLearnsets, species, start, end){
+function regexTMHMLearnsets(textTMHMLearnsets, species, start, end){
     const lines = textTMHMLearnsets.split("\n")
-    let startFound = false, TMHM = 0, count = 0
+    let name = null, startFound = false, TMHM = 0, count = 0
 
-    await lines.forEach(line => {
+    lines.forEach(line => {
         if(line.includes(start))
             startFound = true
         else if(line.includes(end))
@@ -229,19 +229,14 @@ async function regexTMHMLearnsets(textTMHMLearnsets, species, start, end){
                 let move = moves[matchMove[0]]["ingameName"]
                 count++
 
-
                 if(move === "Solar Beam")
                     move = "Solarbeam"
                 else if(move === "Will-O-Wisp")
                     move = "Will-o-Wisp"
                 else if(move === "U-turn")
                     move = "U-Turn"
-                else if(move === "Drainingkiss")
-                    move = "Draining Kiss"
-                else if(move === "Acrobatics")
-                    move = "Smart Strike"
 
-                const rawTMHM = fetch(`https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/species/tm_compatibility/${count} - ${move}.txt`)
+                const rawTMHM = fetch(`https://raw.githubusercontent.com/${repo2}/master/src/tm_compatibility/${count} - ${move}.txt`)
                 .then(promises => {
                     const textTMHM = promises.text()
                     .then(promises => {
@@ -253,8 +248,8 @@ async function regexTMHMLearnsets(textTMHMLearnsets, species, start, end){
                                 TMHM = matchTMHM[0]
 
 
-                            const matchSpecies = `SPECIES_${line.trim().toUpperCase()}`
-                            if(species[matchSpecies])
+                            const matchSpecies = `SPECIES_${line.trim()}`
+                            if(species[matchSpecies] !== undefined)
                                 species[matchSpecies]["TMHMLearnsets"].push([matchMove[0], TMHM])
                         })
                     })
@@ -265,6 +260,7 @@ async function regexTMHMLearnsets(textTMHMLearnsets, species, start, end){
     })
 
     return species
+    //return altFormsLearnsets(species, "forms", "TMHMLearnsets")
 }
 
 
@@ -273,15 +269,11 @@ async function regexTMHMLearnsets(textTMHMLearnsets, species, start, end){
 
 
 
-async function regexTutorLearnsets(textTutorLearnsets, species, start, end){
+function regexTutorLearnsets(textTutorLearnsets, species, start, end){
     const lines = textTutorLearnsets.split("\n")
-    let startFound = false, ID = 0, count = 0
+    let name = null, startFound = false, tutor = 0, count = 0
 
-    const filterUnusedTutor = ["Bug Bite", "Stomping Tantrum", "Fire Punch", "Ice Punch", "Thunder Punch", "Fire Fang", "Ice Fang", "Thunder Fang", "Psychic Fangs", "Play Rough", "Iron Head", "Liquidation", "Hydro Pump", "Drill Run", "Blaze Kick", "Pain Split", 
-    "Zen Headbutt", "Weather Ball", "Air Slash", "Hex", "Mystical Fire", "Seed Bomb", "Leaf Blade", "Knock Off", "Power Gem", "Rock Blast", "Pin Missile", "Icicle Spear", "Tail Slap", "Body Slam", "Foul Play", "Iron Defense", "Nasty Plot", "Earth Power", 
-    "Aura Sphere", "Heat Wave", "Hurricane", "Power Whip", "High Horsepower", "Bug Buzz", "Phantom Force", "Flare Blitz", "Stored Power", "Gunk Shot", "Tailwind", "Megahorn", "Draco Meteor", "Close Combat", "Dark Hole", "Frenzy Plant", "Hydro Cannon", "Blast Burn"]
-
-    await lines.forEach(line => {
+    lines.forEach(line => {
         if(line.includes(start))
             startFound = true
         else if(line.includes(end))
@@ -294,8 +286,13 @@ async function regexTutorLearnsets(textTutorLearnsets, species, start, end){
                 let move = moves[matchMove[0]]["ingameName"]
                 count++
 
-                if(filterUnusedTutor.includes(move)){
-                    const rawTutor = fetch(`https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/species/tutor_compatibility/${count} - ${move}.txt`)
+                if(move === "Buring Jealousy")
+                    move = "Burning Jealousy"
+                else if(move === "Soft-Boiled")
+                    move = "Softboiled"
+
+                if(move !== "Block"){ // Could be removed later
+                    const rawTutor = fetch(`https://raw.githubusercontent.com/${repo2}/master/src/tutor_compatibility/${count} - ${move}.txt`)
                     .then(promises => {
                         const textTutor = promises.text()
                         .then(promises => {
@@ -303,15 +300,15 @@ async function regexTutorLearnsets(textTutorLearnsets, species, start, end){
 
                             lines.forEach(line => {
                                 if(line.includes(":")){
-                                    const matchID= line.match(/\d+/)
-                                    if(matchID)
-                                        ID = matchID[0]
+                                    const matchTutor = line.match(/\d+/)
+                                    if(matchTutor)
+                                        tutor = matchTutor[0]
                                 }
 
 
-                                const matchSpecies = `SPECIES_${line.trim().toUpperCase()}`
-                                if(species[matchSpecies])
-                                    species[matchSpecies]["tutorLearnsets"].push([matchMove[0], ID])
+                                const matchSpecies = `SPECIES_${line.trim()}`
+                                if(species[matchSpecies] !== undefined)
+                                    species[matchSpecies]["tutorLearnsets"].push([matchMove[0], tutor])
                             })
                         })
                     })
@@ -333,38 +330,107 @@ async function regexTutorLearnsets(textTutorLearnsets, species, start, end){
 
 
 
+function regexTeachableLearnsets(textTeachableLearnsets, species){
+    const lines = textTeachableLearnsets.split("\n")
+    let conversionTable = {}, teachable = null, TM = {}, tutor = {}
 
-async function regexEvolution(textEvolution, species){
+    lines.forEach(line => {
+        const matchSpecies = line.match(/SPECIES_\w+/i)
+        if(matchSpecies){
+            const name = matchSpecies[0]
+            const matchTeachable = line.match(/s\w+TeachableLearnset/i)
+            if(matchTeachable){
+                if(!conversionTable[matchTeachable[0]]){
+                    conversionTable[matchTeachable[0]] = []
+                }
+                conversionTable[matchTeachable[0]].push(name)
+            }
+        }
+    })
+
+    Object.keys(species).forEach(speciesName => {
+        for(let i = 0; i < species[speciesName]["TMHMLearnsets"].length; i++){
+            if(!(species[speciesName]["TMHMLearnsets"][i][0] in TM)){
+                TM[species[speciesName]["TMHMLearnsets"][i][0]] = species[speciesName]["TMHMLearnsets"][i]
+            }
+        }
+        for(let i = 0; i < species[speciesName]["tutorLearnsets"].length; i++){
+            if(!(species[speciesName]["tutorLearnsets"][i][0] in tutor)){
+                tutor[species[speciesName]["tutorLearnsets"][i][0]] = species[speciesName]["tutorLearnsets"][i]
+            }
+        }
+    })
+
+    lines.forEach(line => {
+        const matchTeachable = line.match(/s\w+TeachableLearnset/i)
+        if(matchTeachable){
+            teachable = matchTeachable[0]
+        }
+        const matchMove = line.match(/MOVE_\w+/i)
+        if(matchMove && conversionTable[teachable]){
+            const move = matchMove[0]
+            for(let i = 0; i < conversionTable[teachable].length; i++){
+                if(move in moves){
+                    if(move in TM){
+                        species[conversionTable[teachable][i]]["TMHMLearnsets"].push(TM[move])
+                    }
+                    else if(move in tutor){
+                        species[conversionTable[teachable][i]]["tutorLearnsets"].push(tutor[move])
+                    }
+                    /*
+                    else{
+                        species[conversionTable[teachable][i]]["tutorLearnsets"].push([move, 0])
+                    }
+                    */
+                }
+            }
+        }
+    })
+
+    return species
+    //return altFormsLearnsets(species, "forms", "tutorLearnsets")
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function regexEvolution(textEvolution, species){
     const lines = textEvolution.split("\n")
     let name
 
-    await lines.forEach(line =>{
+    lines.forEach(line =>{
 
         const matchSpecies = line.match(/\[ *(SPECIES_\w+) *\]/i)
-        if(matchSpecies){
+        if(matchSpecies)
             name = matchSpecies[1]
-        }
+
+
 
         const matchEvoInfo = line.match(/(\w+), *(\w+), *(\w+)/)
-        if(matchEvoInfo){
-            let method = matchEvoInfo[1]
+        if(matchEvoInfo && !/\/\//.test(line)){
+            const method = matchEvoInfo[1]
             const condition = matchEvoInfo[2]
             const targetSpecies = matchEvoInfo[3]
-            const matchHisuian = line.match(/EVO_HISUIAN/)
-            if(matchHisuian){
-                method += "_HISUIAN_POTENTIAL"
-            }
             species[name]["evolution"].push([method, condition, targetSpecies])
         }
     })
 
-    return await getEvolutionLine(species)
+
+    return getEvolutionLine(species)
 }
 
-async function getEvolutionLine(species){
+function getEvolutionLine(species){
     for(let i = 0; i < 2; i++) // FUTURE ME DO NOT DARE QUESTION ME
     {
-        for(const name of Object.keys(species)){
+        for (const name of Object.keys(species)){
 
             for (let j = 0; j < species[name]["evolution"].length; j++){
 
@@ -375,16 +441,18 @@ async function getEvolutionLine(species){
 
 
             for (let j = 0; j < species[name]["evolution"].length; j++){
-
-                const targetSpecies = species[name]["evolution"][j][2]
+                let targetSpecies = species[name]["evolution"][j][2]
+                if(targetSpecies === "SPECIES_BASCULEGION"){
+                    targetSpecies = "SPECIES_BASCULEGION_M"
+                }
                 species[targetSpecies]["evolutionLine"] = species[name]["evolutionLine"]
             }
         }
     }
 
-    for(const name of Object.keys(species)){
+    for (const name of Object.keys(species))
         species[name]["evolutionLine"] = Array.from(new Set(species[name]["evolutionLine"])) // remove duplicates
-    }
+
 
     return species
 }
@@ -398,23 +466,23 @@ async function getEvolutionLine(species){
 
 
 
-async function regexForms(textForms, species){
+function regexForms(textForms, species){
     const lines = textForms.split("\n")
     let speciesArray = []
 
-    await lines.forEach(line => {
+    lines.forEach(line => {
         const matchSpecies = line.match(/SPECIES_\w+/i)
         
         if(/FORM_SPECIES_END/i.test(line)){
-            for(let i = 0; i < speciesArray.length; i++)
+            for (let i = 0; i < speciesArray.length; i++)
                 species[speciesArray[i]]["forms"] = speciesArray
             speciesArray = []
         }
         else if(matchSpecies){
-            speciesArray.push(matchSpecies[0])
+            const name = matchSpecies[0]
+            speciesArray.push(name)
         }
     })
-
     return species
 }
 
@@ -425,15 +493,14 @@ async function regexForms(textForms, species){
 
 
 
-async function regexEggMovesLearnsets(textEggMoves, species){
+function regexEggMovesLearnsets(textEggMoves, species){
     const lines = textEggMoves.split("\n")
     const speciesString = JSON.stringify(Object.keys(species))
     let name = null
 
-    await lines.forEach(line => {
-        if(/egg_moves/i.test(line)){
+    lines.forEach(line => {
+        if(/egg_moves/i.test(line))
             name = null
-        }
         const matchMove = line.match(/MOVE_\w+/i)
         if(matchMove){
             const move = matchMove[0]
@@ -441,7 +508,7 @@ async function regexEggMovesLearnsets(textEggMoves, species){
                 species[name]["eggMovesLearnsets"].push(move)
             }
         }
-        else{
+        else if(name === null){
             const matchLine = line.match(/(\w+),/i)
             if(matchLine){
                 const testSpecies = `SPECIES_${speciesString.match(matchLine[1])}`
@@ -451,16 +518,17 @@ async function regexEggMovesLearnsets(textEggMoves, species){
         }
     })
 
-    return await altFormsLearnsets(species, "evolutionLine", "eggMovesLearnsets")
+
+    return altFormsLearnsets(species, "evolutionLine", "eggMovesLearnsets")
 }
 
 
 
-async function regexReplaceAbilities(textReplaceAbilities, species){
+function regexReplaceAbilities(textReplaceAbilities, species){
     const lines = textReplaceAbilities.split("\n")
     let speciesName = "", ability = "", replaceAbility = ""
 
-    await lines.forEach(line => {
+    lines.forEach(line => {
         if(line.includes("{")){
             speciesName = ""
             ability = ""
@@ -476,10 +544,18 @@ async function regexReplaceAbilities(textReplaceAbilities, species){
         }
         const matchReplaceAbility = line.match(/NAME_\w+/i)
         if(matchReplaceAbility){
-            replaceAbility = matchReplaceAbility[0].replaceAll("_", "").replace("NAME", "ABILITY_")
+            replaceAbility = matchReplaceAbility[0].replace("NAME_", "ABILITY_")
         }
 
         if(speciesName !== "" && ability !== "" && replaceAbility !== ""){
+            /*
+            if(abilities[replaceAbility] == undefined){
+                abilities[replaceAbility] = {}
+                abilities[replaceAbility]["description"] = abilities[ability]["description"]
+                abilities[replaceAbility]["ingameName"] = sanitizeString(replaceAbility)
+                abilities[replaceAbility]["name"] = replaceAbility
+            }
+            */
             for (let i = 0; i < species[speciesName]["abilities"].length; i++){
                 if(species[speciesName]["abilities"][i] === ability){
                     species[speciesName]["abilities"][i] = replaceAbility
@@ -487,31 +563,35 @@ async function regexReplaceAbilities(textReplaceAbilities, species){
             }
         }
     })
-
     return species
 }
 
 
 
-async function regexSprite(textSprite, species){
+function regexSprite(textSprite, species){
     const lines = textSprite.split("\n")
 
-    await lines.forEach(line => {
+    lines.forEach(line => {
         const matchSpecies = line.match(/SPECIES_\w+/i)
         if(matchSpecies){
             let name = matchSpecies[0]
             if(name === "SPECIES_ENAMORUS_T")
                 name = "SPECIES_ENAMORUS_THERIAN"
+            else if(name === "SPECIES_BASCULEGION"){
+                name = "SPECIES_BASCULEGION_M"
+            }
 
             const matchURL = line.match(/gFrontSprite\w+Tiles/i)
             if(matchURL){
-                let url = `https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/species/frontspr/${matchURL[0].replace("Tiles", ".png")}`
+                let url = `https://raw.githubusercontent.com/${repo2}/master/graphics/frontspr/${matchURL[0].replace("Tiles", ".png")}`
+
+                if(name === "SPECIES_CASTFORM")
+                    url = `https://raw.githubusercontent.com/${repo2}/master/graphics/castform/gFrontSprite385Castform.png`
 
                 species[name]["sprite"] = url
             }
         }
     })
-
     return species
 }
 
@@ -527,15 +607,19 @@ async function regexSprite(textSprite, species){
 
 
 
-async function altFormsLearnsets(species, input, output){
-    for(const name of Object.keys(species)){
+function altFormsLearnsets(species, input, output){
+    for (const name of Object.keys(species)){
 
         if(species[name][input].length >= 2){
 
-            for (let j = 0; j < species[name][input].length; j++){
-                const targetSpecies = species[name][input][j]
 
-                if(species[targetSpecies][output].length <= 0){
+            for (let j = 0; j < species[name][input].length; j++){
+                let targetSpecies = species[name][input][j]
+                
+                if(targetSpecies === "SPECIES_BASCULEGION"){
+                    targetSpecies = "SPECIES_BASCULEGION_M"
+                }
+                if(species[targetSpecies][output].length < species[name][output].length){
                     species[targetSpecies][output] = species[name][output]
                 }
             }
@@ -545,8 +629,8 @@ async function altFormsLearnsets(species, input, output){
 }
 
 
-async function getBST(species){
-    for(const name of Object.keys(species)){
+function getBST(species){
+    for (const name of Object.keys(species)){
         const baseHP = species[name]["baseHP"]
         const baseAttack = species[name]["baseAttack"]
         const baseDefense = species[name]["baseDefense"]
