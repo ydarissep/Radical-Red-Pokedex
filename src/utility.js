@@ -40,7 +40,7 @@ async function fetchData(){
 
     await setDataList()
     await setFilters()
-    await displaySetup()
+    //await displaySetup()
     await displayParams(urlParams)
 
     await window.scrollTo(0, 0)
