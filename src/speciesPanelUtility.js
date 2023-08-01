@@ -834,7 +834,7 @@ function buildSpeciesPanelDoubleLearnsetsTable(table, name, input, label = "", a
         const description = document.createElement("td")
         description.className = "speciesPanelLearnsetsEffect"
         for (let j = 0; j < moves[move[0]]["description"].length; j++){
-            description.innerText += moves[move[0]]["description"][j].replace("\\n", " ")
+            description.innerText += moves[move[0]]["description"][j]
         }
 
         row.addEventListener('click', function () {
@@ -912,7 +912,7 @@ function buildSpeciesPanelSingleLearnsetsTable(table, name, input, label = "", a
         const description = document.createElement("td")
         description.className = "speciesPanelLearnsetsEffect"
         for (let j = 0; j < moves[move]["description"].length; j++){
-            description.innerText += moves[move]["description"][j].replace("\\n", " ")
+            description.innerText += moves[move]["description"][j]
         }
 
         row.addEventListener('click', function () {

@@ -24,7 +24,7 @@ function regexMovesDescription(textMovesDescription, moves){
                 move = []
             else if(move.length > 0){
                 for(let i = 0; i < move.length; i++)
-                    moves[move[i]]["description"] = [line.replace(/\\n/g, " ")]
+                    moves[move[i]]["description"] = [line.replace(/\\+n/g, " ")]
             }
         }
     })
@@ -308,7 +308,7 @@ function regexVanillaMovesDescription(textVanillaMovesDescription, moves){
             else{
                 const matchDescription = lines[i].match(/_ *\( *" *(.*)" *\) *;/i)
                 if(matchDescription){
-                    const description = [matchDescription[1]]
+                    const description = [matchDescription[1].replace(/\\+n/g, " ")]
                     if(conversionTable[conversionDescription] !== undefined){
                         if(moves[conversionTable[conversionDescription][0]] !== undefined){
                             for(let j = 0; j < conversionTable[conversionDescription].length; j++)
