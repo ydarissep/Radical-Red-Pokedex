@@ -13,10 +13,12 @@ const openCredits = document.getElementById("openCredits")
 const closeCredits = document.getElementById("closeCredits")
 const modal = document.getElementById("modal")
 const update = document.getElementById("update")
+const overlay = document.getElementById('overlay')
+const popup = document.getElementById('popup')
 
 const patchnoteModeCheckbox = document.getElementById("patchnoteModeCheckbox")
 const onlyShowChangedPokemonCheckbox = document.getElementById("onlyShowChangedPokemonCheckbox")
-
+const onlyShowStrategyPokemonCheckbox = document.getElementById("onlyShowStrategyPokemonCheckbox")
 
 
 
@@ -305,7 +307,19 @@ onlyShowChangedPokemonCheckbox.addEventListener("change", e => {
     }
     lazyLoading(true)
 })
-
+onlyShowStrategyPokemonCheckbox.addEventListener("change", e => {
+    for(let i = 0, j = speciesTracker.length; i < j; i++){
+        if(e.target.checked){
+            if(!strategies[speciesTracker[i]["key"]]){
+                speciesTracker[i]["filter"].push("strategy")
+            }
+        }
+        else{
+            tracker[i]["filter"] = tracker[i]["filter"].filter(value => value !== "strategy")
+        }
+    }
+    lazyLoading(true)
+})
 
 
 
@@ -452,6 +466,13 @@ function utilityButtonOnClick(){
     }
 }
 
+
+
+overlay.addEventListener('click', function (event) {
+    if (event.target === overlay) {
+        overlay.style.display = 'none'
+    }
+})
 
 
 

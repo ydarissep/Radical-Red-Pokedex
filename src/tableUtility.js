@@ -23,7 +23,7 @@ async function displaySetup(){
 
 
 function sortTableByClassName(table, obj, key, classHeader, asc = true) {
-    const dirModifier = asc ? 1 : -1;
+    const dirModifier = asc ? 1 : -1
 
     tracker.sort((a, b) => {
         let stringA = ""
@@ -45,9 +45,9 @@ function sortTableByClassName(table, obj, key, classHeader, asc = true) {
     lazyLoading(true)
 
     // Remember how the column is currently sorted
-    table.querySelectorAll("th").forEach(th => th.classList.remove("th-sort-asc", "th-sort-desc"));
-    table.querySelector(`th.${classHeader}`).classList.toggle("th-sort-asc", asc);
-    table.querySelector(`th.${classHeader}`).classList.toggle("th-sort-desc", !asc);
+    table.querySelectorAll("th").forEach(th => th.classList.remove("th-sort-asc", "th-sort-desc"))
+    table.querySelector(`th.${classHeader}`).classList.toggle("th-sort-asc", asc)
+    table.querySelector(`th.${classHeader}`).classList.toggle("th-sort-desc", !asc)
 }
 
 

@@ -255,7 +255,7 @@ async function regexTMHMLearnsets(textTMHMLearnsets, species, start, end){
 
                             const matchSpecies = `SPECIES_${line.trim().toUpperCase()}`
                             if(species[matchSpecies])
-                                species[matchSpecies]["TMHMLearnsets"].push([matchMove[0], TMHM])
+                                species[matchSpecies]["TMHMLearnsets"].push(matchMove[0])
                         })
                     })
                 })
@@ -311,7 +311,7 @@ async function regexTutorLearnsets(textTutorLearnsets, species, start, end){
 
                                 const matchSpecies = `SPECIES_${line.trim().toUpperCase()}`
                                 if(species[matchSpecies])
-                                    species[matchSpecies]["tutorLearnsets"].push([matchMove[0], ID])
+                                    species[matchSpecies]["tutorLearnsets"].push(matchMove[0])
                             })
                         })
                     })
