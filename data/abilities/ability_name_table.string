@@ -50,8 +50,8 @@ Compound Eyes
 #org @NAME_INSOMNIA
 Insomnia
 
-#org @NAME_COLOR_CHANGE
-Color Change
+#org @NAME_WINDRIDER
+Wind Rider
 
 #org @NAME_IMMUNITY
 Immunity
@@ -218,8 +218,8 @@ Drought
 #org @NAME_ARENA_TRAP
 Arena Trap
 
-#org @NAME_VITAL_SPIRIT
-Vital Spirit
+#org @NAME_PURIFYING_SALT
+Purifying Salt
 
 #org @NAME_AS_ONE_SHADOW
 As One
@@ -326,14 +326,14 @@ Bull Rush
 #org @NAME_HYDRATION
 Hydration
 
-#org @NAME_HEALER
-Healer
+#org @NAME_SUPREMEOVERLORD
+SupremeOverlord
 
-#org @NAME_SNOW_CLOAK
-Snow Cloak
+#org @NAME_ANGERSHELL
+Anger Shell
 
-#org @NAME_TANGLED_FEET
-Tangled Feet
+#org @NAME_GOODASGOLD
+Good as Gold
 
 #org @NAME_SNOW_WARNING
 Snow Warning
@@ -404,8 +404,8 @@ Dark Aura
 #org @NAME_FAIRY_AURA
 Fairy Aura
 
-#org @NAME_AURA_BREAK
-Aura Break
+#org @NAME_SEEDSOWER
+Seed Sower
 
 #org @NAME_REFRIGERATE
 Refrigerate
@@ -461,11 +461,11 @@ Parental Bond
 #org @NAME_MOLD_BREAKER
 Mold Breaker
 
-#org @NAME_TURBOBLAZE
-Turboblaze
+#org @NAME_HADRON_ENGINE
+Hadron Engine
 
-#org @NAME_TERAVOLT
-Teravolt
+#org @NAME_ORICHALCUMPULSE
+OrichalcumPulse
 
 #org @NAME_ZEN_MODE
 Zen Mode
@@ -500,8 +500,8 @@ Wandering Soul
 #org @NAME_POWER_CONSTRUCT
 Power Construct
 
-#org @NAME_PRISM_ARMOR
-Prism Armor
+#org @NAME_TABLETSOFRUIN
+Tablets of Ruin
 
 #org @NAME_RAGING_BOXER
 ORAORAORAORA!
@@ -509,8 +509,8 @@ ORAORAORAORA!
 #org @NAME_SCHOOLING
 Schooling
 
-#org @NAME_SHADOW_SHIELD
-Shadow Shield
+#org @NAME_BEADSOFRUIN
+Beads of Ruin
 
 #org @NAME_SHIELDS_DOWN
 Shields Down
@@ -524,11 +524,11 @@ Soul-Heart
 #org @NAME_STAMINA
 Stamina
 
-#org @NAME_STEELWORKER
-Steelworker
+#org @NAME_HEROTOZERO
+Zero To Hero
 
-#org @NAME_TANGLING_HAIR
-Tangling Hair
+#org @NAME_THERMAL_EXCHANGE
+ThermalExchange
 
 #org @NAME_TRIAGE
 Triage
@@ -537,7 +537,7 @@ Triage
 Water Bubble
 
 #org @NAME_WATER_COMPACTION
-Water Compact
+WaterCompaction
 
 #org @NAME_PARASITIC_GOO
 Parasitic Waste
@@ -566,8 +566,8 @@ Grass Pelt
 #org @NAME_ANGER_POINT
 Anger Point
 
-#org @NAME_ANTICIPATION
-Anticipation
+#org @NAME_EARTHEATER
+Earth Eater
 
 #org @NAME_FOREWARN
 Forewarn
@@ -587,8 +587,8 @@ Weak Armor
 #org @NAME_HEAVY_METAL
 Heavy Metal
 
-#org @NAME_LIGHT_METAL
-Light Metal
+#org @NAME_QUARKDRIVE
+Quark Drive
 
 #org @NAME_STEADFAST
 Steadfast
@@ -608,14 +608,14 @@ Merciless
 #org @NAME_AROMA_VEIL
 Aroma Veil
 
-#org @NAME_FLOWER_VEIL
-Flower Veil
+#org @NAME_TOXICDEBRIS
+Toxic Debris
 
 #org @NAME_LEAF_GUARD
 Leaf Guard
 
-#org @NAME_KLUTZ
-Klutz
+#org @NAME_ELECTROMORPHOSIS
+Electromrphosis
 
 #org @NAME_FLOWER_GIFT
 Flower Gift
@@ -689,8 +689,8 @@ Illusion
 #org @NAME_CHEEK_POUCH
 Cheek Pouch
 
-#org @NAME_SYMBIOSIS
-Symbiosis
+#org @NAME_PROTOSYNTHESIS
+Protosynthesis
 
 #org @NAME_STAKEOUT
 Stakeout
@@ -728,14 +728,14 @@ Striker
 #org @NAME_COTTON_DOWN
 Cotton Down
 
-#org @NAME_MIRROR_ARMOR
-Mirror Armor
+#org @NAME_SWORDOFRUIN
+Sword Of Ruin
 
-#org @NAME_BLADEMASTER
-Blademaster
+#org @NAME_SHARPNESS
+Sharpness
 
-#org @NAME_SURPRISE
-Surprise!
+#org @NAME_VESSELOFRUIN
+Vessel Of Ruin
 
 #org @NAME_STEAM_ENGINE
 Steam Engine
@@ -755,8 +755,8 @@ Ripen
 #org @NAME_ICE_FACE
 Ice Face
 
-#org @NAME_POWER_SPOT
-Power Spot
+#org @NAME_ROCKYPAYLOAD
+Rocky Payload
 
 #org @NAME_BLAZING_SOUL
 Blazing Soul
@@ -764,8 +764,8 @@ Blazing Soul
 #org @NAME_SCREEN_CLEANER
 Screen Cleaner
 
-#org @NAME_PASTEL_VEIL
-Pastel Veil
+#org @NAME_WELLBAKEDBODY
+Well-Baked Body
 
 #org @NAME_SAGEPOWER 
 Sage Power
@@ -813,7 +813,31 @@ Quill Rush
 Cash Splash
 
 #org @NAME_POWER_OF_ALCHEMY
-Power of Alchemy
+Alchemic Power
 
 #org @NAME_ROUGH_SKIN
 Rough Skin
+
+#org @NAME_TURBOBLAZE
+Turboblaze
+
+#org @NAME_TERAVOLT
+Teravolt
+
+#org @NAME_TANGLING_HAIR
+Tangling Hair
+
+#org @NAME_ARMORTAIL
+Armor Tail
+
+#org @NAME_VITALSPIRIT
+Vital Spirit
+
+#org @NAME_SHADOWSHIELD
+Shadow Shield
+
+#org @NAME_PRISMARMOR
+Prism Armor
+
+#org @NAME_LINGERINGAROMA
+Lingering Aroma

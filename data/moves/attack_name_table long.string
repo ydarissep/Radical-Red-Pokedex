@@ -777,8 +777,8 @@ Swallow
 #org @NAME_LONG_HEAT_WAVE
 Heat Wave
 
-#org @NAME_LONG_HAIL
-Hail
+#org @NAME_LONG_SNOWSCAPE
+Snowscape
 
 #org @NAME_LONG_TORMENT
 Torment
@@ -2295,13 +2295,256 @@ Psyshield Bash
 #org @NAME_LONG_MYSTICALPOWER
 Mystical Power
 
-#org @NAME_LONG_PLACEHOLDER1
+#org @NAME_LONG_WAVECRASH
+Wave Crash
+
+#org @NAME_LONG_FLOWERTRICK
+Flower Trick
+
+#org @NAME_LONG_TORCHSONG
+Torch Song
+
+#org @NAME_LONG_AQUASTEP
+Aqua Step
+
+#org @NAME_LONG_HYPERDRILL
+Hyper Drill
+
+#org @NAME_LONG_ARMORCANNON
+Armor Cannon
+
+#org @NAME_LONG_BITTERBLADE
+Bitter Blade
+
+#org @NAME_LONG_AQUACUTTER
+Aqua Cutter
+
+#org @NAME_LONG_RAGEFIST
+Rage Fist
+
+#org @NAME_LONG_GLAIVERUSH
+Glaive Rush
+
+#org @NAME_LONG_LASTRESPECTS
+Last Respects
+
+#org @NAME_LONG_SHEDTAIL
+Shed Tail
+
+#org @NAME_LONG_JETPUNCH
+Jet Punch
+
+#org @NAME_LONG_SPINOUT
+Spin Out
+
+#org @NAME_LONG_COLLISIONCOURSE
+Collision Course
+
+#org @NAME_LONG_ELECTRODRIFT
+Electro Drift
+
+#org @NAME_LONG_REVIVALBLESSING
+Revival Blessing
+
+#org @NAME_LONG_GIGATONHAMMER
+Gigaton Hammer
+
+#org @NAME_LONG_RAGINGBULL
+Raging Bull
+
+#org @NAME_LONG_TWINBEAM
+Twin Beam
+
+#org @NAME_LONG_KOWTOWCLEAVE
+Kowtow Cleave
+
+#org @NAME_LONG_DOUBLESHOCK
+Double Shock
+
+#org @NAME_LONG_TRAILBLAZE
+Trailblaze
+
+#org @NAME_LONG_POUNCE
+Pounce
+
+#org @NAME_LONG_MAKEITRAIN
+Make It Rain
+
+#org @NAME_LONG_POPULATIONBOMB
+Population Bomb
+
+#org @NAME_LONG_LUNARBLESSING
+Lunar Blessing
+
+#org @NAME_LONG_TAKEHEART
+Take Heart
+
+#org @NAME_LONG_SILKTRAP
+Silk Trap
+
+#org @NAME_LONG_AXEKICK
+Axe Kick
+
+#org @NAME_LONG_LUMINACRASH
+Lumina Crash
+
+#org @NAME_LONG_ICESPINNER
+Ice Spinner
+
+#org @NAME_LONG_SALTCURE
+Salt Cure
+
+#org @NAME_LONG_TRIPLEDIVE
+Triple Dive
+
+#org @NAME_LONG_MORTALSPIN
+Mortal Spin
+
+#org @NAME_LONG_FILLETAWAY
+Fillet Away
+
+#org @NAME_LONG_CHILLYRECEPTION
+Chilly Reception
+
+#org @NAME_LONG_CHILLINGWATER
+Chilling Water
+
+#org @NAME_LONG_COMEUPPANCE
+Comeuppance
+
+#org @NAME_LONG_TIDYUP
+Tidy Up
+
+#org @NAME_LONG_RUINATION
+Ruination
+
+#org @NAME_LONG_PSYTBLADE
+Psyblade
+
+#org @NAME_LONG_HYDROSTEAM
+Hydro Steam
+
+#org @NAME_LONG_BLEAKWINDSTORM
+Bleakwind Storm
+
+#org @NAME_LONG_WILDBOLTSTORM
+Wildbolt Storm
+
+#org @NAME_LONG_SANDSEARSTORM
+Sandsear Storm
+
+#org @NAME_LONG_SPRINGTIDESTORM
+Springtide Storm
+
+#org @NAME_LONG_PLACEHOLDER_36
 Placeholder
 
-#org @NAME_LONG_PLACEHOLDER2
+#org @NAME_LONG_PLACEHOLDER_37
 Placeholder
 
-#org @NAME_LONG_PLACEHOLDER3
+#org @NAME_LONG_PLACEHOLDER_38
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_39
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_40
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_41
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_42
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_43
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_44
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_45
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_46
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_47
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_48
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_49
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_50
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_51
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_52
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_53
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_54
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_55
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_56
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_57
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_58
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_59
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_60
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_61
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_62
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_63
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_64
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_65
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_66
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_67
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_68
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_69
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_70
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_71
+Placeholder
+
+#org @NAME_LONG_PLACEHOLDER_72
 Placeholder
 
 #org @Z_Move_Long_1

@@ -1,5 +1,14 @@
 #include "src/config.h"
 
+#org @DESC_OBLIVIOUS
+Prevents attraction and Intimidate.
+
+#org @DESC_OWNTEMPO
+Prevents confusion and Intimidate.
+
+#org @DESC_INNERFOCUS
+Prevents flinching and Intimidate.
+
 #org @DESC_MAGMAARMOR
 Prevents frostbite.
 
@@ -74,10 +83,10 @@ Raises Speed if hit by an\nElectric-type move.
 Reduces damage at full HP.
 
 #org @DESC_TECHNICIAN
-Boosts weaker moves.
+Boosts moves with less than 60 BP\nby 1.5x.
 
 #org @DESC_SCRAPPY
-Enables moves to hit Ghost-type\nfoes.
+Can hit Ghost-types and prevents\nIntimidate.
 
 #org @DESC_SUPERLUCK
 Critical hits land more often.
@@ -151,17 +160,17 @@ Boosts power by 20% & Speed\nby 50% in first turn.
 #org @DESC_HYDRATION
 Heals status problems in rain.
 
-#org @DESC_HEALER
-May heal ally's status problems.
+#org @DESC_SUPREMEOVERLORD
+Boosts power depending on fainted\nallies.
 
-#org @DESC_SNOWCLOAK
-Ups evasion in hail.
+#org @DESC_ANGERSHELL
++Atk/SpA/Spe, -Def/SpD if hit\nlowers HP below 50%
 
-#org @DESC_TANGLEDFEET
-Ups evasion if confused.
+#org @DESC_GOODASGOLD
+Full immunity to status moves.
 
 #org @DESC_SNOWWARNING
-Summons Hail for 5 turns.
+Summons Snow for 5 turns.
 
 #org @DESC_SANDSTREAM
 Summons Sand for 5 turns.
@@ -200,7 +209,6 @@ Fainting damages the foe by\n1/4 its max HP.
 30% chance to disable a foe's\nmove when hit.
 
 #org @DESC_GOOEY
-#org @DESC_TANGLINGHAIR
 Lowers the foe's Speed if hit by\na contact move.
 
 #org @DESC_MUMMY
@@ -245,8 +253,8 @@ Powers up all Dark-type moves\nby 33%.
 #org @DESC_FAIRYAURA
 Powers up all Fairy-type moves\nby 33%.
 
-#org @DESC_AURABREAK
-Reverses Aura Abilities.
+#org @DESC_SEEDSOWER
+Summons Grassy Terrain for 5\nturns when hit.
 
 #org @DESC_REFRIGERATE
 Normal moves become Ice\n& boosted by 20%.
@@ -301,8 +309,6 @@ Changes type to match move.
 Moves hit a second time\nfor 25% damage.
 
 #org @DESC_MOLDBREAKER
-#org @DESC_TURBOBLAZE
-#org @DESC_TERAVOLT
 Moves can be used regardless\nof abilities.
 
 #org @DESC_ZENMODE
@@ -334,8 +340,8 @@ No special Ability.
 #org @DESC_POWERCONSTRUCT
 Transforms to Complete form\nwhen below half HP.
 
-#org @DESC_PRISMARMOR
-Weakens super effective moves\nby 25%.
+#org @DESC_TABLETSOFRUIN
+Lowers the Attack of all other\nPok\emon by 25%.
 
 #org @DESC_RAGING_BOXER
 Punch moves hit a second\ntime for 50% dmg.
@@ -343,8 +349,8 @@ Punch moves hit a second\ntime for 50% dmg.
 #org @DESC_SCHOOLING
 Schools up when above 25% HP.
 
-#org @DESC_SHADOWSHIELD
-Reduces damage at full HP.
+#org @DESC_BEADSOFRUIN
+Lowers the Sp.Def of all other\nPok\emon by 25%.
 
 #org @DESC_SHIELDSDOWN
 Lowers shields below half HP.
@@ -358,11 +364,11 @@ Boosts Sp. Atk every time a\nPok\emon faints.
 #org @DESC_STAMINA
 Boosts Defense when hit by an\nattack.
 
-#org @DESC_STEELWORKER
-Powers up Steel-type moves\nby 50%.
+#org @DESC_ZEROTOHERO
+Changes form upon switching.
 
 #org @DESC_TRIAGE
-Gives +1 priority to healing\nmoves.
+Gives +3 priority to healing\nmoves.
 
 #org @DESC_WATERBUBBLE
 Doubles Water moves.\nTakes half from Fire moves.
@@ -397,8 +403,8 @@ Ups Defense by 50% in Grassy\nTerrain.
 #org @DESC_ANGERPOINT
 Maxes Attack after a critical hit.
 
-#org @DESC_ANTICIPATION
-Senses super effective moves.
+#org @DESC_EARTHEATER
+Absorbs Ground moves.
 
 #org @DESC_FOREWARN
 Warns of the foe's strongest move.
@@ -418,8 +424,8 @@ Hits by physical moves\ndrop Def but raises Speed.
 #org @DESC_HEAVYMETAL
 Doubles weight.
 
-#org @DESC_LIGHTMETAL
-Halves weight.
+#org @DESC_QUARKDRIVE
+Boosts highest stat in Electric\nTerrain.
 
 #org @DESC_STEADFAST
 Being flinched raises Speed.
@@ -439,14 +445,14 @@ Guarantees critical-hits on\npoisoned foes.
 #org @DESC_AROMAVEIL
 Protects against mental problems.
 
-#org @DESC_FLOWERVEIL
-Shields Grass-types from status.
+#org @DESC_TOXICDEBRIS
+Sets Toxic Spikes when hit by a\nphysical move.
 
 #org @DESC_LEAFGUARD
 Protects from status in Sun.
 
-#org @DESC_KLUTZ
-Held items don't work on\nthis Pok\emon.
+#org @DESC_ELECTROMORPHOSIS
+Gains Charge when hit by an\nattack.
 
 #org @DESC_FLOWERGIFT
 Boosts Atk and Speed by 50%\nin Sun.
@@ -512,13 +518,13 @@ Reduces damage done to allies.
 Protects from allies' moves.
 
 #org @DESC_ILLUSION
-Enters battle disguised.
+Enters disguised and deals 30%\nmore damage.
 
 #org @DESC_CHEEKPOUCH
 Eating Berries restores HP by\n1/3.
 
-#org @DESC_SYMBIOSIS
-Gives item to ally after use.
+#org @DESC_PROTOSYNTHESIS
+Boosts highest stat in Sun.
 
 #org @DESC_STAKEOUT
 Doubles damage if foe\nswitches out.
@@ -558,14 +564,14 @@ Boosts kicking moves by 30%.
 #org @DESC_COTTONDOWN
 Lowers everyone's Speed when hit.
 
-#org @DESC_MIRRORARMOR
-Bounces back stat decreases.
+#org @DESC_SWORDOFRUIN
+Lowers the Defense of all other\nPok\emon by 25%.
 
-#org @DESC_BLADEMASTER
-Boosts sword moves by 20%\n& ups their crit rates.
+#org @DESC_SHARPNESS
+Boosts slashing moves by 50%.
 
-#org @DESC_SURPRISE
-Random effect on switch in.
+#org @DESC_VESSELOFRUIN
+Lowers the Sp.Atk of all other\nPok\emon by 25%.
 
 #org @DESC_STEAMENGINE
 Being hit by Fire/Water moves\nmaxes Speed.
@@ -585,8 +591,8 @@ Doubles Berry effects.
 #org @DESC_ICEFACE
 Takes one free physical hit\nand changes form.
 
-#org @DESC_POWERSPOT
-Powers up ally moves by 30%.
+#org @DESC_ROCKYPAYLOAD
+Boosts power of Rock moves\nby 50%.
 
 #org @DESC_FLAMINGSOUL
 Gives +1 priority to Fire\nmoves at full HP.
@@ -612,8 +618,8 @@ All Abilities are nullified.
 #org @DESC_LETHALPRECISION
 Super effective moves\ncan't miss & boosted by 20%
 
-#org @DESC_PASTEL_VEIL
-Protects team from poison.
+#org @DESC_WELLBAKEDBODY
+Immune to Fire moves and gets\n+2 Defense instead.
 
 #org @DESC_HUNGERSWITCH
 Changes form each turn.
@@ -626,3 +632,18 @@ Moves ignore redirection.
 
 #org @DESC_QUICK_DRAW
 Has a 30% chance to move first.
+
+#org @DESC_THERMAL_EXCHANGE
+Fire-type hits raise Attack.\nImmune to burn.
+
+#org @DESC_ORICHALCUM_PULSE
+Sets Sun for 5 turns.\nBoosts Atk by 30% in Sun.
+
+#org @DESC_HADRONE_ENGINE
+Set E.Terrain for 5 turns\nUp Sp.Atk by 30% in it
+
+#org @DESC_PURIFYING_SALT
+Resists Ghost and immune to\nstatus.
+
+#org @DESC_WINDRIDER
+Immune to Wind moves and gets\n+1 Attack instead.

@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RR Dex</title>
-  <link rel="icon" type="favicon" href="https://raw.githubusercontent.com/ydarissep/Dex-Helper/main/Pok%C3%A9_Ball_icon.ico">
+  <link rel="icon" type="favicon" href="https://raw.githubusercontent.com/ashytastic/ashytastic.github.io/main/src/Poké_Ball_icon.ico">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="style/speciesTable.css">
   <link rel="stylesheet" href="style/abilitiesTable.css">
@@ -36,18 +36,31 @@
 </head>
 <body>
 
-
-
-
-
-
-
-
-
-
-
-
-
+<div class="flex flexCenter flexColumn">
+  <h1>Radical Red<br>Pokedex</h1>
+  <button type="button" id="openCredits">Credits</button>
+  <dialog class="modal hide" id="modal">
+    <ul>  
+      <li>Credits to ris#0001 for
+        <ul>
+          <li>Night theme</li>
+          <li>Sprite background removal function</li>
+          <li>Back to top button</li>
+          <li>Species stats graph</li>
+          <li>Helping with CSS</li>
+		  <br>
+        </ul>  
+      </li>  
+	  <li>Credits to Ydarissep for
+        <ul>
+          <li>Creating the Pokédex</li>
+          <li>Contribution to the server/game and it's moderation</li>
+        </ul>  
+      </li>
+    </ul>
+    <button type="button" id="closeCredits">OK</button>
+  </dialog>
+</div>
 
 <div id="speciesPanelMainContainer" class="hide flex">
  <div id="speciesPanelContainer" class="flex flexColumn">
@@ -362,27 +375,9 @@
 </body>
 
 <footer id="footer" class="flex flexCenter flexColumn">
-  <h1>Radical Red<br>Pokedex</h1>
-
-  <noscript>This page requires JavaScript.</noscript>
   
-  <button type="button" id="openCredits" class="hide">Credits</button>
-  <dialog class="modal hide" id="modal">
-    <ul>  
-      <li>Credit to ris#0001 for
-        <ul>
-          <li>Night theme</li>
-          <li>Sprite background removal function</li>
-          <li>Back to top button</li>
-          <li>Species stats graph</li>
-          <li>Helping with CSS</li>
-          <li>Bitching and moaning about my CSS while this is literally my first ever website.</li>
-        </ul>  
-      </li>  
-    </ul>
-    <button type="button" id="closeCredits">OK</button>
-  </dialog>
-
+  <noscript>This page requires JavaScript.</noscript>
+  <br></br>
   <button type="button" id="update" class="hide">Update</button>
   
 </footer>
