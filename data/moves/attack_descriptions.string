@@ -4,6 +4,18 @@
 #org @DESC_NO_MOVE
 No move information.
 
+#org @DESC_HAIL
+A 5-turn snowstorm\nthat boosts the Def\nof Ice-types.
+
+#org @DESC_ICEBEAM
+The foe is struck\nwith an icy beam.\nIt may leave the\ntarget frostbitten. 
+
+#org @DESC_BLIZZARD
+The foe is blasted\nwith a blizzard.\nIt may leave the\ntarget frostbitten.
+
+#org @DESC_LOWKICK
+A low, tripping\nkick that inflicts\nmore damage on\nheavier foes.
+
 #org @DESC_WILLOWISP
 A sinister, bluish\nwhite flame is shot\nto inflict a burn.\nCan't miss if the\nuser is Fire-type.
 
@@ -21,6 +33,9 @@ The user consumes the\ntarget's soul,\nstealing the target's\nstat boosts, and\n
 
 #org @DESC_SMOKESCREEN
 The user throws smoke\nat the foe, lowering\nits Attack. 
+
+#org @DESC_ICYWIND
+A chilling wind is\nused to attack.\nIt also lowers the\nSpeed stat.
 
 #org @DESC_SKULLBASH
 The user raises its\nDefense and Attack\nin the 1st turn, then\nattacks in the 2nd\nturn. 
@@ -203,7 +218,7 @@ The user traps the\nfoe in an electric\nnet. It also lowers\nthe foe's Speed.
 The user cloaks\nitself in flames and\nattacks. It also ups\nthe user's Speed.   
 
 #org @DESC_FROSTBREATH
-The user blows cold\nair that always lands\na critical hit. It\ncan also freeze.
+The user blows cold\nair that always lands\na critical hit. It\ncan cause frostbite.
 
 #org @DESC_HEARTSTAMP
 The foe is hit\nafter a cute act.\nIt may also make\nthe foe flinch.
@@ -458,7 +473,7 @@ Stirs up a violent\npetal blizzard,\nhitting everything\naround it.
 The target loses\nits will to fight.\nThis lowers its\nAttack.
 
 #org @DESC_ROAROFTIME
-An attack which\ndistorts time. The\nuser must rest on\nthe next turn.
+An attack which\ndistorts time.\nThe foe is made\nto switch out with\nan ally.
 
 #org @DESC_SPACIALREND
 An attack that\ntears the space\naround it. Critical\nhits land more\neasily.
@@ -485,7 +500,7 @@ A physical attack\nin which the user\ncharges, full body,\ninto the foe.
 An attack which\nchanges type,\ndepending on which\nkind of Plate the\nuser is holding.
 
 #org @DESC_FREEZEDRY
-An attack which may\nleave the target\nfrozen. It is also\nsuper effective on\nWater types.
+An attack which may\nleave the target\nfrostbitten. It is\nsuper effective on\nWater types.
 
 #org @DESC_PSYSHOCK
 An odd psychic wave\nattacks the target.\nThis attack does\nphysical damage.
@@ -719,13 +734,13 @@ The user smashes into\nthe target at high\nspeed. This move\nalways goes first.
 The user entangles\nthe target with its\nanchor chain while\nattacking. The target\ncannot flee.
 
 #org @DESC_AURORAVEIL
-This move reduces\ndamage from physical\nand special moves for\nfive turns during a\nhailstorm.
+This move reduces\ndamage from physical\nand special moves for\nfive turns during a\nsnowstorm.
 
 #org @DESC_BANEFULBUNKER
 Aside from protecting\nthe user from attacks,\nthis also poisons\nattackers who make\ncontact.
 
 #org @DESC_BEAKBLAST
-The user heats up its\nbeak, and attacks the\ntarget. Making contact\nwhile heating up\ncauses a burn.
+The user heats up its\nbeak, and attacks.\nMaking contact\nwhile heating up\ncauses a burn.
 
 #org @DESC_BRUTALSWING
 The user swings its\nbody around violently\nto inflict damage on\neverything in its\nvicinity.
@@ -1136,7 +1151,7 @@ In this two-turn move,\nthe user gathers\nspace power and\nincreases Sp. Atk.
 Bypasses opponent's\nability. May cause\npoison.
 
 #org @DESC_MISTY_EXPLOSION
-The user explodes.\nIt halves SpecDef,\nand becomes stronger\nin Misty Terrain.
+The user explodes.\nIt halves Sp. Def,\nand becomes stronger\nin Misty Terrain.
 
 #org @DESC_GRASSY_GLIDE
 The user glides\non the ground to\nattack. Moves first\non Grassy Terrain.
@@ -1232,7 +1247,7 @@ The user attacks\nwith a swift slash\nthat becomes strong-\ner the faster the\nu
 This attack beats\nbeats fairy immunities\nbut hurts the user.\nChanges split based\noff which is stronger.
 
 #org @DESC_STONE_AXE
-The user swings\nwith an axe that\nhas a high-crit ratio\nand traps the foe.
+The user swings\nwith an axe that\nhas a high-crit ratio\nand sets Stealth\nRocks.
 
 #org @DESC_HEADLONGRUSH
 The user tackles\nthe target, cutting\n its own defenses\nas a result.
@@ -1244,10 +1259,10 @@ The user triumphantly\ndances, raising its\nAttack, Defense,\nand Speed.
 This attack deals\ndouble damage to a\ntarget with a status\nproblem, and can\ninflict a burn.
 
 #org @DESC_CEASELESSEDGE
-This attack has a\nhigh crit rate and\ntraps the foe for\nfour to five turns.
+This attack has a\nhigh crit rate and\nsets a layer of\nspikes.
 
 #org @DESC_TRIPLEARROWS
-This attack raises\nthe chance of landing\ncritical hits and\nlowers the target's\nDefense.
+This attack has a\nhigh chance of a\ncritical hit,\ncan lower Defense,\nand flinch.
 
 #org @DESC_BARBBARRAGE
 This attack deals\ndouble damage to a\ntarget with a status\nproblem, and can in-\nflict poison.
@@ -1256,7 +1271,7 @@ This attack deals\ndouble damage to a\ntarget with a status\nproblem, and can in
 The user launches\nits amassed chloro-\nphyll to inflict\ndamage. It also hurts\nthe user a little.
 
 #org @DESC_HYDROCANNON
-The foe is hit with a\nwatery cannon that\ncan freeze. The user\nrecharges unless\nit KOs the foe.
+The foe is hit with a\nwatery cannon that\ncan frostbite. The user\nrecharges unless\nit KOs the foe.
 
 #org @DESC_BLASTBURN
 The foe is hit with\nan explosion that\ncan burn. The user\nrecharges unless\nit KOs the foe.
@@ -1265,13 +1280,13 @@ The foe is hit with\nan explosion that\ncan burn. The user\nrecharges unless\nit
 The foe is hit with\na giant branch that\ncan badly poison.\nThe user recharges\nunless it KOs.
 
 #org @DESC_BITTERMALICE
-This attack deals\ndouble damage to a\ntarget with a status\nproblem, and can\nfreeze the foe.
+This attack deals\ndouble damage to a\ntarget with a status\nproblem, and can\nfrostbite the foe.
 
 #org @DESC_ESPERWING
-The user slashes the\ntarget with aura-\nenriched wings that\nstrike first. Can\nlower Special Defense. 
+The user slashes the\ntarget with aura-\nenriched wings that\nraise Speed. It\nhas a high crit ratio.
 
 #org @DESC_DIRECLAW
-A slash that may\npoison, paralyze, or\nburn the foe. It\nhas a high crit ratio.
+A slash that may\npoison, paralyze, or\nsleep the foe. It\nhas a high crit ratio.
 
 #org @DESC_MOUNTAINGALE
 The user hurls giant\nchunks of ice at\nthe foe that may\ncause it to flinch.
@@ -1280,7 +1295,148 @@ The user hurls giant\nchunks of ice at\nthe foe that may\ncause it to flinch.
 The user slams into\nthe foe with psychic\nenergy. It raises the\nuser's Defense too.
 
 #org @DESC_MYSTICALPOWER
-After dealing damage,\nthe user raises the\nhigher stats of its\noffenses or defenses.
+After dealing damage,\nthe user raises its\nSpecial Attack.
+
+#org @DESC_WAVECRASH
+The user is shrouded\nin water and slams\nthe foe. It also\nhurts the user a\nlittle.
+
+#org @DESC_FLOWERTRICK
+The user throws flow-\ners at the target.\nThis move always\nresults in a\ncritical hit.
+
+#org @DESC_TORCHSONG
+The user scorches\nthe target, boosting\nthe user's Sp. Atk.
+
+#org @DESC_AQUASTEP
+The user toys with the\ntarget, boosting the\nuser's Speed.
+
+#org @DESC_HYPERDRILL
+The user drills the\ntarget quickly, hit-\nting through pro-\ntection.
+
+#org @DESC_ARMORCANNON
+The user shoots fiery\nprojectiles. This cuts\nthe user's Defense\nand Sp. Def.
+
+#org @DESC_BITTERBLADE
+The user bitterly\nslashes. This absorbs\nhalf the damage\nit inflicts.
+
+#org @DESC_AQUACUTTER
+The foe is cut by\nsharp pressurized\nwater. It has a high\ncritical-hit ratio.
+
+#org @DESC_RAGEFIST
+The more times the\nuser has been hit,\nthe stronger this\nmove becomes.
+
+#org @DESC_GLAIVERUSH
+After this hits, the\nfoe cannot miss the\nnext turn, and\ndeals double damage.
+
+#org @DESC_LASTRESPECTS
+The more fallen allies\non the user's party,\nthe stronger this\nbecomes.
+
+#org @DESC_SHEDTAIL
+The user creates a\nhalf HP substitute\nand passes it to\nan ally.
+
+#org @DESC_JETPUNCH
+The user punches with\na fast torrent\nthat is certain to\nstrike first.
+
+#org @DESC_SPINOUT
+The user spins angrily,\ninflicting damage.\nThis sharply lowers\nthe user's Speed.
+
+#org @DESC_COLLISIONCOURSE
+The user crashes,\ncausing a huge\nexplosion. Power\nis boosted if\nit's super-effective.
+
+#org @DESC_ELECTRODRIFT
+The user races,\npiercing the foe with\nsharp electricity.\nPower is boosted if\nit's super-effective.
+
+#org @DESC_REVIVALBLESSING
+The user bestows a\nlovely blessing, reviving\na fainted party Pok\e-\nmon for half health.
+
+#org @DESC_GIGATONHAMMER
+The user swings with\na huge hammer. This\nmove can't be used\ntwice in a row.
+
+#org @DESC_RAGINGBULL
+The user tackles like\na raging bull. This\nmove type depends on\nthe user's form.\nBreaks screens.
+
+#org @DESC_TWINBEAM
+The user fires beams\nfrom its eyes at the\ntarget. This move\nhits twice.
+
+#org @DESC_KOWTOWCLEAVE
+The user slashes at\nthe target after kow-\ntowing. This move\nnever misses.
+
+#org @DESC_DOUBLESHOCK
+The user releases a\nlot of electricity.\nAfter using this move,\nthe user will not\nbe Electric type.
+
+#org @DESC_TRAILBLAZE
+The user attacks\nsuddenly, boost-\ning its Speed.
+
+#org @DESC_POUNCE
+The user pounces on\nthe target, lowering\nits Speed stat.
+
+#org @DESC_MAKEITRAIN
+The user attacks\nwith a mass of coins,\nlowering its Sp.\nAtk.
+
+#org @DESC_POPULATIONBOMB
+The user gathers in\ndroves for an attack\nthat hits one to ten\ntimes in a row.
+
+#org @DESC_LUNARBLESSING
+The user restores\nHP and the status\nof itself and its\nally in battle.
+
+#org @DESC_TAKEHEART
+The user raises Sp.\nAtk and Sp. Def\nand also cures its\nstatus.
+
+#org @DESC_SILKTRAP
+The user protects\nitself, and lowers\nthe foe's Speed\nstat on contact.
+
+#org @DESC_AXEKICK
+The user attack can\nconfuse the target,\nand damages itself\nupon a miss.
+
+#org @DESC_LUMINACRASH
+The user attacks with\na strange light.\nIt harshly lowers\nthe foe's Sp. Def.
+
+#org @DESC_ICESPINNER
+The user spins with\nice, dealing damage\nand destroying\nterrain.
+
+#org @DESC_SALTCURE
+This move damages\nevery turn. Steel\nand Water types\nare more affected.
+
+#org @DESC_TRIPLEDIVE
+The user hits the\ntarget with three\nsplashes of water\nin a row.
+
+#org @DESC_MORTALSPIN
+The user spins away\nhazards, and poisons\nopposing Pok\emon.
+
+#org @DESC_FILLETAWAY
+The user sharply\nboosts its Attack,\nSp. Atk, and Speed\nby using its\nown HP.
+
+#org @DESC_CHILLYRECEPTION
+The user switches\nwith a party Pok\e-\nmon and sets a\nsnowstorm.
+
+#org @DESC_CHILLINGWATER
+The user attacks\nwith cold water that\nlowers the target's\nAttack stat.
+
+#org @DESC_COMEUPPANCE
+The user retaliates\nwith much greater\nforce against the\nopponent that last\ndid damage to it.
+
+#org @DESC_TIDYUP
+The user raises its\nAttack and Speed\nstat, and removes\nhazards.
+
+#org @DESC_RUINATION
+The user summons\na ruinous di-\nsaster. It halves\nthe target's HP.
+
+#org @DESC_PSYBLADE
+The user cuts with\nan ethereal blade.\nHas boosted power in\nElectric Terrain.
+
+#org @DESC_HYDROSTEAM
+The user blasts\nwith hot water.\nHas boosted power in\nSun.
+
+#org @DESC_BLEAKWINDSTORM
+The foe is caught\nin a fierce cold\nwind that can cause\nfrostbite.
+
+#org @DESC_WILDBOLTSTORM
+The foe is caught\nin a wind filled\nwith lightning.\nCan paralyze.
+
+#org @DESC_SANDSEARSTORM
+The foe is caught\nin a wind filled\nwith hot sand.\nCan inflict burn.
+
+#org @DESC_SPRINGTIDESTORM
+The foe is caught\nin a wind filled\nwith love and hate.\nCan lower Atk.
 
 #org @DESC_PLACEHOLDER
 Unknown.
@@ -1307,7 +1463,7 @@ Fighting Dynamax\nmove. It raises\nally Pok\emon's\nAttack stats.
 Ghost-Type Dynamax\nmove. It lowers\nthe target's\nDefense stat.
 
 #org @DESC_MAX_HAILSTORM
-Ice-Type Dynamax\nmove. It summons\na hailstorm for\nfive turns.
+Ice-Type Dynamax\nmove. It summons\na snowstorm for\nfive turns.
 
 #org @DESC_MAX_OOZE
 Poison-Type Dynamax\nmove. It raises\nally Pok\emon's\nSp. Atk stats.

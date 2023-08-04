@@ -20,7 +20,13 @@ extern const u8 NAME_CASHSPLASH[];
 extern const u8 NAME_ROUGH_SKIN[];
 extern const u8 NAME_POWER_OF_ALCHEMY[];
 extern const u8 NAME_TANGLING_HAIR[];
-
+extern const u8 NAME_TURBOBLAZE[];
+extern const u8 NAME_TERAVOLT[];
+extern const u8 NAME_ARMORTAIL[];
+extern const u8 NAME_VITALSPIRIT[];
+extern const u8 NAME_SHADOWSHIELD[];
+extern const u8 NAME_PRISMARMOR[];
+extern const u8 NAME_LINGERINGAROMA[];
 static struct DuplicateAbility sDuplicateAbilities[] =
 {
     {
@@ -343,4 +349,186 @@ static struct DuplicateAbility sDuplicateAbilities[] =
         .currAbility = ABILITY_GOOEY,
         .replaceAbilityString = NAME_TANGLING_HAIR,
     },
+    {
+        .species = SPECIES_SCREAMTAIL,
+        .currAbility = ABILITY_GOOEY,
+        .replaceAbilityString = NAME_TANGLING_HAIR,
+    },
+    {
+        .species = SPECIES_KYUREM_WHITE,
+        .currAbility = ABILITY_MOLDBREAKER,
+        .replaceAbilityString = NAME_TURBOBLAZE,
+    },
+    {
+        .species = SPECIES_KYUREM_BLACK,
+        .currAbility = ABILITY_MOLDBREAKER,
+        .replaceAbilityString = NAME_TERAVOLT,
+    },
+        {
+        .species = SPECIES_RESHIRAM,
+        .currAbility = ABILITY_MOLDBREAKER,
+        .replaceAbilityString = NAME_TURBOBLAZE,
+    },
+    {
+        .species = SPECIES_ZEKROM,
+        .currAbility = ABILITY_MOLDBREAKER,
+        .replaceAbilityString = NAME_TERAVOLT,
+    },
+        {
+        .species = SPECIES_VAROOM,
+        .currAbility = ABILITY_SOLIDROCK,
+        .replaceAbilityString = NAME_FILTER,
+    },
+    {
+        .species = SPECIES_REVAVROOM,
+        .currAbility = ABILITY_SOLIDROCK,
+        .replaceAbilityString = NAME_FILTER,
+    },
+    {
+        .species = SPECIES_FARIGIRAF,
+        .currAbility = ABILITY_DAZZLING,
+        .replaceAbilityString = NAME_ARMORTAIL,
+    },
+    {
+        .species = SPECIES_MANKEY,
+        .currAbility = ABILITY_INSOMNIA,
+        .replaceAbilityString = NAME_VITALSPIRIT,
+    },
+    {
+        .species = SPECIES_PRIMEAPE,
+        .currAbility = ABILITY_INSOMNIA,
+        .replaceAbilityString = NAME_VITALSPIRIT,
+    },
+    {
+        .species = SPECIES_ELECTABUZZ,
+        .currAbility = ABILITY_INSOMNIA,
+        .replaceAbilityString = NAME_VITALSPIRIT,
+    },
+    {
+        .species = SPECIES_ELECTIVIRE,
+        .currAbility = ABILITY_INSOMNIA,
+        .replaceAbilityString = NAME_VITALSPIRIT,
+    },
+    {
+        .species = SPECIES_MAGMAR,
+        .currAbility = ABILITY_INSOMNIA,
+        .replaceAbilityString = NAME_VITALSPIRIT,
+    },
+    {
+        .species = SPECIES_DELIBIRD,
+        .currAbility = ABILITY_INSOMNIA,
+        .replaceAbilityString = NAME_VITALSPIRIT,
+    },
+    {
+        .species = SPECIES_TYROGUE,
+        .currAbility = ABILITY_INSOMNIA,
+        .replaceAbilityString = NAME_VITALSPIRIT,
+    },
+    {
+        .species = SPECIES_ELEKID,
+        .currAbility = ABILITY_INSOMNIA,
+        .replaceAbilityString = NAME_VITALSPIRIT,
+    },
+    {
+        .species = SPECIES_MAGBY,
+        .currAbility = ABILITY_INSOMNIA,
+        .replaceAbilityString = NAME_VITALSPIRIT,
+    },
+    {
+        .species = SPECIES_VIGOROTH,
+        .currAbility = ABILITY_INSOMNIA,
+        .replaceAbilityString = NAME_VITALSPIRIT,
+    },
+    {
+        .species = SPECIES_LILLIPUP,
+        .currAbility = ABILITY_INSOMNIA,
+        .replaceAbilityString = NAME_VITALSPIRIT,
+    },
+    {
+        .species = SPECIES_ROCKRUFF,
+        .currAbility = ABILITY_INSOMNIA,
+        .replaceAbilityString = NAME_VITALSPIRIT,
+    },
+    {
+        .species = SPECIES_LYCANROC_N,
+        .currAbility = ABILITY_INSOMNIA,
+        .replaceAbilityString = NAME_VITALSPIRIT,
+    },
+    {
+        .species = SPECIES_MR_MIME_G,
+        .currAbility = ABILITY_INSOMNIA,
+        .replaceAbilityString = NAME_VITALSPIRIT,
+    },
+    {
+        .species = SPECIES_ANNIHILAPE,
+        .currAbility = ABILITY_INSOMNIA,
+        .replaceAbilityString = NAME_VITALSPIRIT,
+    },
+    {
+        .species = SPECIES_LUNALA,
+        .currAbility = ABILITY_MULTISCALE,
+        .replaceAbilityString = NAME_SHADOWSHIELD,
+    },
+    {
+        .species = SPECIES_YAMASK_G,
+        .currAbility = ABILITY_MULTISCALE,
+        .replaceAbilityString = NAME_SHADOWSHIELD,
+    },
+    {
+        .species = SPECIES_YAMASK,
+        .currAbility = ABILITY_MULTISCALE,
+        .replaceAbilityString = NAME_SHADOWSHIELD,
+    },
+    {
+        .species = SPECIES_RUNERIGUS,
+        .currAbility = ABILITY_MULTISCALE,
+        .replaceAbilityString = NAME_SHADOWSHIELD,
+    },
+    {
+        .species = SPECIES_COFAGRIGUS,
+        .currAbility = ABILITY_MULTISCALE,
+        .replaceAbilityString = NAME_SHADOWSHIELD,
+    },
+    {
+        .species = SPECIES_NECROZMA,
+        .currAbility = ABILITY_SOLIDROCK,
+        .replaceAbilityString = NAME_PRISMARMOR,
+    },
+    {
+        .species = SPECIES_NECROZMA_DUSK_MANE,
+        .currAbility = ABILITY_SOLIDROCK,
+        .replaceAbilityString = NAME_PRISMARMOR,
+    },
+    {
+        .species = SPECIES_NECROZMA_DAWN_WINGS,
+        .currAbility = ABILITY_SOLIDROCK,
+        .replaceAbilityString = NAME_PRISMARMOR,
+    },
+    {
+        .species = SPECIES_OINKOLOGNE,
+        .currAbility = ABILITY_MUMMY,
+        .replaceAbilityString = NAME_LINGERINGAROMA,
+    },
+    {
+        .species = SPECIES_KLAWF,
+        .currAbility = ABILITY_BATTLEARMOR,
+        .replaceAbilityString = NAME_SHELL_ARMOR,
+    },
+
+        {
+        .species = SPECIES_ELEKID,
+        .currAbility = ABILITY_INSOMNIA,
+        .replaceAbilityString = NAME_VITALSPIRIT,
+    },
+    {
+        .species = SPECIES_ELECTABUZZ,
+        .currAbility = ABILITY_INSOMNIA,
+        .replaceAbilityString = NAME_VITALSPIRIT,
+    },
+    {
+        .species = SPECIES_ELECTIVIRE,
+        .currAbility = ABILITY_INSOMNIA,
+        .replaceAbilityString = NAME_VITALSPIRIT,
+    },
+
 };
