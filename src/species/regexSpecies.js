@@ -433,7 +433,7 @@ async function regexEvolution(textEvolution, species){
             if(matchHisuian){
                 method += "_HISUIAN_POTENTIAL"
             }
-			if(method === "EVO_FRIENDSHIP" || "EVO_FRIENDSHIP_DAY" || "EVO_FRIENDSHIP_NIGHT"){
+			if(/FRIENDSHIP/i.test(method)){
 				condition = 220
 			}
             species[name]["evolution"].push([method, condition, targetSpecies])
