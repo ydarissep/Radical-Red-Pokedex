@@ -140,7 +140,86 @@ async function regexChanges(textChanges, species){
 }
 
 
+async function regexChangesGen9(textChangesGen9, species){
+    const lines = textChangesGen9.split("\n")
+    const stats = ["baseHP", "baseAttack", "baseDefense", "baseSpeed", "baseSpAttack", "baseSpDefense"]
 
+    const regex = /BaseStats|Types|Abilities|HiddenAbility/
+    let name, abilities = []
+
+    await lines.forEach(line => {
+
+        const matchSpecies = line.match(/\[(\w+)\]/)
+        if(matchSpecies){
+            while(abilities.length < 3){
+                abilities.push("ABILITY_NONE")
+            }
+            if(name in species && abilities.length >= species[name]["abilities"].length && JSON.stringify(abilities) !== JSON.stringify(species[name]["abilities"])){
+                species[name]["changes"].push(["abilities", abilities])
+            }
+            name = `SPECIES_${matchSpecies[1]}`
+            abilities = []
+        }
+
+
+        if(name in species){
+            const matchRegex = line.match(regex)
+            if(matchRegex){
+                const match = matchRegex[0]
+
+                if(match === "BaseStats"){
+                    const matchInt = line.match(/\d+/g)
+                    if(matchInt){
+                        for(let i = 0; i < matchInt.length; i++){
+                            if(species[name][stats[i] !== matchInt[i]]){
+                                species[name]["changes"].push([stats[i], matchInt[i]])
+                            }
+                        }
+                    }
+                }
+                else if(match === "Abilities"){
+                    const matchAbilities = line.match(/= *(\w+) *,? *(\w+)?/)
+                    if(matchAbilities){
+                        for(let i = 1; i < matchAbilities.length; i++){
+                            if(matchAbilities[i]){
+                                const ability = `ABILITY_${matchAbilities[i]}`
+                                abilities.push(ability)
+                            }
+                        }
+                        while(abilities.length < 2){
+                            abilities.push("ABILITY_NONE")
+                        }
+                    }
+                }
+                else if(match === "HiddenAbility"){
+                    const matchAbilities = line.match(/= *(\w+)/)
+                    if(matchAbilities){
+                        const ability = `ABILITY_${matchAbilities[1]}`
+                        abilities.push(ability)
+                    }
+                }
+                else if(match === "Types"){
+                    const matchTypes = line.match(/= *(\w+) *,? *(\w+)?/)
+                    if(matchTypes){
+                        const type1 = `TYPE_${matchTypes[1]}`
+                        let type2 = type1
+                        if(matchTypes[2]){
+                            type2 = `TYPE_${matchTypes[2]}`
+                        }
+
+                        if(species[name]["type1"] !== type1){
+                            species[name]["changes"].push(["type1", type1])
+                        }
+                        if(species[name]["type2"] !== type2){
+                            species[name]["changes"].push(["type2", type2])
+                        }
+                    }
+                }
+            }
+        }
+    })
+    return species
+}
 
 
 
@@ -241,7 +320,7 @@ async function regexTMHMLearnsets(textTMHMLearnsets, species, start, end){
                 else if(move === "Acrobatics")
                     move = "Smart Strike"
 
-                const rawTMHM = fetch(`https://raw.githubusercontent.com/${repo}/main/data/species/tm_compatibility/${count} - ${move}.txt`)
+                const rawTMHM = fetch(`https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/species/tm_compatibility/${count} - ${move}.txt`)
                 .then(promises => {
                     const textTMHM = promises.text()
                     .then(promises => {
@@ -295,7 +374,7 @@ async function regexTutorLearnsets(textTutorLearnsets, species, start, end){
                 count++
 
                 if(filterUnusedTutor.includes(move)){
-                    const rawTutor = fetch(`https://raw.githubusercontent.com/${repo}/main/data/species/tutor_compatibility/${count} - ${move}.txt`)
+                    const rawTutor = fetch(`https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/species/tutor_compatibility/${count} - ${move}.txt`)
                     .then(promises => {
                         const textTutor = promises.text()
                         .then(promises => {
@@ -362,28 +441,27 @@ async function regexEvolution(textEvolution, species){
 }
 
 async function getEvolutionLine(species){
-    for (const name of Object.keys(species)){
-        let evolutionLine = [name]
+    for(let i = 0; i < 2; i++) // FUTURE ME DO NOT DARE QUESTION ME
+    {
+        for(const name of Object.keys(species)){
 
-        for(let i = 0; i < evolutionLine.length; i++){
-            const targetSpecies = evolutionLine[i]
-            for(let j = 0; j < species[evolutionLine[i]]["evolution"].length; j++){
-                const targetSpeciesEvo = species[targetSpecies]["evolution"][j][2]
-                if(!evolutionLine.includes(targetSpeciesEvo)){
-                    evolutionLine.push(targetSpeciesEvo)
-                }
+            for (let j = 0; j < species[name]["evolution"].length; j++){
+
+                const targetSpecies = species[name]["evolution"][j][2]
+                species[name]["evolutionLine"].push(targetSpecies)
             }
-        }
 
-        for(let i = 0; i < evolutionLine.length; i++){
-            const targetSpecies = evolutionLine[i]
-            if(evolutionLine.length > species[targetSpecies]["evolutionLine"].length){
-                species[targetSpecies]["evolutionLine"] = evolutionLine
+
+
+            for (let j = 0; j < species[name]["evolution"].length; j++){
+
+                const targetSpecies = species[name]["evolution"][j][2]
+                species[targetSpecies]["evolutionLine"] = species[name]["evolutionLine"]
             }
         }
     }
 
-    for (const name of Object.keys(species)){
+    for(const name of Object.keys(species)){
         species[name]["evolutionLine"] = Array.from(new Set(species[name]["evolutionLine"])) // remove duplicates
     }
 
@@ -506,7 +584,7 @@ async function regexSprite(textSprite, species){
 
             const matchURL = line.match(/gFrontSprite\w+Tiles/i)
             if(matchURL){
-                let url = `https://raw.githubusercontent.com/${repo}/main/data/species/frontspr/${matchURL[0].replace("Tiles", ".png")}`
+                let url = `https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/species/frontspr/${matchURL[0].replace("Tiles", ".png")}`
 
                 species[name]["sprite"] = url
             }

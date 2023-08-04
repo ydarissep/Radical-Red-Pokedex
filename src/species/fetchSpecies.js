@@ -89,7 +89,13 @@ async function getChanges(species, url){
     footerP("Fetching species changes")
     const rawChanges = await fetch(url)
     const textChanges = await rawChanges.text()
-    return await regexChanges(textChanges, species)
+
+    species = await regexChanges(textChanges, species)
+
+    const rawChangesGen9 = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/species/gen9data.txt`)
+    const textChangesGen9 = await rawChangesGen9.text()
+
+    return await regexChangesGen9(textChangesGen9, species)
 }
 
 

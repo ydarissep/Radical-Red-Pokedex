@@ -332,6 +332,31 @@ function regexVanillaMovesDescription(textVanillaMovesDescription, moves){
 
 
 
+function regexMovesFlags(textMovesFlags, moves){
+    const lines = textMovesFlags.split("\n")
+    let flagName = "placeHolder"
+
+    lines.forEach(line => { 
+        if(/g(.*):/i.test(line)){
+            flagName = line.match(/g(\w+):/i)[1].replace(/([A-Z])/g, ' $1')
+        }
+        
+        const matchMove = line.match(/MOVE_\w+/i) 
+        if(matchMove && moves[matchMove[0]]){ 
+            moves[matchMove[0]]["flags"].push(flagName) 
+        }
+    })
+
+    return moves
+}
+
+
+
+
+
+
+
+
 
 
 

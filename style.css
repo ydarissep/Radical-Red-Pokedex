@@ -21,6 +21,10 @@ footer > p {
 	display: none !important
 }
 
+#update {
+    margin-top: 50px;
+}
+
 .addFilterButton {
     margin-bottom: 5px !important;
     background: rgba(215, 212, 231, 0.2) !important;

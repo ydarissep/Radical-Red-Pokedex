@@ -1,4 +1,4 @@
-window.repo = "ashytastic/ashytastic.github.io"
+window.repo = "ashytastic/Radical-Red-Pokedex"
 
 window.tracker
 window.panelSpecies = ""
@@ -369,11 +369,11 @@ const options = {
 function footerIsTouching(entries){
     if(entries[0].isIntersecting){
         lazyLoading(false)
-        openCredits.classList.remove("hide")
+        //openCredits.classList.remove("hide")
         update.classList.remove("hide")
     }
     else{
-        openCredits.classList.add("hide")   
+        //openCredits.classList.add("hide")   
         update.classList.add("hide")
     }
 }
