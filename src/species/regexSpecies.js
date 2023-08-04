@@ -430,10 +430,11 @@ async function regexEvolution(textEvolution, species){
             let condition = matchEvoInfo[2]
             const targetSpecies = matchEvoInfo[3]
             const matchHisuian = line.match(/EVO_HISUIAN/)
+			const matchFriendship = line.match(/EVO_FRIENDSHIP+/)
             if(matchHisuian){
                 method += "_HISUIAN_POTENTIAL"
             }
-			if(method === "EVO_FRIENDSHIP"){
+			if(matchFrienship){
 				condition = 220
 			}
             species[name]["evolution"].push([method, condition, targetSpecies])
