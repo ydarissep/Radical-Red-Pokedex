@@ -534,6 +534,7 @@ function isHardcoreRestricted(string){
         "ABILITY_CONTRARY",
         "ABILITY_GRASSYSURGE",
         "ABILITY_PSYCHICSURGE",
+		"ABILITY_TOXICDEBRIS",
     ]
     if(restrictedAbilities.includes(string)){
         return true
