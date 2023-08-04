@@ -907,7 +907,7 @@ Generation = 9
 #-------------------------------
 [WATTREL]
 Name = Wattrel
-Types = ELECTRIC,FLYING
+Types = FLYING,ELECTRIC
 BaseStats = 40,40,35,70,55,40
 GenderRatio = Female50Percent
 GrowthRate = Parabolic
@@ -934,7 +934,7 @@ Evolutions = KILOWATTREL,Level,25
 #-------------------------------
 [KILOWATTREL]
 Name = Kilowattrel
-Types = ELECTRIC,FLYING
+Types = FLYING,ELECTRIC
 BaseStats = 70,70,60,125,105,60
 GenderRatio = Female50Percent
 GrowthRate = Parabolic
@@ -1673,7 +1673,7 @@ Generation = 9
 #-------------------------------
 [GLIMMET]
 Name = Glimmet
-Types = ROCK,POISON
+Types = POISON,ROCK
 BaseStats = 48,35,42,60,105,60
 GenderRatio = Female50Percent
 GrowthRate = Parabolic
@@ -1700,7 +1700,7 @@ Evolutions = GLIMMORA,Level,35
 #-------------------------------
 [GLIMMORA]
 Name = Glimmora
-Types = ROCK,POISON
+Types = POISON,ROCK
 BaseStats = 83,55,90,86,130,81
 GenderRatio = Female50Percent
 GrowthRate = Parabolic
@@ -2878,7 +2878,7 @@ Flags = InheritFormWithEverStone
 #-------------------------------
 [TAUROS_P_FIRE]
 FormName = Paldean (Blaze Breed)
-Types = FIGHTING,FIRE
+Types = FIRE,FIGHTING
 BaseStats = 75,110,105,100,30,70
 Abilities = INTIMIDATE,ANGERPOINT
 HiddenAbilities = CUDCHEW
@@ -2893,7 +2893,7 @@ Flags = InheritFormWithEverStone
 #-------------------------------
 [TAUROS_P_WATER]
 FormName = Paldean (Aqua Breed)
-Types = FIGHTING,WATER
+Types = WATER,FIGHTING
 BaseStats = 75,110,105,100,30,70
 Abilities = INTIMIDATE,ANGERPOINT
 HiddenAbilities = CUDCHEW
