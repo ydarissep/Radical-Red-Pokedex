@@ -21,7 +21,7 @@ function appendMovesToTable(moveName){
     nameContainer.append(name)
     nameContainer.append(ingameName)
 
-    if(hardcoreRestricted.includes(moves[moveName]["name"])){
+    if(isHardcoreRestricted(moves[moveName]["name"])){
         ingameName.style.color = "#FF8F8F"
     }
 
@@ -164,22 +164,24 @@ function createPopupForMove(move){
 
     const flagsContainer = document.createElement("div")
     const flagsListContainer = document.createElement("ul")
-    for(let i = move["flags"].length; i > 0; i--){
-        const flagName = document.createElement("li"); flagName.innerText = sanitizeString(move["flags"][i - 1]); flagName.classList.add("hyperlink")
-        flagsListContainer.append(flagName)
+    for(let i = 0; i < move["flags"].length; i++){
+        if(move["flags"][i] !== ""){
+            const flagName = document.createElement("li"); flagName.innerText = sanitizeString(move["flags"][i]); flagName.classList.add("hyperlink")
+            flagsListContainer.append(flagName)
 
 
-        flagName.addEventListener("click", async() => {
-            if(!movesButton.classList.contains("activeButton")){
-                tracker = movesTracker
-                await tableButtonClick("moves")
-            }
-            deleteFiltersFromTable()
-            createFilter(sanitizeString(move["flags"][i - 1]), "Flag")
-            overlay.style.display = 'none'
-            speciesPanel("hide")
-            window.scrollTo({ top: 0})
-        })
+            flagName.addEventListener("click", async() => {
+                if(!movesButton.classList.contains("activeButton")){
+                    tracker = movesTracker
+                    await tableButtonClick("moves")
+                }
+                deleteFiltersFromTable()
+                createFilter(sanitizeString(move["flags"][i]), "Flag")
+                overlay.style.display = 'none'
+                speciesPanel("hide")
+                window.scrollTo({ top: 0})
+            })
+        }
     }
 
     const filterButton = document.createElement("button"); filterButton.classList.add("popupFilterButton")
@@ -197,7 +199,9 @@ function createPopupForMove(move){
         window.scrollTo({ top: 0})
     })
 
-    flagsContainer.append(flagsListContainer)
+    if(flagsListContainer.childElementCount > 0){
+        flagsContainer.append(flagsListContainer)
+    }
     popup.append(flagsContainer)
     popup.append(filterButton)
 }

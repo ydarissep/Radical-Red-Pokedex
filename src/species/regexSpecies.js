@@ -140,7 +140,70 @@ async function regexChanges(textChanges, species){
 }
 
 
+async function regexChangesGen9(textChangesGen9, species){
+    const lines = textChangesGen9.split("\n")
+    const stats = ["baseHP", "baseAttack", "baseDefense", "baseSpeed", "baseSpAttack", "baseSpDefense"]
 
+    const regex = /BaseStats|Types|Abilities|HiddenAbility/
+    let name, abilities = []
+
+    await lines.forEach(line => {
+
+        const matchSpecies = line.match(/\[(\w+)\]/)
+        if(matchSpecies){
+            while(abilities.length < 3){
+                abilities.push("ABILITY_NONE")
+            }
+            if(name in species && abilities.length >= species[name]["abilities"].length && JSON.stringify(abilities) !== JSON.stringify(species[name]["abilities"])){
+                species[name]["changes"].push(["abilities", abilities])
+            }
+            name = `SPECIES_${matchSpecies[1]}`
+            abilities = []
+        }
+
+
+        if(name in species){
+            const matchRegex = line.match(regex)
+            if(matchRegex){
+                const match = matchRegex[0]
+
+                if(match === "BaseStats"){
+                    const matchInt = line.match(/\d+/g)
+                    if(matchInt){
+                        for(let i = 0; i < matchInt.length; i++){
+                            if(species[name][stats[i] !== matchInt[i]]){
+                                species[name]["changes"].push([stats[i], matchInt[i]])
+                            }
+                        }
+                    }
+                }
+                else if(match === "Abilities"){
+                    const matchAbilities = line.match(/= *(\w+) *,? *(\w+)?/)
+                    if(matchAbilities){
+                        for(let i = 1; i < matchAbilities.length; i++){
+                            if(matchAbilities[i]){
+                                const ability = `ABILITY_${matchAbilities[i]}`
+                                abilities.push(ability)
+                            }
+                        }
+                        while(abilities.length < 2){
+                            abilities.push("ABILITY_NONE")
+                        }
+                    }
+                }
+                else if(match === "HiddenAbility"){
+                    const matchAbilities = line.match(/= *(\w+)/)
+                    if(matchAbilities){
+                        const ability = `ABILITY_${matchAbilities[1]}`
+                        abilities.push(ability)
+                    }
+                }
+
+            }
+        }
+    })
+    return species
+}
 
 
 

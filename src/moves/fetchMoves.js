@@ -29,6 +29,12 @@ async function getVanillaMovesDescription(moves){
     return regexVanillaMovesDescription(textVanillaMovesDescription, moves)
 }
 
+async function getMovesFlags(moves){
+    const rawMovesFlags = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/moves/move_tables.s`)
+    const textMovesFlags = await rawMovesFlags.text()
+
+    return regexMovesFlags(textMovesFlags, moves)
+}
 
 
 async function buildMovesObj(){
@@ -37,6 +43,7 @@ async function buildMovesObj(){
     moves = await getVanillaMovesDescription(moves)
     moves = await getMovesDescription(moves)
     moves = await getMovesIngameName(moves)
+    moves = await getMovesFlags(moves)
 
     await localStorage.setItem("moves", LZString.compressToUTF16(JSON.stringify(moves)))
     return moves

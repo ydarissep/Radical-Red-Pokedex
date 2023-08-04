@@ -18,7 +18,7 @@ function appendAbilitiesToTable(abilitiesName){
     abilityName.innerText = abilities[abilitiesName]["name"]
     ability.append(abilityName)
 
-    if(hardcoreRestricted.includes(abilities[abilitiesName]["name"])){
+    if(isHardcoreRestricted(abilities[abilitiesName]["name"])){
                 ability.style.color = "#FF8F8F"
     }
 

@@ -89,7 +89,7 @@ async function createSpeciesPanel(name){
             abilityDescription.className = "speciesPanelAbilitiesDescriptionPadding"
             abilityContainer.className = "flex wrap"
 
-            if(hardcoreRestricted.includes(abilities[ability]["name"])){
+            if(isHardcoreRestricted(abilities[ability]["name"])){
                     abilityName.style.color = "#FF8F8F"
             }
 
@@ -790,6 +790,9 @@ function buildSpeciesPanelDoubleLearnsetsTable(table, name, input, label = "", a
         const moveName = document.createElement("td")
         moveName.innerText = moves[move[0]]["ingameName"]
         moveName.className = "bold"
+        if(isHardcoreRestricted(move)){
+            moveName.style.color = "#FF8F8F"
+        }
         row.append(moveName)
 
         const typeContainer = document.createElement("td")
@@ -868,6 +871,9 @@ function buildSpeciesPanelSingleLearnsetsTable(table, name, input, label = "", a
         const moveName = document.createElement("td")
         moveName.innerText = moves[move]["ingameName"]
         moveName.className = "bold"
+        if(isHardcoreRestricted(move)){
+            moveName.style.color = "#FF8F8F"
+        }
         row.append(moveName)
 
         const typeContainer = document.createElement("td")
