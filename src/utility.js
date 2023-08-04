@@ -49,7 +49,7 @@ async function fetchData(){
 
 
 async function fetchTypeChart(){
-    const rawTypeChart = await fetch("https://raw.githubusercontent.com/${repo}/main/src/typeChart.json")
+    const rawTypeChart = await fetch(`https://raw.githubusercontent.com/${repo}/main/src/typeChart.json`)
     window.typeChart = await rawTypeChart.json()
 }
 
