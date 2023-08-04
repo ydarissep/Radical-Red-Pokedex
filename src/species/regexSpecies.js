@@ -198,7 +198,23 @@ async function regexChangesGen9(textChangesGen9, species){
                         abilities.push(ability)
                     }
                 }
+                else if(match === "Types"){
+                    const matchTypes = line.match(/= *(\w+) *,? *(\w+)?/)
+                    if(matchTypes){
+                        const type1 = `TYPE_${matchTypes[1]}`
+                        let type2 = type1
+                        if(matchTypes[2]){
+                            type2 = `TYPE_${matchTypes[2]}`
+                        }
 
+                        if(species[name]["type1"] !== type1){
+                            species[name]["changes"].push(["type1", type1])
+                        }
+                        if(species[name]["type2"] !== type2){
+                            species[name]["changes"].push(["type2", type2])
+                        }
+                    }
+                }
             }
         }
     })
