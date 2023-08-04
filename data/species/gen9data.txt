@@ -2509,7 +2509,7 @@ Category = Coin Entity
 Pokedex = Its body seems to be made up of 1,000 coins. This Pokémon gets along well with others and is quick to make friends with anybody.
 Generation = 9
 #-------------------------------
-[WOCHIEN]
+[WO_CHIEN]
 Name = Wo-Chien
 Types = DARK,GRASS
 BaseStats = 85,85,100,70,95,135
@@ -2534,7 +2534,7 @@ Pokedex = The grudge of a person punished for writing the king’s evil deeds up
 Generation = 9
 Flags = Legendary
 #-------------------------------
-[CHIENPAO]
+[CHIEN_PAO]
 Name = Chien-Pao
 Types = DARK,ICE
 BaseStats = 80,120,80,135,90,65
@@ -2559,7 +2559,7 @@ Pokedex = This Pokémon can control 100 tons of fallen snow. It plays around inn
 Generation = 9
 Flags = Legendary
 #-------------------------------
-[TINGLU]
+[TING_LU]
 Name = Ting-Lu
 Types = DARK,GROUND
 BaseStats = 155,110,125,45,55,80
@@ -2584,7 +2584,7 @@ Pokedex = The fear poured into an ancient ritual vessel has clad itself in rocks
 Generation = 9
 Flags = Legendary
 #-------------------------------
-[CHIYU]
+[CHI_YU]
 Name = Chi-Yu
 Types = DARK,FIRE
 BaseStats = 55,80,80,100,135,120
