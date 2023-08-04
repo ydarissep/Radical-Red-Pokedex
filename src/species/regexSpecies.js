@@ -435,7 +435,7 @@ async function regexEvolution(textEvolution, species){
                 method += "_HISUIAN_POTENTIAL"
             }
 			if(matchFriendship){
-				condition.replace("0", "220")
+				condition.replaceAll("0", "220");
 			}
             species[name]["evolution"].push([method, condition, targetSpecies])
         }
