@@ -81,3 +81,59 @@ Poliwrath
     comment = Poliwrath utilizes it's excellent typing, solid bulk, and superb movepool to form a very potent Assault Vest user. While 95 base attack isn't very high by modern standards Poliwrath makes up for it via very powerful attacks such as Surging Strikes and Close Combat. Jet Punch is also an extremely helpful offensive tool doing very solid damage with priority. Drain Punch also keeps Poliwrath healthy and synergizes excellently with Assault Vest. Ice Punch is a very solid coverage option to hit Dragons or Flying / Grass types in a pinch, and Flip Turn is an excellent tempo tool. Depending on your team composition Poliwrath can utilize a very useful water immunity in Water Absorb, or the powerful rain abusing Swift Swim to highten its offensive potential further.
     tags = Normal-Mode, Defense, Offense
 }
+Avalugg
+{
+    name = The Wall
+    item = Leftovers
+    ability = Filter
+    evs = 252, 4, 252, 0, 0, 0 // HP, Atk, Def, Sp.Atk, Sp.Def, Speed
+    nature = Impish
+    moves = Iron Defense, Recover / Rest, Body press, Mountain Gale / Iron Head / Earthquake
+    comment = Do you want to feel unstoppable? Do you want to feel the fear and despair in the eyes of your enemies as they desperately try to break through your massive wall of ice? Look no further than Avalugg.
+
+Avalugg's sky high base 184 defense paired with a decent base 95 hp stat means that even physically offensive monsters like Mega-Lucario aren't able to knock it down after you set up a couple of Iron Defenses, essentially winning you the fight on the spot.
+
+Unlike some other body press users Avalugg isnt completely helpless against Ghosts since its 4th slot can be used for coverage and even when uninvested that base 117 attack stat is nothing to scoff at.
+
+The only threats to this build are special attackers given Avalugg's pitiful special defense, critical hits although to a lesser degree since you still have naturally high defense, and Unaware pokemon that can outstall you quite easily.
+    tags = Normal-Mode, Defense, Stall
+}
+Lickylicky 
+{
+	name = BomberLicky
+	item = Assault Vest / Focus Sash / Choice Band / Normal Gem
+	ability = Cloud Nine
+	evs = 0, 0, 0, 0, 0, 0 // HP, Atk, Def, Sp.Atk, Sp.Def, Speed
+	moves = Explosion,Power whip, Bulldoze, Dragon tail/Knock off
+	nature = Careful
+	comment = Lickylicky is an excellent Pokemon for Hardcore E4 especially if u can't or don't wanna use golduck. This thing even walls eternamax eternatus and use explosion to safely chip things, it has bulldoze for speed lowering , knock off for utilities and along side a good mon completely destroys hail Lorelei. Mega lucario completely destroys hail Lorelei with this thing alongside it. It can also use multiple items such as focus sash assault vest for more bulk or even just leftovers, And if u think this thing is ugly atleast it's better than slaking and regigigas 
+	tags = Hardcore-Mode, Defense, Offense
+}
+Fluttermane
+{
+    name = Invest Mane
+    item = Assault Vest
+    ability = Protosynthesis
+    evs = Hardcore
+    nature = Modest
+    moves = Moonblast, Shadow Ball, Mystical Fire, Thunder
+    comment = Due to its excellent coverage, speed, and high special attack, Flutter Mane can deal amazing damage to every Pokemon in the Elite 4, particularly 2HKOing the majority.
+
+When equipped with an Assault Vest, Flutter Mane can effectively defend it's self from some of the Elite 4's most powerful special attackers. Most notably, being able to sit in front of Blue's Xerneas, Eternatus, and Walking Wake, Agatha's Yveltal, Lance's Arceus-Fairy, and Lorelei's Tapu Fini and Kyurem White.
+
+Iron Bundle, Tapu Fini, and Primal Kyogre can all be quickly handled with Thunder as your fourth move while you don't have to worry about missing in rain.
+    tags = Hardcore-Mode, Defense, Sweeper
+}
+Ironhands
+{
+    name = Hand Assault
+    item = Assault Vest
+    ability = Quark Drive
+    evs = Hardcore
+    nature = Adamant
+    moves = Close Combat, Plasma Fists, Earthquake, Ice Punch / Drain Punch
+    comment = Due to its high attack and great bulk when combined with an Assault Vest, Iron Hands is able to defeat the majority of the Elite 4 1v1, and acts as a check to most of it. This is made possible by the combination of Close Combat, Plasma Fists, Earthquake, and Ice Punch. Only Lance's Arceus-Fairy and Lance's Necrozma-DM are able to sit infront of Hands.
+
+Optionally, you could go Drain Punch over Ice Punch to regain some health, but this leaves you vulnerable to the likes of Mega Rayquaza, Landorus-T, and Dragonite. You can use Iron Hands to pick up a few extra kills if you have a strategy to deal with those three.
+    tags = Hardcore-Mode, Offense, Defense
+}
