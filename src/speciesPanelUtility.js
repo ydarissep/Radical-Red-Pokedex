@@ -621,6 +621,7 @@ function createSpeciesStrategy(strategy, speciesName){
     const strategyMiscTable = document.createElement("table"); strategyMiscTable.className = "strategyTable"
     const strategyMiscTbody = document.createElement("Tbody")
     const strategyCommentContainer = document.createElement("div"); strategyCommentContainer.className = "strategyCommentContainer"
+    const strategyExportButton = document.createElement("button"); strategyExportButton.className = "strategyExportButton"; strategyExportButton.type = "button"
     
     strategyName.innerText = strategy["name"]
     strategySpriteContainer.append(strategySprite)
@@ -661,11 +662,36 @@ function createSpeciesStrategy(strategy, speciesName){
         strategyCommentContainer.append(strategyComment)
     }
 
+    strategyExportButton.innerText = "Export"
+
     strategyInfo.append(strategyMoves)
     strategyInfo.append(strategyMisc)
     strategyInfo.append(strategyCommentContainer)
     strategyContainer.append(strategyInfo)
-    
+
+    if(strategy["paste"].length > 0){
+        strategyContainer.append(strategyExportButton)
+
+        strategyExportButton.addEventListener("click", () => {
+            let paste = ""
+
+            for(let i = 0; i < strategy["paste"].length; i++){
+                paste += `${strategy["paste"][i]}\n`
+            }
+
+            navigator.clipboard.writeText(paste).then(
+                () => {
+                    strategyExportButton.classList.add("exportSuccess")
+                    strategyExportButton.innerText = "Exported"
+                },
+                () => {
+                    strategyExportButton.classList.add("exportFailure")
+                    strategyExportButton.innerText = "Nuh uh"
+                }
+            )
+              
+        })
+    }
 
     return strategyContainer
 }
@@ -795,7 +821,7 @@ function buildSpeciesPanelDoubleLearnsetsTable(table, name, input, label = "", a
         const moveName = document.createElement("td")
         moveName.innerText = moves[move[0]]["ingameName"]
         moveName.className = "bold"
-        if(isHardcoreRestricted(move)){
+        if(isHardcoreRestricted(move[0])){
             moveName.style.color = "#FF8F8F"
         }
         row.append(moveName)

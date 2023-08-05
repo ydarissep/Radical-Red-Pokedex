@@ -1,6 +1,6 @@
 async function regexStrategies(textStrategies, strategies){
     const lines = textStrategies.split("\n")
-    let name = null, inBracket = false, inComment = false
+    let name = null, inBracket = false, pushLine = false
 
     lines.forEach(line => {
         line = line.trim()
@@ -13,7 +13,7 @@ async function regexStrategies(textStrategies, strategies){
         }
         else if(line === "}," || line === "}"){
             inBracket = false
-            inComment = false
+            pushLine = false
             name = null
         }
         else if(!inBracket){
@@ -83,26 +83,23 @@ async function regexStrategies(textStrategies, strategies){
                     strategies[name][i]["tags"].push(line)
                 }
             }
-            else if(/comment *=/i.test(line) && !inComment){
+            else if(/comment *=/i.test(line)){
                 strategies[name][i]["comment"].push(line.match(/= *(.*)/i)[1])
-                inComment = true
+                pushLine = "comment"
             }
-            else if(inComment){
+            else if(/paste *=/i.test(line)){
+                strategies[name][i]["paste"].push(line.match(/= *(.*)/i)[1])
+                pushLine = "paste"
+            }
+            else if(pushLine){
                 if(/^\w+ *=/i.test(line) || line === "}," || line === "}"){
-                    inComment = false
+                    pushLine = false
                 }
                 else{
-                    strategies[name][i]["comment"].push(line)
+                    strategies[name][i][pushLine].push(line)
                 }
             }
         }
-        /*
-        else if(name){
-            if(line !== ""){
-                strategies[name]["overview"] += line
-            }
-        }
-        */
     })
 
     return strategies
@@ -113,7 +110,6 @@ async function regexStrategies(textStrategies, strategies){
 function createAndInitializeSetForSpecies(strategies, name){
     if(!strategies[name]){
         strategies[name] = []
-        //strategies[name]["overview"] = ""
     }
 
     strategies[name].push({})
@@ -128,4 +124,5 @@ function createAndInitializeSetForSpecies(strategies, name){
     strategies[name][i]["moves"] = []
     strategies[name][i]["comment"] = []
     strategies[name][i]["tags"] = ""
+    strategies[name][i]["paste"] = []
 }

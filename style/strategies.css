@@ -77,3 +77,16 @@
 .strategyTag + .strategyTag {
     margin-left: 25px;
 }
+
+.strategyExportButton {
+    display: block;
+    margin: 20px auto auto auto;
+}
+
+.exportSuccess {
+    background: green !important;
+}
+
+.exportFailure {
+    background: red !important;
+}
