@@ -114,7 +114,7 @@ Fluttermane
     name = Invest Mane
     item = Assault Vest
     ability = Protosynthesis
-    evs = Hardcore
+    evs = 0, 0, 0, 0, 0, 0 // HP, Atk, Def, Sp.Atk, Sp.Def, Speed
     nature = Modest
     moves = Moonblast, Shadow Ball, Mystical Fire, Thunder
     comment = Due to its excellent coverage, speed, and high special attack, Flutter Mane can deal amazing damage to every Pokemon in the Elite 4, particularly 2HKOing the majority.
@@ -129,7 +129,7 @@ Ironhands
     name = Hand Assault
     item = Assault Vest
     ability = Quark Drive
-    evs = Hardcore
+    evs = 0, 0, 0, 0, 0, 0 // HP, Atk, Def, Sp.Atk, Sp.Def, Speed
     nature = Adamant
     moves = Close Combat, Plasma Fists, Earthquake, Ice Punch / Drain Punch
     comment = Due to its high attack and great bulk when combined with an Assault Vest, Iron Hands is able to defeat the majority of the Elite 4 1v1, and acts as a check to most of it. This is made possible by the combination of Close Combat, Plasma Fists, Earthquake, and Ice Punch. Only Lance's Arceus-Fairy and Lance's Necrozma-DM are able to sit infront of Hands.
