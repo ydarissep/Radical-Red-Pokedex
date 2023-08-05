@@ -676,7 +676,9 @@ function createSpeciesStrategy(strategy, speciesName){
             let paste = ""
 
             for(let i = 0; i < strategy["paste"].length; i++){
-                paste += `${strategy["paste"][i]}\n`
+                if(strategy["paste"][i] !== ""){
+                    paste += `${strategy["paste"][i]}\n`
+                }
             }
 
             navigator.clipboard.writeText(paste).then(
