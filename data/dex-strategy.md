@@ -137,3 +137,16 @@ Ironhands
 Optionally, you could go Drain Punch over Ice Punch to regain some health, but this leaves you vulnerable to the likes of Mega Rayquaza, Landorus-T, and Dragonite. You can use Iron Hands to pick up a few extra kills if you have a strategy to deal with those three.
     tags = Hardcore-Mode, Offense, Defense
 }
+Chien Pao
+{
+    name = Better Weavile
+    item = Choice Band / Life Orb
+    ability = Sword of Ruin
+    evs = 0, 0, 0, 0, 0, 0 // HP, Atk, Def, Sp.Atk, Sp.Def, Speed
+    nature = Jolly
+    moves = Icicle Crash, Throat Chop, Sacred Sword, Ice Shard/Sucker Punch
+    comment = This is a very straightforward sweeping set. Similar to what you might use on Weavile or G-Darmanitan-Zen. A fast and powerful Ice-type is absolutely great against the E4, with the secondary typing deciding what other mons it can destroy besides a lot of what Lance would use, for example. As Chien Pao's a Dark-type, you have more coverage against Agatha's team. With its high Speed, it can outspeed most of the fastest mons the E4 has, only being outspeed by mons like Calyrex, Swift Swim Megs Swampert, and Primal Eternatus. You will mostly use Icicle Crash. Without doing calcs and just going by the move itself and the ability, which lowers the Defense of active mons that don't have Sword of Ruin by 25%, you are doing serious damage. Its SpDef isn't good, so you might not me able to take Draining Kiss from unboosted Calyrex. You could Scarf if you want, but it's better to have someone else take on Calyrex, while Chien Pao can at least mess up Yveltal. Chien Pao isn't ideal for Bruno, but for the other E4 members, it's a great mon to have. The moveset includes its best STAB options, coverage with Sacred Sword, and priority. Ice Shard could be for Primal Eternatus, I don't think I ever used Sucker Punch. You could risk taking Draco Barrage at full HP from Eternatus and retaliate with an OHKO Icicle Crash, but there's a good chance Draco Barrage will OHKO.
+
+In conclusion, if you want a new kind of Weavile to play with, or in general, a new Ice-type sweeper, Chien Pao's highly recommended.
+    tags = Hardcore-Mode, Offense
+}
