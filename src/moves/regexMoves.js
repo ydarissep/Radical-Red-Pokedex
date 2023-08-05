@@ -338,9 +338,32 @@ function regexMovesFlags(textMovesFlags, moves){
 
     lines.forEach(line => { 
         if(/g(.*):/i.test(line)){
-            flagName = line.match(/g(\w+):/i)[1].replace(/([A-Z])/g, ' $1')
+            flagName = line.match(/g(\w+):/i)[1].replace(/([A-Z])/g, ' $1').trim()
         }
-        
+		if(flagName === "Punching Moves"){
+			flagName = "Iron Fist Affected Moves"
+		}
+		else if(flagName === "Sword Moves"){
+			flagName = "Sharpness Affected Moves"
+		}
+		else if(flagName === "Pulse Aura Moves"){
+			flagName = "Mega Launcher Affected Moves"
+		}
+        else if(flagName === "Kicking Moves"){
+			flagName = "Striker Affected Moves"
+		}
+		else if(flagName === "Sheer Force Boosted Moves"){
+			flagName = "Sheer Force Affected Moves"
+		}
+		else if(flagName === "Biting Moves"){
+			flagName = "Strong Jaw Affected Moves"
+		}
+		else if(/recoil/i.test(flagName)){
+			flagName = "Recoil Moves"
+		}
+		else if(flagName === "Sound Moves"){
+			flagName = "Punk Rock Affected Moves"
+		}
         const matchMove = line.match(/MOVE_\w+/i) 
         if(matchMove && moves[matchMove[0]]){ 
             moves[matchMove[0]]["flags"].push(flagName) 
