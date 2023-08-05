@@ -795,7 +795,7 @@ function buildSpeciesPanelDoubleLearnsetsTable(table, name, input, label = "", a
         const moveName = document.createElement("td")
         moveName.innerText = moves[move[0]]["ingameName"]
         moveName.className = "bold"
-        if(isHardcoreRestricted(move)){
+        if(isHardcoreRestricted(move[0])){
             moveName.style.color = "#FF8F8F"
         }
         row.append(moveName)
