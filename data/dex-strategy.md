@@ -70,3 +70,14 @@ Toxapex
 Knock Off lets Toxapex remove annoying items from the opponent, Haze stops setup sweepers and Baneful Bunker helps stall out poison turns. Scald burns Steel and Poison types that cannot be poisoned. 
     tags = Normal-Mode, Defensive
 }
+Poliwrath
+{
+    name = AV Poliwrath
+    item = Assault Vest
+    ability = Water Absorb / Swift Swim
+    evs = 252, 252, 0, 0, 4, 0 // HP, Atk, Def, Sp.Atk, Sp.Def, Speed
+    nature = Adamant
+    moves = Surging Strikes, Drain Punch, Jet Punch, Ice Punch / Flip Turn / Close Combat
+    comment = Poliwrath utilizes it's excellent typing, solid bulk, and superb movepool to form a very potent Assault Vest user. While 95 base attack isn't very high by modern standards Poliwrath makes up for it via very powerful attacks such as Surging Strikes and Close Combat. Jet Punch is also an extremely helpful offensive tool doing very solid damage with priority. Drain Punch also keeps Poliwrath healthy and synergizes excellently with Assault Vest. Ice Punch is a very solid coverage option to hit Dragons or Flying / Grass types in a pinch, and Flip Turn is an excellent tempo tool. Depending on your team composition Poliwrath can utilize a very useful water immunity in Water Absorb, or the powerful rain abusing Swift Swim to highten its offensive potential further.
+    tags = Normal-Mode, Defense, Offense
+}
