@@ -98,7 +98,7 @@ Unlike some other body press users Avalugg isnt completely helpless against Ghos
 The only threats to this build are special attackers given Avalugg's pitiful special defense, critical hits although to a lesser degree since you still have naturally high defense, and Unaware pokemon that can outstall you quite easily.
     tags = Normal-Mode, Defense, Stall
 }
-Lickylicky 
+Lickilicky
 {
 	name = BomberLicky
 	item = Assault Vest / Focus Sash / Choice Band / Normal Gem
