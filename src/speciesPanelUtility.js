@@ -711,24 +711,29 @@ function createStrategyMisc(label, value, speciesName){
 
     miscLabel.innerText = `${label}:`
     if(label === "EVs"){
-        for(let i = 0; i < value.length; i++){
-            if(value[i] > 0){
-                if(!miscValue.innerText == ""){
-                    miscValue.innerText += " / "
+        if(value){
+            for(let i = 0; i < value.length; i++){
+                if(value[i] > 0){
+                    if(!miscValue.innerText == ""){
+                        miscValue.innerText += " / "
+                    }
+                    if(i === 0)
+                        miscValue.innerText += `${value[i]} HP`
+                    else if(i === 1)
+                        miscValue.innerText += `${value[i]} Atk`
+                    else if(i === 2)
+                        miscValue.innerText += `${value[i]} Def`
+                    else if(i === 3)
+                        miscValue.innerText += `${value[i]} SpA`
+                    else if(i === 4)
+                        miscValue.innerText += `${value[i]} SpD`
+                    else if(i === 5)
+                        miscValue.innerText += `${value[i]} Spe`
                 }
-                if(i === 0)
-                    miscValue.innerText += `${value[i]} HP`
-                else if(i === 1)
-                    miscValue.innerText += `${value[i]} Atk`
-                else if(i === 2)
-                    miscValue.innerText += `${value[i]} Def`
-                else if(i === 3)
-                    miscValue.innerText += `${value[i]} SpA`
-                else if(i === 4)
-                    miscValue.innerText += `${value[i]} SpD`
-                else if(i === 5)
-                    miscValue.innerText += `${value[i]} Spe`
             }
+        }
+        else{
+            miscValue.innerText = `Hardcore-Mode` // RR specific code, change string for other repo
         }
     }
     else{
