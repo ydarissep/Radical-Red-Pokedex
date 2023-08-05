@@ -317,8 +317,6 @@ async function regexTMHMLearnsets(textTMHMLearnsets, species, start, end){
                     move = "U-Turn"
                 else if(move === "Drainingkiss")
                     move = "Draining Kiss"
-                else if(move === "Acrobatics")
-                    move = "Smart Strike"
 
                 const rawTMHM = fetch(`https://raw.githubusercontent.com/ydarissep/Radical-Red-Pokedex/main/data/species/tm_compatibility/${count} - ${move}.txt`)
                 .then(promises => {
