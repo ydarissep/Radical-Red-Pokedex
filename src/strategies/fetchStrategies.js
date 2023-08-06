@@ -1,6 +1,6 @@
 async function getStrategies(strategies){
     footerP("Fetching strategies")
-    const rawStrategies = await fetch(`https://raw.githubusercontent.com/ashytastic/Radical-Red-Pokedex/main/data/dex-strategy.md`)
+    const rawStrategies = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/dex-strategy.md`)
     const textStrategies = await rawStrategies.text()
 
     return regexStrategies(textStrategies, strategies)
