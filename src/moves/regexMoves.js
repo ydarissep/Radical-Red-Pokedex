@@ -24,7 +24,7 @@ function regexMovesDescription(textMovesDescription, moves){
                 move = []
             else if(move.length > 0){
                 for(let i = 0; i < move.length; i++)
-                    moves[move[i]]["description"] = [line.replace(/\\+n/g, " ")]
+                    moves[move[i]]["description"] = [line.replace(/\\+n/g, " ").replace(/\\/g, "")]
             }
         }
     })
@@ -373,8 +373,11 @@ function regexMovesFlags(textMovesFlags, moves){
     })
 
     Object.keys(moves).forEach(move => {
-        if(moves[move]["priority"] != 0){
-            moves[move]["flags"].push(`Priority ${moves[move]["priority"]}`)
+        if(moves[move]["priority"] > 0){
+            moves[move]["flags"].push(`Priority P ${moves[move]["priority"]}`)
+        }
+        else if(moves[move]["priority"] < 0){
+            moves[move]["flags"].push(`Priority M ${moves[move]["priority"]}`)
         }
     })
 
