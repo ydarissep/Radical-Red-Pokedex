@@ -172,7 +172,6 @@ async function regexChangesGen9(textChangesGen9, species){
                     if(matchInt){
                         for(let i = 0; i < matchInt.length; i++){
                             if(species[name][stats[i]] != matchInt[i]){
-                                console.log(name, species[name][stats[i]], matchInt[i])
                                 species[name]["changes"].push([stats[i], matchInt[i]])
                             }
                         }

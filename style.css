@@ -379,8 +379,13 @@ td, th {
     margin-bottom: 10px;
 }
 
-.hyperlink:hover {
+.hyperlink {
     text-decoration: underline;
+    color: #FFFFFF;
+}
+
+.hyperlink:hover {
+    color: #A8D3FF !important;
     cursor: pointer;
 }
 

@@ -29,6 +29,7 @@ const recommendedCoverage = document.getElementById("recommendedCoverage")
 const speciesOffensiveTypeChart = document.getElementById("speciesOffensiveTypeChart")
 const speciesStrategiesContainer = document.getElementById("speciesStrategiesContainer")
 const speciesStrategies = document.getElementById("speciesStrategies")
+const speciesPanelLevelUpFromPreviousEvoTable = document.getElementById("speciesPanelLevelUpFromPreviousEvoTable")
 const speciesPanelLevelUpTable = document.getElementById("speciesPanelLevelUpTable")
 const speciesPanelTMHMTable = document.getElementById("speciesPanelTMHMTable")
 const speciesPanelTutorTable = document.getElementById("speciesPanelTutorTable")
@@ -81,17 +82,32 @@ async function createSpeciesPanel(name){
             abilityName.innerText = abilities[ability]["ingameName"]
             abilityDescription.innerText = abilities[ability]["description"]
 
-            if(i === 2)
+            if(i === 2){
                 abilityName.className = "bold"
-            else
+            }
+            else{
                 abilityName.className = "italic"
+            }
+            abilityName.classList.add("hyperlink")
 
             abilityDescription.className = "speciesPanelAbilitiesDescriptionPadding"
             abilityContainer.className = "flex wrap"
 
             if(isHardcoreRestricted(abilities[ability]["name"])){
-                    abilityName.style.color = "#FF8F8F"
+                abilityName.style.color = "#FF8F8F"
             }
+
+            abilityName.addEventListener("click", async() => {
+                if(!speciesButton.classList.contains("activeButton")){
+                    tracker = speciesTracker
+                    await tableButtonClick("species")
+                }
+                deleteFiltersFromTable()
+
+                createFilter(abilities[ability]["ingameName"], "Ability")
+                speciesPanel("hide")
+                window.scrollTo({ top: 0})
+            })
 
             abilityContainer.append(abilityName)
             abilityContainer.append(abilityDescription)
@@ -392,10 +408,7 @@ async function createSpeciesPanel(name){
 
 
 
-
-
-
-
+    buildSpeciesPanelLevelUpFromPreviousEvoTable(speciesPanelLevelUpFromPreviousEvoTable, name)
     buildSpeciesPanelDoubleLearnsetsTable(speciesPanelLevelUpTable, name, "levelUpLearnsets")
     buildSpeciesPanelSingleLearnsetsTable(speciesPanelTMHMTable, name, "TMHMLearnsets")
     buildSpeciesPanelSingleLearnsetsTable(speciesPanelTutorTable, name, "tutorLearnsets")
@@ -427,7 +440,7 @@ function createClickableImgAndName(speciesName, evoConditions = false, showName 
     const sprite = document.createElement("img")
     const name = document.createElement("span")
 
-    container.className = "flexCenter flex flexRow hover"
+    container.className = "flexCenter flex flexRow hyperlink"
 
     sprite.src = getSpeciesSpriteSrc(speciesName)
     sprite.className = `sprite${speciesName}`
@@ -796,8 +809,111 @@ function createStrategyMisc(label, value, speciesName){
 
 
 
+function buildSpeciesPanelLevelUpFromPreviousEvoTable(table, name, label = "", asc = 0){
 
+    let evolutionLineArray = [name]
+    for(let i = species[name]["evolutionLine"].indexOf(name) - 1; i >= 0; i--){
+        const targetSpecies = species[name]["evolutionLine"][i]
+        for(let j = 0; j < species[targetSpecies]["evolution"].length; j++){
+            if(evolutionLineArray.includes(species[targetSpecies]["evolution"][j][2]) && !evolutionLineArray.includes(targetSpecies)){
+                evolutionLineArray.push(targetSpecies)
+            }
+        }
+    }
 
+    const Tbody = table.querySelector("tbody")
+    const THead = table.querySelector("thead")
+
+    if(!Tbody || !THead){
+        return
+    }
+
+    while(Tbody.firstChild){
+        Tbody.removeChild(Tbody.firstChild)
+    }
+
+    let movesArray = []
+
+    for(let i = 1; i < evolutionLineArray.length; i++){
+        sortLearnsetsArray(THead, species[evolutionLineArray[i]]["levelUpLearnsets"], label, asc).forEach(move => {
+            if(!speciesCanLearnMove(species[name], move[0]) && !movesArray.includes(move[0])){
+
+                movesArray.push(move[0])
+
+                const row = document.createElement("tr")
+    
+                const moveName = document.createElement("td")
+                moveName.innerText = moves[move[0]]["ingameName"]
+                moveName.className = "bold"
+                if(isHardcoreRestricted(move[0])){
+                    moveName.style.color = "#FF8F8F"
+                }
+                row.append(moveName)
+    
+                const typeContainer = document.createElement("td")
+                const type = document.createElement("div")
+                type.innerText = sanitizeString(moves[move[0]]["type"])
+                type.className = `${moves[move[0]]["type"]} background`
+                typeContainer.append(type)
+                row.append(typeContainer)
+    
+                const splitContainer = document.createElement("td")
+                const splitIcon = document.createElement("img")
+                splitIcon.src = `src/moves/${moves[move[0]]["split"]}.png`
+                splitIcon.className = `${sanitizeString(moves[move[0]]["split"])} splitIcon`
+                splitContainer.append(splitIcon)
+                row.append(splitContainer)
+    
+                const power = document.createElement("td")
+                power.className = "speciesPanelLearnsetsPower"
+                if(moves[move[0]]["power"] != 0){
+                    power.innerText = moves[move[0]]["power"]
+                }
+                else{
+                    power.innerText = "-"   
+                }
+                row.append(power)
+    
+                const accuracy = document.createElement("td")
+                accuracy.className = "speciesPanelLearnsetsAccuracy"
+                if(moves[move[0]]["accuracy"] != 0){
+                    accuracy.innerText = moves[move[0]]["accuracy"]
+                }
+                else{
+                    accuracy.innerText = "-"   
+                }
+                row.append(accuracy)
+    
+                const PP = document.createElement("td")
+                PP.className = "speciesPanelLearnsetsPP"
+                PP.innerText = moves[move[0]]["PP"]
+                row.append(PP)
+    
+                const description = document.createElement("td")
+                description.className = "speciesPanelLearnsetsEffect"
+                for (let j = 0; j < moves[move[0]]["description"].length; j++){
+                    description.innerText += moves[move[0]]["description"][j]
+                }
+    
+                row.addEventListener('click', function () {
+                    createPopupForMove(moves[move[0]])
+                    overlay.style.display = 'block'
+                }) 
+    
+                row.append(description)
+    
+                Tbody.append(row)
+            }
+        })
+    }
+
+    if(Tbody.children.length > 0){
+        table.classList.remove("hide")
+    }
+    else{
+        table.classList.add("hide")
+    }
+}
 
 
 function buildSpeciesPanelDoubleLearnsetsTable(table, name, input, label = "", asc = 0){
