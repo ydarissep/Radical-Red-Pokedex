@@ -4878,6 +4878,7 @@ const u16 gEggMoves[] =
 	
 	egg_moves(DONDOZO,
 		MOVE_CURSE,
+		// MOVE_FISSURE,
 		MOVE_THRASH,
 		MOVE_YAWN),
 

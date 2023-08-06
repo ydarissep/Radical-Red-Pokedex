@@ -10,14 +10,6 @@ golurk
 	
 	You can add multiple lines of comments like this!
     tags = Singles, Offensive
-    paste = 4 Attacks (Kingler-Mega) @ Kinglerite  
-Ability: Tough Claws  
-EVs: 252 Atk / 4 SpD / 252 Spe  
-Jolly Nature  
-- Crabhammer/Liquidation  
-- Ice Hammer/Knock Off  
-- High Horsepower/Close Combat  
-- Aqua Jet  
 }
 
 
