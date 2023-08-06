@@ -369,6 +369,12 @@ function regexMovesFlags(textMovesFlags, moves){
             moves[matchMove[0]]["flags"].push(flagName) 
         }
     })
+	
+	Object.keys(moves).forEach(move => {
+        if(moves[move]["priority"] != 0){
+            moves[move]["flags"].push(`Priority ${moves[move]["priority"]}`)
+        }
+    })
 
     return moves
 }

@@ -693,17 +693,17 @@ function createSpeciesStrategy(strategy, speciesName){
                     paste += `${strategy["paste"][i]}\n`
                 }
             }
-
-            navigator.clipboard.writeText(paste).then(
-                () => {
+			try{
+				navigator.clipboard.writeText(paste).then(() => {                
                     strategyExportButton.classList.add("exportSuccess")
                     strategyExportButton.innerText = "Exported"
-                },
-                () => {
-                    strategyExportButton.classList.add("exportFailure")
-                    strategyExportButton.innerText = "Nuh uh"
-                }
-            )
+				})
+			}
+			catch(e){
+				strategyExportButton.classList.add("exportFailure")
+				strategyExportButton.innerText = "Nuh uh"
+				console.log(e)
+			}
               
         })
     }
