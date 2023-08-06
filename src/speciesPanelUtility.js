@@ -701,19 +701,23 @@ function createSpeciesStrategy(strategy, speciesName){
                 })
             }
             catch(e){
-                strategyExportButton.classList.add("exportFailure")
-                strategyExportButton.innerText = "Nuh uh"
-                console.log(e)
+                try{
+                    copyToClipboard(paste)
+                    strategyExportButton.classList.add("exportSuccess")
+                    strategyExportButton.innerText = "Exported"
+                }
+                catch(e){
+                    strategyExportButton.classList.add("exportFailure")
+                    strategyExportButton.innerText = "Nuh uh"
+                    console.log(e)
+                }
             }
-              
+            
         })
     }
 
     return strategyContainer
 }
-
-
-
 
 
 

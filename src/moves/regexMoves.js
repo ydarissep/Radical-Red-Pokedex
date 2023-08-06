@@ -374,10 +374,10 @@ function regexMovesFlags(textMovesFlags, moves){
 
     Object.keys(moves).forEach(move => {
         if(moves[move]["priority"] > 0){
-            moves[move]["flags"].push(`Priority P ${moves[move]["priority"]}`)
+            moves[move]["flags"].push(`Prio Plus ${moves[move]["priority"]}`)
         }
         else if(moves[move]["priority"] < 0){
-            moves[move]["flags"].push(`Priority M ${moves[move]["priority"]}`)
+            moves[move]["flags"].push(`Prio Minus ${moves[move]["priority"]}`)
         }
     })
 
