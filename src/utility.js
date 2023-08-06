@@ -49,14 +49,14 @@ async function fetchData(){
 
 
 async function fetchTypeChart(){
-    const rawTypeChart = await fetch("https://raw.githubusercontent.com/ashytastic/Radical-Red-Pokedex/main/src/typeChart.json")
+    const rawTypeChart = await fetch("https://raw.githubusercontent.com/ydarissep/inclement-emerald-pokedex/main/src/typeChart.json")
     window.typeChart = await rawTypeChart.json()
 }
 
 
 
 async function forceUpdate(){
-    const update = 37
+    const update = 27
     if(localStorage.getItem("update") != `${update} RR`){
         await localStorage.clear()
         await localStorage.setItem("update", `${update} RR`)
@@ -534,7 +534,6 @@ function isHardcoreRestricted(string){
         "ABILITY_CONTRARY",
         "ABILITY_GRASSYSURGE",
         "ABILITY_PSYCHICSURGE",
-		"ABILITY_TOXICDEBRIS",
     ]
     if(restrictedAbilities.includes(string)){
         return true
