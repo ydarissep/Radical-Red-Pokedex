@@ -106,7 +106,7 @@ function regexAbilitiesIngameName(textAbilitiesIngameName, abilities){
             abilitySanitizedFound = true
     })
 
-
+    abilities["ABILITY_NEUTRALIZINGGAS"]["ingameName"] = "Neutralizing Gas"
 
     return abilities
 }
