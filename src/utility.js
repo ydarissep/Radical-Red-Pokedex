@@ -25,26 +25,32 @@ function sanitizeString(string){
 
 
 async function fetchData(){
-    history.pushState(null, null, location.href)
-    const queryString = window.location.search
-    const urlParams = new URLSearchParams(queryString)
+    try{
+        history.pushState(null, null, location.href)
+        const queryString = window.location.search
+        const urlParams = new URLSearchParams(queryString)
 
-    await forceUpdate()
+        await forceUpdate()
 
-    await fetchMovesObj()
-    await fetchAbilitiesObj()
-    await fetchSpeciesObj()
-    await fetchLocationsObj()
-    await fetchStrategiesObj()
-    
-    await fetchTypeChart()
+        await fetchMovesObj()
+        await fetchAbilitiesObj()
+        await fetchSpeciesObj()
+        await fetchLocationsObj()
+        await fetchStrategiesObj()
+        
+        await fetchTypeChart()
 
-    await setDataList()
-    await setFilters()
-    await displaySetup()
-    await displayParams(urlParams)
+        await setDataList()
+        await setFilters()
+        await displaySetup()
+        await displayParams(urlParams)
 
-    await window.scrollTo(0, 0)
+        await window.scrollTo(0, 0)
+    }
+    catch(e) {
+        footerP(e.message)
+        footerP(e.stack)
+    }
 }
 
 
