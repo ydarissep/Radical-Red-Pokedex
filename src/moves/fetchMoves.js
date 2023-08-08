@@ -1,6 +1,6 @@
 async function getMoves(moves){
     footerP("Fetching moves")
-    const rawMoves = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/moves/battle_moves.c`)
+    const rawMoves = await fetch(`./data/moves/battle_moves.c`)
     const textMoves = await rawMoves.text()
 
     return regexMoves(textMoves, moves)
