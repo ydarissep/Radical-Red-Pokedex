@@ -55,7 +55,7 @@ async function fetchTypeChart(){
     window.typeChart = {}
     try{
         let rawTypeChart = await fetch("https://raw.githubusercontent.com/ydarissep/inclement-emerald-pokedex/main/src/typeChart.json")
-        typeChar = await rawTypeChart.json()
+        typeChart = await rawTypeChart.json()
     }
     catch{
         typeChart = backup[5]
@@ -76,7 +76,7 @@ async function forceUpdate(){
 
 
 function exportData(){
-    console.log(`const let = [${JSON.stringify(moves)}, ${JSON.stringify(abilities)}, ${JSON.stringify(species)}, ${JSON.stringify(locations)}, ${JSON.stringify(strategies)}, ${JSON.stringify(typeChart)}]`)
+    console.log(`let backup = [${JSON.stringify(moves)}, ${JSON.stringify(abilities)}, ${JSON.stringify(species)}, ${JSON.stringify(locations)}, ${JSON.stringify(strategies)}, ${JSON.stringify(typeChart)}]`)
 }
 
 
