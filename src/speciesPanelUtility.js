@@ -1179,17 +1179,19 @@ function sortLearnsetsArray(thead, learnsetsArray, label, asc){
 
 
 
-document.querySelectorAll("#speciesPanelLevelUpTableTHead, #speciesPanelTMHMTableTHead, #speciesPanelTutorTableTHead, #speciesPanelEggMovesTableTHead").forEach(thead => {
+document.querySelectorAll("#speciesPanelLevelUpFromPreviousEvoTableTHead, #speciesPanelLevelUpTableTHead, #speciesPanelTMHMTableTHead, #speciesPanelTutorTableTHead, #speciesPanelEggMovesTableTHead").forEach(thead => {
     thead.querySelectorAll("th").forEach(th => {
         th.addEventListener("click", () => {
             const offset = window.scrollY
             if(th.classList.contains("th-sort-desc")){
+                buildSpeciesPanelLevelUpFromPreviousEvoTable(speciesPanelLevelUpFromPreviousEvoTable, panelSpecies, th.innerText, 1)
                 buildSpeciesPanelDoubleLearnsetsTable(speciesPanelLevelUpTable, panelSpecies, "levelUpLearnsets", th.innerText, 1)
                 buildSpeciesPanelSingleLearnsetsTable(speciesPanelTMHMTable, panelSpecies, "TMHMLearnsets", th.innerText, 1)
                 buildSpeciesPanelSingleLearnsetsTable(speciesPanelTutorTable, panelSpecies, "tutorLearnsets", th.innerText, 1)
                 buildSpeciesPanelSingleLearnsetsTable(speciesPanelEggMovesTable, panelSpecies, "eggMovesLearnsets", th.innerText, 1)
             }
             else{
+                buildSpeciesPanelLevelUpFromPreviousEvoTable(speciesPanelLevelUpFromPreviousEvoTable, panelSpecies, th.innerText, -1)
                 buildSpeciesPanelDoubleLearnsetsTable(speciesPanelLevelUpTable, panelSpecies, "levelUpLearnsets", th.innerText, -1)
                 buildSpeciesPanelSingleLearnsetsTable(speciesPanelTMHMTable, panelSpecies, "TMHMLearnsets", th.innerText, -1)
                 buildSpeciesPanelSingleLearnsetsTable(speciesPanelTutorTable, panelSpecies, "tutorLearnsets", th.innerText, -1)

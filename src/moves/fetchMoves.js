@@ -1,13 +1,12 @@
 async function getMoves(moves){
     footerP("Fetching moves")
-    const rawMoves = await fetch(`./data/moves/battle_moves.c`)
+    const rawMoves = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/moves/battle_moves.c`)
     const textMoves = await rawMoves.text()
 
     return regexMoves(textMoves, moves)
 }
 
 async function getMovesDescription(moves){
-    footerP("Fetching moves descriptions")
     const rawMovesDescription = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/moves/attack_descriptions.string`)
     const textMovesDescription = await rawMovesDescription.text()
 
@@ -15,7 +14,6 @@ async function getMovesDescription(moves){
 }
 
 async function getMovesIngameName(moves){
-    footerP("Fetching moves ingame name")
     const rawMovesIngameName = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/moves/attack_name_table%20long.string`)
     const textMovesIngameName = await rawMovesIngameName.text()
 
@@ -39,11 +37,18 @@ async function getMovesFlags(moves){
 
 async function buildMovesObj(){
     let moves = {}
-    moves = await getMoves(moves)
-    moves = await getVanillaMovesDescription(moves)
-    moves = await getMovesDescription(moves)
-    moves = await getMovesIngameName(moves)
-    moves = await getMovesFlags(moves)
+    try{
+        moves = await getMoves(moves)
+        moves = await getVanillaMovesDescription(moves)
+        moves = await getMovesDescription(moves)
+        moves = await getMovesIngameName(moves)
+        moves = await getMovesFlags(moves)
+    }
+    catch(e){
+        footerP(e)
+        footerP("Fetching backup moves")
+        moves = backup[0]
+    }
 
     await localStorage.setItem("moves", LZString.compressToUTF16(JSON.stringify(moves)))
     return moves

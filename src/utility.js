@@ -25,38 +25,41 @@ function sanitizeString(string){
 
 
 async function fetchData(){
-    try{
-        history.pushState(null, null, location.href)
-        const queryString = window.location.search
-        const urlParams = new URLSearchParams(queryString)
+    history.pushState(null, null, location.href)
+    const queryString = window.location.search
+    const urlParams = new URLSearchParams(queryString)
 
-        await forceUpdate()
+    await forceUpdate()
 
-        await fetchMovesObj()
-        await fetchAbilitiesObj()
-        await fetchSpeciesObj()
-        await fetchLocationsObj()
-        await fetchStrategiesObj()
-        
-        await fetchTypeChart()
+    await fetchMovesObj()
+    await fetchAbilitiesObj()
+    await fetchSpeciesObj()
+    await fetchLocationsObj()
+    await fetchStrategiesObj()
+    
+    await fetchTypeChart()
 
-        await setDataList()
-        await setFilters()
-        await displaySetup()
-        await displayParams(urlParams)
+    await setDataList()
+    await setFilters()
+    await displaySetup()
+    await displayParams(urlParams)
 
-        await window.scrollTo(0, 0)
-    }
-    catch(e) {
-        footerP(e.message)
-        footerP(e.stack)
-    }
+    document.getElementById("backupFile").remove()
+    backup = undefined
+
+    await window.scrollTo(0, 0)
 }
 
 
 async function fetchTypeChart(){
-    const rawTypeChart = await fetch("https://raw.githubusercontent.com/ydarissep/inclement-emerald-pokedex/main/src/typeChart.json")
-    window.typeChart = await rawTypeChart.json()
+    window.typeChart = {}
+    try{
+        let rawTypeChart = await fetch("https://raw.githubusercontent.com/ydarissep/inclement-emerald-pokedex/main/src/typeChart.json")
+        typeChar = await rawTypeChart.json()
+    }
+    catch{
+        typeChart = backup[5]
+    }
 }
 
 
@@ -71,6 +74,10 @@ async function forceUpdate(){
 }
 
 
+
+function exportData(){
+    console.log(`const let = [${JSON.stringify(moves)}, ${JSON.stringify(abilities)}, ${JSON.stringify(species)}, ${JSON.stringify(locations)}, ${JSON.stringify(strategies)}, ${JSON.stringify(typeChart)}]`)
+}
 
 
 

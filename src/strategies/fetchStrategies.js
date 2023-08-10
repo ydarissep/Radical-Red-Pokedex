@@ -11,8 +11,14 @@ async function getStrategies(strategies){
 
 async function buildStrategiesObj(){
     let strategies = {}
-    
-    strategies = await getStrategies(strategies)
+    try{
+        strategies = await getStrategies(strategies)
+    }
+    catch(e){
+        footerP(e)
+        footerP("Fetching backup strategies")
+        strategies = backup[4]
+    }
 
     //await localStorage.setItem("strategies", LZString.compressToUTF16(JSON.stringify(strategies)))
     return strategies

@@ -8,14 +8,12 @@ async function getSpecies(species){
 
 
 async function getBaseStats(species){
-    footerP("Fetching base stats")
     const rawBaseStats = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/species/Base_Stats.c`)
     const textBaseStats = await rawBaseStats.text()
     return await regexBaseStats(textBaseStats, species)
 }
 
 async function getLevelUpLearnsets(species){
-    footerP("Fetching level up learnsets")
     const rawLevelUpLearnsets = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/species/Learnsets.c`)
     const textLevelUpLearnsets = await rawLevelUpLearnsets.text()
 
@@ -30,7 +28,6 @@ async function getLevelUpLearnsets(species){
 }
 
 async function getTMHMLearnsets(species){
-    footerP("Fetching TMHM learnsets")
     const rawTMHMLearnsets = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/species/TM_Tutor_Tables.c`)
     const textTMHMLearnsets = await rawTMHMLearnsets.text()
 
@@ -38,7 +35,6 @@ async function getTMHMLearnsets(species){
 }
 
 async function getTutorLearnsets(species){
-    footerP("Fetching tutor learnsets")
     const rawTutorLearnsets = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/species/TM_Tutor_Tables.c`)
     const textTutorLearnsets = await rawTutorLearnsets.text()
 
@@ -46,7 +42,6 @@ async function getTutorLearnsets(species){
 }
 
 async function getEvolution(species){
-    footerP("Fetching evolution line")
     const rawEvolution = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/species/Evolution%20Table.c`)
     const textEvolution = await rawEvolution.text()
 
@@ -54,7 +49,6 @@ async function getEvolution(species){
 }
 
 async function getForms(species){
-    footerP("Fetching alternate forms")
     const rawForms = await fetch(`https://raw.githubusercontent.com/${repo}/master/src/data/pokemon/form_species_tables.h`)
     const textForms = await rawForms.text()
 
@@ -62,7 +56,6 @@ async function getForms(species){
 }
 
 async function getEggMovesLearnsets(species){
-    footerP("Fetching egg moves learnsets")
     const rawEggMoves = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/species/Egg_Moves.c`)
     const textEggMoves = await rawEggMoves.text()
 
@@ -70,8 +63,6 @@ async function getEggMovesLearnsets(species){
 }
 
 async function getSprite(species){
-    footerP("Fetching sprites")
-
     const rawSprite = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/species/Front_Pic_Table.c`)
     const textSprite = await rawSprite.text()
 
@@ -86,7 +77,6 @@ async function getReplaceAbilities(species){
 }
 
 async function getChanges(species, url){
-    footerP("Fetching species changes")
     const rawChanges = await fetch(url)
     const textChanges = await rawChanges.text()
 
@@ -158,25 +148,32 @@ async function cleanSpecies(species){
 
 async function buildSpeciesObj(){
     let species = {}
-    species = await getSpecies(species)
+    try{
+        species = await getSpecies(species)
     
-    species = await initializeSpeciesObj(species)
+        species = await initializeSpeciesObj(species)
 
-    species = await getEvolution(species)
-    //species = await getForms(species) // should be called in that order until here    // done in getLevelUpLearnsets for CFRU
-    species = await getBaseStats(species)
-    species = await getReplaceAbilities(species)
-    species = await getChanges(species, "https://raw.githubusercontent.com/Skeli789/Dynamic-Pokemon-Expansion/master/src/Base_Stats.c")
-    species = await getLevelUpLearnsets(species)
-    species = await getTMHMLearnsets(species)
-    species = await getEggMovesLearnsets(species)
-    species = await getTutorLearnsets(species)
-    species = await getSprite(species)
+        species = await getEvolution(species)
+        //species = await getForms(species) // should be called in that order until here    // done in getLevelUpLearnsets for CFRU
+        species = await getBaseStats(species)
+        species = await getReplaceAbilities(species)
+        species = await getChanges(species, "https://raw.githubusercontent.com/Skeli789/Dynamic-Pokemon-Expansion/master/src/Base_Stats.c")
+        species = await getLevelUpLearnsets(species)
+        species = await getTMHMLearnsets(species)
+        species = await getEggMovesLearnsets(species)
+        species = await getTutorLearnsets(species)
+        species = await getSprite(species)
 
-    species = await altFormsLearnsets(species, "forms", "tutorLearnsets")
-    species = await altFormsLearnsets(species, "forms", "TMHMLearnsets")
+        species = await altFormsLearnsets(species, "forms", "tutorLearnsets")
+        species = await altFormsLearnsets(species, "forms", "TMHMLearnsets")
 
-    species = await cleanSpecies(species)
+        species = await cleanSpecies(species)
+    }
+    catch(e){
+        footerP(e)
+        footerP("Fetching backup species")
+        species = backup[2]
+    }
 
     await localStorage.setItem("species", LZString.compressToUTF16(JSON.stringify(species)))
     return species
@@ -184,7 +181,7 @@ async function buildSpeciesObj(){
 
 
 function initializeSpeciesObj(species){
-    footerP("Initializing species")
+    //footerP("Initializing species")
     for (const name of Object.keys(species)){
         species[name]["baseHP"] = 0
         species[name]["baseAttack"] = 0

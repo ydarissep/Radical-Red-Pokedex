@@ -1,5 +1,5 @@
 async function getWildLocations(locations){
-    footerP("Fetching wild locations")
+    footerP("Fetching locations")
     const rawWildLocations = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/locations/wild_encounter_tables.c`)
     const textWildLocations = await rawWildLocations.text()
 
@@ -7,7 +7,6 @@ async function getWildLocations(locations){
 }
 
 async function getRaidLocations(locations){
-    footerP("Fetching raid locations")
     const rawRaidLocations = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/locations/raid_encounters.h`)
     const textRaidLocations = await rawRaidLocations.text()
 
@@ -15,7 +14,6 @@ async function getRaidLocations(locations){
 }
 
 async function getManualLocations(locations){
-    footerP("Fetching manual locations")
     const rawManualLocations = await fetch(`https://raw.githubusercontent.com/${repo}/main/data/locations/manualLocations.js`)
     const jsonManualLocations = await rawManualLocations.json()
 
@@ -24,11 +22,16 @@ async function getManualLocations(locations){
 
 async function buildLocationsObj(){
     let locations = {}
-
-    locations = await getWildLocations(locations)
-    locations = await getRaidLocations(locations)
-    locations = await getManualLocations(locations)
-
+    try{
+        locations = await getWildLocations(locations)
+        locations = await getRaidLocations(locations)
+        //locations = await getManualLocations(locations)
+    }
+    catch(e){
+        footerP(e)
+        footerP("Fetching backup locations")
+        locations = backup[3]
+    }
 
     await localStorage.setItem("locations", LZString.compressToUTF16(JSON.stringify(locations)))
     return locations
