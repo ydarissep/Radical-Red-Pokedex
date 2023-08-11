@@ -5,9 +5,16 @@ function appendSpeciesToTable(speciesName){
     }
 
     const tBody = speciesTableTbody
-    let row = document.createElement("tr")
+
+    const hrefContainer = document.createElement("a")
+    hrefContainer.href = `${window.location.origin}/species=${speciesName}`
+    hrefContainer.onclick = function(){return false}
+    hrefContainer.classList.add("hrefContainer")
+
+    const row = document.createElement("tr")
     row.setAttribute("id", `${speciesName}`)
-    tBody.append(row)
+    hrefContainer.append(row)
+    tBody.append(hrefContainer)
 
     let IDcontainer = document.createElement("td")
     let ID = document.createElement("div")
@@ -15,7 +22,6 @@ function appendSpeciesToTable(speciesName){
     ID.innerText = species[speciesName]["ID"]
     IDcontainer.append(ID)
     row.append(IDcontainer)
-
 
     let spriteContainer = document.createElement("td")
     spriteContainer.className = "sprite"

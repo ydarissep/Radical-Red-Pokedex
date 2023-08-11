@@ -439,6 +439,11 @@ function createClickableImgAndName(speciesName, evoConditions = false, showName 
     const container = document.createElement("div")
     const sprite = document.createElement("img")
     const name = document.createElement("span")
+    
+    const hrefContainer = document.createElement("a")
+    hrefContainer.href = `${window.location.origin}/species=${speciesName}`
+    hrefContainer.onclick = function(){return false}
+    hrefContainer.classList.add("hrefContainer")
 
     container.className = "flexCenter flex flexRow hyperlink"
 
@@ -475,7 +480,9 @@ function createClickableImgAndName(speciesName, evoConditions = false, showName 
         createSpeciesPanel(speciesName)
     })
 
-    return container
+    hrefContainer.append(container)
+
+    return hrefContainer
 }
 
 

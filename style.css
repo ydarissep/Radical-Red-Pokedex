@@ -404,3 +404,8 @@ td, th {
     cursor: pointer;
     background: rgba(215, 212, 231, 0.4) !important;
 }
+
+.hrefContainer {
+    display: contents !important;
+    all: inherit
+}
