@@ -7,7 +7,7 @@ function appendSpeciesToTable(speciesName){
     const tBody = speciesTableTbody
 
     const hrefContainer = document.createElement("a")
-    hrefContainer.href = `${window.location.origin + window.location.pathname}/species=${speciesName}`
+    hrefContainer.href = `${window.location.origin + window.location.pathname}?species=${speciesName}`
     hrefContainer.onclick = function(){return false}
     hrefContainer.classList.add("hrefContainer")
 

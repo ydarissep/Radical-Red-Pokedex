@@ -441,7 +441,7 @@ function createClickableImgAndName(speciesName, evoConditions = false, showName 
     const name = document.createElement("span")
     
     const hrefContainer = document.createElement("a")
-    hrefContainer.href = `${window.location.origin + window.location.pathname}/species=${speciesName}`
+    hrefContainer.href = `${window.location.origin + window.location.pathname}?species=${speciesName}`
     hrefContainer.onclick = function(){return false}
     hrefContainer.classList.add("hrefContainer")
 
