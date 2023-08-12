@@ -407,6 +407,5 @@ td, th {
 
 .hrefContainer {
     display: contents !important;
-    background: initial;
     all: inherit
 }
