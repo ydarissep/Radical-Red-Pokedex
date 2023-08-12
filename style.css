@@ -69,7 +69,7 @@ tr, th {
   transition: background 0.2s ease-in-out;
 }
 
-tr:nth-of-type(odd) {  
+:not(a) > tr:nth-of-type(odd), a:nth-of-type(odd) tr {  
   background: #7f85a01a; 
 }
 
@@ -407,5 +407,6 @@ td, th {
 
 .hrefContainer {
     display: contents !important;
+    background: initial;
     all: inherit
 }
