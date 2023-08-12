@@ -39,25 +39,35 @@ async function fetchData(){
     
     await fetchTypeChart()
 
-    await setDataList()
-    await setFilters()
-    await displaySetup()
-    await displayParams(urlParams)
+    try{
+        await setDataList()
+        await setFilters()
+        await displaySetup()
+        await displayParams(urlParams)
 
-    document.getElementById("backupFile").remove()
-    backup = undefined
+        document.getElementById("backupFile").remove()
+        backup = undefined
 
-    await window.scrollTo(0, 0)
+        await window.scrollTo(0, 0)
+    }
+    catch(e){
+        footerP(e.message)
+        footerP(e.stack)
+    }
 }
 
 
 async function fetchTypeChart(){
+    footerP("Fetching type chart")
     window.typeChart = {}
     try{
         let rawTypeChart = await fetch("https://raw.githubusercontent.com/ydarissep/inclement-emerald-pokedex/main/src/typeChart.json")
         typeChart = await rawTypeChart.json()
     }
-    catch{
+    catch(e){
+        footerP(e.message)
+        footerP(e.stack)
+        footerP("Fetching backup type chart")
         typeChart = backup[5]
     }
 }
