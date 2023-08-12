@@ -28,7 +28,8 @@ async function buildLocationsObj(){
         //locations = await getManualLocations(locations)
     }
     catch(e){
-        footerP(e)
+        footerP(e.message)
+        footerP(e.stack)
         footerP("Fetching backup locations")
         locations = backup[3]
     }

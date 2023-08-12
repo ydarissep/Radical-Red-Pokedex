@@ -170,7 +170,8 @@ async function buildSpeciesObj(){
         species = await cleanSpecies(species)
     }
     catch(e){
-        footerP(e)
+        footerP(e.message)
+        footerP(e.stack)
         footerP("Fetching backup species")
         species = backup[2]
     }

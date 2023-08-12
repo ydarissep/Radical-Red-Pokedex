@@ -15,7 +15,8 @@ async function buildStrategiesObj(){
         strategies = await getStrategies(strategies)
     }
     catch(e){
-        footerP(e)
+        footerP(e.message)
+        footerP(e.stack)
         footerP("Fetching backup strategies")
         strategies = backup[4]
     }

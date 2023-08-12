@@ -51,7 +51,8 @@ async function buildAbilitiesObj(){
         //abilities["ABILITY_GULPMISSLE"]["description"] = "Spits prey if damaged after a swim." // fixed
     }
     catch(e){
-        footerP(e)
+        footerP(e.message)
+        footerP(e.stack)
         footerP("Fetching backup abilities")
         abilities = backup[1]
     }

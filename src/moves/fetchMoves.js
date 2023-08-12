@@ -45,7 +45,8 @@ async function buildMovesObj(){
         moves = await getMovesFlags(moves)
     }
     catch(e){
-        footerP(e)
+        footerP(e.message)
+        footerP(e.stack)
         footerP("Fetching backup moves")
         moves = backup[0]
     }
