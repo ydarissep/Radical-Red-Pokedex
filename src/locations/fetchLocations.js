@@ -28,10 +28,10 @@ async function buildLocationsObj(){
         //locations = await getManualLocations(locations)
     }
     catch(e){
-        footerP(e.message)
-        footerP(e.stack)
+        console.log(e.message)
+        console.log(e.stack)
         footerP("Fetching backup locations")
-        locations = backup[3]
+        locations = backupData[3]
     }
 
     await localStorage.setItem("locations", LZString.compressToUTF16(JSON.stringify(locations)))

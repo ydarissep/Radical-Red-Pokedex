@@ -51,10 +51,10 @@ async function buildAbilitiesObj(){
         //abilities["ABILITY_GULPMISSLE"]["description"] = "Spits prey if damaged after a swim." // fixed
     }
     catch(e){
-        footerP(e.message)
-        footerP(e.stack)
+        console.log(e.message)
+        console.log(e.stack)
         footerP("Fetching backup abilities")
-        abilities = backup[1]
+        abilities = backupData[1]
     }
 
     await localStorage.setItem("abilities", LZString.compressToUTF16(JSON.stringify(abilities)))

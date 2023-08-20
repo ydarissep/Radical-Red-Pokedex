@@ -244,6 +244,10 @@ function selectFilter(value, label){
 
 
 async function setFilters(){
+    document.querySelectorAll(".tableFilter").forEach(el => {
+        el.remove()
+    })
+
     createFilterGroup(["Mega", "Alolan", "Galarian", "Hisuian", "Seviian"], "Form", [speciesFilterList, locationsFilterList])
     createFilterGroup(createFilterArray(["type"], moves), "Type", [speciesFilterList, movesFilterList, locationsFilterList])
     createFilterGroup(createFilterArray(["split"], moves), "Split", [movesFilterList])

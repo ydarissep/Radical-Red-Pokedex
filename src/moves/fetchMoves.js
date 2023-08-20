@@ -45,10 +45,10 @@ async function buildMovesObj(){
         moves = await getMovesFlags(moves)
     }
     catch(e){
-        footerP(e.message)
-        footerP(e.stack)
+        console.log(e.message)
+        console.log(e.stack)
         footerP("Fetching backup moves")
-        moves = backup[0]
+        moves = backupData[0]
     }
 
     await localStorage.setItem("moves", LZString.compressToUTF16(JSON.stringify(moves)))

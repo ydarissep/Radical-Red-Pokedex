@@ -170,10 +170,10 @@ async function buildSpeciesObj(){
         species = await cleanSpecies(species)
     }
     catch(e){
-        footerP(e.message)
-        footerP(e.stack)
+        console.log(e.message)
+        console.log(e.stack)
         footerP("Fetching backup species")
-        species = backup[2]
+        species = backupData[2]
     }
 
     await localStorage.setItem("species", LZString.compressToUTF16(JSON.stringify(species)))

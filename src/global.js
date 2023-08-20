@@ -13,6 +13,7 @@ const openCredits = document.getElementById("openCredits")
 const closeCredits = document.getElementById("closeCredits")
 const modal = document.getElementById("modal")
 const update = document.getElementById("update")
+const backup = document.getElementById("backup")
 const overlay = document.getElementById('overlay')
 const popup = document.getElementById('popup')
 
@@ -371,10 +372,12 @@ function footerIsTouching(entries){
         lazyLoading(false)
         openCredits.classList.remove("hide")
         update.classList.remove("hide")
+        backup.classList.remove("hide")
     }
     else{
         openCredits.classList.add("hide")   
         update.classList.add("hide")
+        backup.classList.add("hide")
     }
 }
 
@@ -482,6 +485,46 @@ update.addEventListener("click", () => {
     window.location.reload()
 })
 
+backup.addEventListener("click", async () => {
+    await useBackup()
+})
+
+async function useBackup(){
+    history.pushState(null, null, location.href)
+    const queryString = window.location.search
+    const urlParams = new URLSearchParams(queryString)
+
+    moves = await backupData[0]
+    if(!localStorage.getItem("moves")){
+        await localStorage.setItem("moves", LZString.compressToUTF16(JSON.stringify(moves)))
+    }
+    abilities = await backupData[1]
+    if(!localStorage.getItem("abilities")){
+        await localStorage.setItem("abilities", LZString.compressToUTF16(JSON.stringify(abilities)))
+    }
+    species = await backupData[2]
+    if(!localStorage.getItem("species")){
+        await localStorage.setItem("species", LZString.compressToUTF16(JSON.stringify(species)))
+    }
+    locations = await backupData[3]
+    if(!localStorage.getItem("locations")){
+        await localStorage.setItem("locations", LZString.compressToUTF16(JSON.stringify(locations)))
+    }
+    strategies = await backupData[4]
+    /*
+    if(!localStorage.getItem("strategies")){
+        await localStorage.setItem("strategies", LZString.compressToUTF16(JSON.stringify(strategies)))
+    }
+    */
+    typeChart = await backupData[5]
+
+    await setDataList()
+    await setFilters()
+    await displaySetup()
+    await displayParams(urlParams)
+
+    await window.scrollTo(0, 0)
+}
 
 window.onbeforeunload = () => {  
     window.scrollTo(0, 0)

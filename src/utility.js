@@ -39,21 +39,12 @@ async function fetchData(){
     
     await fetchTypeChart()
 
-    try{
-        await setDataList()
-        await setFilters()
-        await displaySetup()
-        await displayParams(urlParams)
+    await setDataList()
+    await setFilters()
+    await displaySetup()
+    await displayParams(urlParams)
 
-        document.getElementById("backupFile").remove()
-        backup = undefined
-
-        await window.scrollTo(0, 0)
-    }
-    catch(e){
-        footerP(e.message)
-        footerP(e.stack)
-    }
+    await window.scrollTo(0, 0)
 }
 
 
@@ -65,10 +56,9 @@ async function fetchTypeChart(){
         typeChart = await rawTypeChart.json()
     }
     catch(e){
-        footerP(e.message)
-        footerP(e.stack)
-        footerP("Fetching backup type chart")
-        typeChart = backup[5]
+        console.log(e.message)
+        console.log(e.stack)
+        typeChart = backupData[5]
     }
 }
 
@@ -86,7 +76,7 @@ async function forceUpdate(){
 
 
 function exportData(){
-    console.log(`let backup = [${JSON.stringify(moves)}, ${JSON.stringify(abilities)}, ${JSON.stringify(species)}, ${JSON.stringify(locations)}, ${JSON.stringify(strategies)}, ${JSON.stringify(typeChart)}]`)
+    console.log(`let backupData = [${JSON.stringify(moves)}, ${JSON.stringify(abilities)}, ${JSON.stringify(species)}, ${JSON.stringify(locations)}, ${JSON.stringify(strategies)}, ${JSON.stringify(typeChart)}]`)
 }
 
 
