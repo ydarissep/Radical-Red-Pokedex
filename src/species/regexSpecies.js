@@ -36,7 +36,7 @@ async function regexBaseStats(textBaseStats, species){
     let stop = true, value, name
 
     await lines.forEach(line => {
-
+        checkTimeout()
         if(/#else/i.test(line)){
             stop = true
         }
@@ -95,7 +95,7 @@ async function regexChanges(textChanges, species){
     let value, name, abilities = []
 
     await lines.forEach(line => {
-
+        checkTimeout()
         const matchSpecies = line.match(/SPECIES_\w+/i)
         if(matchSpecies){
             if(name in species && abilities.length >= species[name]["abilities"].length && JSON.stringify(abilities) !== JSON.stringify(species[name]["abilities"])){
@@ -148,7 +148,7 @@ async function regexChangesGen9(textChangesGen9, species){
     let name, abilities = []
 
     await lines.forEach(line => {
-
+        checkTimeout()
         const matchSpecies = line.match(/\[(\w+)\]/)
         if(matchSpecies){
             while(abilities.length < 3){
@@ -228,7 +228,7 @@ async function getLevelUpLearnsetsConversionTable(textLevelUpLearnsetsPointers){
     let conversionTable = {}
 
     await lines.forEach(line => {
-
+        checkTimeout()
         const matchSpecies = line.match(/SPECIES_\w+/i)
         if(matchSpecies){
             const value = matchSpecies[0]
@@ -256,6 +256,7 @@ async function regexLevelUpLearnsets(textLevelUpLearnsets, conversionTable, spec
     let speciesArray = []
 
     await lines.forEach(line => {
+        checkTimeout()
         const matchConversion = line.match(/s\w+LevelUpLearnset/i)
         if(matchConversion){
             speciesArray = conversionTable[matchConversion[0]]
@@ -296,6 +297,7 @@ async function regexTMHMLearnsets(textTMHMLearnsets, species, start, end){
     let startFound = false, TMHM = 0, count = 0
 
     await lines.forEach(line => {
+        checkTimeout()
         if(line.includes(start))
             startFound = true
         else if(line.includes(end))
@@ -359,6 +361,7 @@ async function regexTutorLearnsets(textTutorLearnsets, species, start, end){
     "Aura Sphere", "Heat Wave", "Hurricane", "Power Whip", "High Horsepower", "Bug Buzz", "Phantom Force", "Flare Blitz", "Stored Power", "Gunk Shot", "Tailwind", "Megahorn", "Draco Meteor", "Close Combat", "Dark Hole", "Frenzy Plant", "Hydro Cannon", "Blast Burn"]
 
     await lines.forEach(line => {
+        checkTimeout()
         if(line.includes(start))
             startFound = true
         else if(line.includes(end))
@@ -416,7 +419,7 @@ async function regexEvolution(textEvolution, species){
     let name
 
     await lines.forEach(line =>{
-
+        checkTimeout()
         const matchSpecies = line.match(/\[ *(SPECIES_\w+) *\]/i)
         if(matchSpecies){
             name = matchSpecies[1]
@@ -481,8 +484,8 @@ async function regexForms(textForms, species){
     let speciesArray = []
 
     await lines.forEach(line => {
+        checkTimeout()
         const matchSpecies = line.match(/SPECIES_\w+/i)
-        
         if(/FORM_SPECIES_END/i.test(line)){
             for(let i = 0; i < speciesArray.length; i++)
                 species[speciesArray[i]]["forms"] = speciesArray
@@ -509,6 +512,7 @@ async function regexEggMovesLearnsets(textEggMoves, species){
     let name = null
 
     await lines.forEach(line => {
+        checkTimeout()
         if(/egg_moves/i.test(line)){
             name = null
         }
@@ -539,6 +543,7 @@ async function regexReplaceAbilities(textReplaceAbilities, species){
     let speciesName = "", ability = "", replaceAbility = ""
 
     await lines.forEach(line => {
+        checkTimeout()
         if(line.includes("{")){
             speciesName = ""
             ability = ""
@@ -575,6 +580,7 @@ async function regexSprite(textSprite, species){
     const lines = textSprite.split("\n")
 
     await lines.forEach(line => {
+        checkTimeout()
         const matchSpecies = line.match(/SPECIES_\w+/i)
         if(matchSpecies){
             let name = matchSpecies[0]

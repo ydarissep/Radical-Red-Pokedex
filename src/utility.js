@@ -25,6 +25,10 @@ function sanitizeString(string){
 
 
 async function fetchData(){
+    setTimeout(() => {
+        timeout = true
+    }, "20000");
+
     history.pushState(null, null, location.href)
     const queryString = window.location.search
     const urlParams = new URLSearchParams(queryString)
@@ -45,6 +49,29 @@ async function fetchData(){
     await displayParams(urlParams)
 
     await window.scrollTo(0, 0)
+
+
+
+    /*
+    if(await fetchMovesObj()){
+        await fetchAbilitiesObj()
+        await fetchSpeciesObj()
+        await fetchLocationsObj()
+        await fetchStrategiesObj()   
+
+        await fetchTypeChart()
+
+        await setDataList()
+        await setFilters()
+        await displaySetup()
+        await displayParams(urlParams)
+
+        await window.scrollTo(0, 0)
+    }
+    else{
+        useBackup()
+    }
+    */
 }
 
 
@@ -91,6 +118,13 @@ function footerP(input){
     footer.append(paragraph)
 }
 
+
+
+function checkTimeout(){
+    if(timeout){
+        throw new Error("Timed out")
+    }
+}
 
 
 

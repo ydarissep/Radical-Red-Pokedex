@@ -3,6 +3,7 @@ function regexWildLocations(textWildLocations, locations){
 	let zone = null, method = "-", index = 0
 
     lines.forEach(line => {
+		checkTimeout()
     	const matchWildPokemon = line.match(/WildPokemon *g?(\w+)_(\w+)/i)
     	if(matchWildPokemon){
     		zone = matchWildPokemon[1].replace(/([A-Z])/g, " $1").replace(/(\d+)/g, " $1").trim()
@@ -48,6 +49,7 @@ function regexRaidLocations(textRaidLocations, locations){
 	let zone = null, method = "Raid"
 
     lines.forEach(line => {
+		checkTimeout()
     	const matchRaid = line.match(/Raid *s(\w+)Raids(\d+Star)/i)
     	if(matchRaid){
     		zone = matchRaid[1].replace(/([A-Z])/g, " $1").replace(/(\d+)/g, " $1").trim()

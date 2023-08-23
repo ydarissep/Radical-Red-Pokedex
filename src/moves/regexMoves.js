@@ -38,6 +38,7 @@ function regexMoves(textMoves, moves){
     let move = null, change = false, rebalanced = false
 
     lines.forEach(line => {
+        checkTimeout()
         const matchMoves = line.match(/\[ *(MOVE_\w+) *\]/i)
         if(matchMoves){
             move = matchMoves[1]
@@ -203,6 +204,7 @@ function regexMovesIngameName(textMovesIngameName, moves){
 
 
     lines.forEach(line => {
+        checkTimeout()
         if(nameLongFound === true){
             for (let i = 0; i < move.length; i++)
                 moves[move[i]]["ingameName"] = line.trim()
@@ -337,6 +339,7 @@ function regexMovesFlags(textMovesFlags, moves){
     let flagName = "placeHolder"
 
     lines.forEach(line => { 
+        checkTimeout()
         if(/g(.*):/i.test(line)){
             flagName = line.match(/g(\w+):/i)[1].replace(/([A-Z])/g, ' $1').trim()
         }
