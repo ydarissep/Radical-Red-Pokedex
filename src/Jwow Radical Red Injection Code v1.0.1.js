@@ -5,6 +5,8 @@ let jwowItemBlocks = []
 let jwowEncounterBlocks = []
 let jwowIsHardcore = true
 let jwowOnlyNew = true
+let jwowOnlyFullyEvolved = true
+let jwowDarkRockTunnel = true
 let jwowMovesObeyCap = false
 
 let jwowIncludeStarters = false
@@ -69,6 +71,12 @@ function jwowInject() {
         top: -2px;
     }
     
+	#jwowFilterDisplayText {
+		font-size: 13.3333px;
+		position: relative;
+		top: -1px;
+	}
+	
     #jwowFilterCheckBox {
         position: relative;
 		top: 1px;
@@ -78,17 +86,7 @@ function jwowInject() {
 </style>
 <div>
     <button type="button" id="jwowCycleLeft">&lt;</button>
-    <div id="jwowFilterDisplay" style="
-    height: 19px;
-"><label id="jwowFilterDisplayText" style="
-    font-size: 13.3333px;
-    position: relative;
-    top: -1px;
-">Pre-Archer &amp; Ariana 2 (79)</label><input type="checkbox" id="jwowFilterCheckBox" style="
-    position: relative;
-    top: 1px;
-    left: 4px;
-"></div>
+    <div id="jwowFilterDisplay"><label id="jwowFilterDisplayText">Pre-Archer &amp; Ariana 2 (79)</label><input type="checkbox" id="jwowFilterCheckBox"></div>
     <button type="button" id="jwowCycleRight">&gt;</button>
 </div>
 <div id="jwowCheckBoxes">
@@ -96,7 +94,8 @@ function jwowInject() {
         <label>Hardcore</label><input type="checkbox" id="jwowHardcoreCheckBox">
         <label>Only New Pokemon</label><input type="checkbox" id="jwowOnlyNewCheckBox">
     </div>
-    <div><label>Include Gift Starters from Oak's Lab</label><input type="checkbox" id="jwowIncludeStartersCheckBox"></div>
+	<div><label>Only show fully evolved Pokemon</label><input type="checkbox" id="jwowOnlyFullyEvolved"></div>
+	<div><label>Include Gift Starters from Oak's Lab</label><input type="checkbox" id="jwowIncludeStartersCheckBox"></div>
     <div><label>Move filters obey level cap</label><input type="checkbox" id="jwowMovesObeyCapCheckBox"></div>
 </div>
 
@@ -106,6 +105,7 @@ function jwowInject() {
 	
 	document.querySelector("#jwowHardcoreCheckBox").checked = true
 	document.querySelector("#jwowOnlyNewCheckBox").checked = true
+	document.querySelector("#jwowOnlyFullyEvolved").checked = true
 	
 	document.querySelector("#jwowCycleLeft").addEventListener("click", function() {
 		if (jwowIsFiltering) {
@@ -168,6 +168,14 @@ function jwowInject() {
 	
 	document.querySelector("#jwowOnlyNewCheckBox").addEventListener("change", function() {
 		jwowOnlyNew = this.checked
+		if (jwowIsFiltering) {
+			_jwowClearFilter()
+			_jwowShowFilter()
+		}
+	})
+	
+	document.querySelector("#jwowOnlyFullyEvolved").addEventListener("change", function() {
+		jwowOnlyFullyEvolved = this.checked
 		if (jwowIsFiltering) {
 			_jwowClearFilter()
 			_jwowShowFilter()
@@ -347,7 +355,7 @@ function _jwowFilterByLevelCap() {
 		myEvolutionItems = myEvolutionItems.concat(jwowItemBlocks[i][difficulty])
 	}
 	
-	if (jwowIncludeStarters && jwowLevelCapIndex < 4) {
+	if (jwowIncludeStarters && jwowLevelCapIndex < 3) {
 		if (jwowOnlyNew && jwowLevelCapIndex > 0)
 			prevEncounters = prevEncounters.concat(jwowStarterPokemon)
 		else
@@ -356,10 +364,10 @@ function _jwowFilterByLevelCap() {
 	
 	if (jwowOnlyNew && jwowLevelCapIndex > 0) {
 		//list of all old encounters -> evolve[old cap] = old pokemon and old evolutions
-		let oldEncountersAndOldEvolutions = prevEncounters.concat(_jwowCheckEvolutions(prevEncounters, prevEvolutionItems, jwowLevelCap))
+		let oldEncountersAndOldEvolutions = prevEncounters.concat(_jwowCheckEvolutions(prevEncounters, prevEvolutionItems, jwowLevelCaps[jwowLevelCapIndex - 1][difficulty + 1]))
 		
 		//list of all old encounters and evolutions -> evolve[new cap] = old pokemon new evolutions
-		let oldEncountersAllEvolutions = oldEncountersAndOldEvolutions.concat(_jwowCheckEvolutions(oldEncountersAndOldEvolutions, myEvolutionItems, jwowLevelCap))
+		let oldEncountersAllEvolutions = oldEncountersAndOldEvolutions.concat(_jwowCheckEvolutions(prevEncounters, myEvolutionItems, jwowLevelCap))
 
 		//list of old encounters all evolutions - old encounters old evolutions = just new evolutions
 		let oldEncountersNewEvolutions = oldEncountersAllEvolutions.filter(x => !oldEncountersAndOldEvolutions.includes(x));
@@ -375,6 +383,9 @@ function _jwowFilterByLevelCap() {
 	}
 	else
 		myEncounters = myEncounters.concat(_jwowCheckEvolutions(myEncounters, myEvolutionItems, jwowLevelCap))
+	
+	if (jwowOnlyFullyEvolved)
+		myEncounters = _jwowOnlyMaxEvolutions(myEncounters, myEvolutionItems, jwowLevelCap)
 	
 	for(let i = 0, j = tracker.length; i < j; i++){
         let name = tracker[i]["key"]
@@ -412,6 +423,26 @@ function _jwowCheckEvolutions(myEncounters, myEvolutionItems, myLevelCap) {
 	return [...new Set(outputList)]
 }
 
+function _jwowOnlyMaxEvolutions(myEncounters, myEvolutionItems, myLevelCap) {
+	
+	let outputList = []
+	let encountersToCheck = []
+	let canEvolve = false
+
+	for (encounter of myEncounters) {
+		canEvolve = false
+		for (const [evoCategory, evoCriteria, evoTarget] of species[encounter]["evolution"]) {
+			if (_jwowIsEvolutionPossible(species[encounter], evoCategory, evoCriteria, evoTarget, myEvolutionItems, myLevelCap) <= myLevelCap) {
+				canEvolve = true
+			}
+		}
+		if (!canEvolve)
+			outputList.push(encounter)
+	}
+	
+	return [...new Set(outputList)]
+}
+
 function _jwowIsEvolutionPossible(baseSpecies, evoCategory, evoCriteria, evoTarget, myEvolutionItems,  myLevelCap) {
 	
 	
@@ -439,7 +470,7 @@ function _jwowIsEvolutionPossible(baseSpecies, evoCategory, evoCriteria, evoTarg
 		return 1
 	}
 
-	let evoLevelCategories = ["EVO_LEVEL", "EVO_LEVEL_DAY", "EVO_LEVEL_NIGHT", "EVO_MALE_LEVEL", "EVO_FEMALE_LEVEL", "EVO_LEVEL_ATK_GT_DEF", "EVO_LEVEL_ATK_LT_DEF", "EVO_LEVEL_ATK_EQ_DEF", "EVO_LEVEL_SILCOON", "EVO_LEVEL_CASCOON", "EVO_LEVEL_NINJASK", "EVO_LEVEL_SPECIFIC_TIME_RANGE", "EVO_NATURE_TOXTRICITY", "EVO_NATURE_LOWKEY"]
+	let evoLevelCategories = ["EVO_LEVEL", "EVO_LEVEL_DAY", "EVO_LEVEL_NIGHT", "EVO_MALE_LEVEL", "EVO_FEMALE_LEVEL", "EVO_LEVEL_ATK_GT_DEF", "EVO_LEVEL_ATK_LT_DEF", "EVO_LEVEL_ATK_EQ_DEF", "EVO_LEVEL_SILCOON", "EVO_LEVEL_CASCOON", "EVO_LEVEL_NINJASK", "EVO_LEVEL_SPECIFIC_TIME_RANGE", "EVO_NATURE_TOXTRICITY", "EVO_NATURE_LOWKEY", "EVO_TYPE_IN_PARTY", "EVO_RAINY_FOGGY_OW"]
 	
 	if (!jwowIsHardcore)
 		evoLevelCategories.push("EVO_LEVEL_SHEDINJA")
@@ -539,15 +570,29 @@ function _jwowEncounterBlock(index) {
 		
 		//Special
 		outputList = outputList.concat(['SPECIES_CARNIVINE']) //Cerulean City trade
+		outputList = outputList.concat(['SPECIES_EEVEE']) //Route 5 gift
+		outputList = outputList.concat(['SPECIES_CRANIDOS', 'SPECIES_TYRUNT', 'SPECIES_LILEEP', 'SPECIES_ARCHEN', 'SPECIES_OMANYTE', 'SPECIES_KABUTO', 'SPECIES_TIRTOUGA', 'SPECIES_ANORITH', 'SPECIES_SHIELDON', 'SPECIES_AMAURA', 'SPECIES_AERODACTYL']) //from fossil trader, couldnt find data in locations[]
+		outputList = outputList.concat(['SPECIES_FARFETCHD_G']) //Vermilion City trade
+		outputList = outputList.concat(['SPECIES_FLOETTE_ETERNAL']) //Route 11 trade, use the shiny stone from Brendan
+		outputList = outputList.concat(['SPECIES_MR_MIME_G']) //Route 2 trade
 		
 		//Alt Forms
 		outputList = outputList.concat(['SPECIES_UNFEZANT_F'])
 		outputList = outputList.concat(['SPECIES_PYROAR_FEMALE'])
+		outputList = outputList.concat(['SPECIES_DARMANITANZEN']) //battle form with different stats
+		outputList = outputList.concat(['SPECIES_CHERRIM_SUN']) //battle form with different stats
+		outputList = outputList.concat(['SPECIES_WISHIWASHI_S']) //battle form with different stats
+		outputList = outputList.concat(['SPECIES_FRILLISH_F']) //gender difference thats not in the encounter table explicitly
+		outputList = outputList.concat(['SPECIES_HIPPOPOTAS_F']) //gender difference thats not in the encounter table explicitly
 		
 		//Raids
 		outputList = outputList.concat(Object.keys(locations['Route 4']['Raid 1 Star']))
 		outputList = outputList.concat(Object.keys(locations['Route 24']['Raid 1 Star']))
 		outputList = outputList.concat(Object.keys(locations['Route 25']['Raid 1 Star']))
+		outputList = outputList.concat(Object.keys(locations['Route 5']['Raid 2 Star']))
+		outputList = outputList.concat(Object.keys(locations['Route 6']['Raid 2 Star']))
+		outputList = outputList.concat(Object.keys(locations['Route 11']['Raid 2 Star']))
+		outputList = outputList.concat(Object.keys(locations['Digletts Cave']['Raid 2 Star']))
 		
 		//Standard
 		outputList = outputList.concat(Object.keys(locations['Cerulean City']['Old Rod']))
@@ -557,38 +602,6 @@ function _jwowEncounterBlock(index) {
 		outputList = outputList.concat(Object.keys(locations['Route 25']['Day']))
 		outputList = outputList.concat(Object.keys(locations['Route 25']['Night']))
 		outputList = outputList.concat(Object.keys(locations['Route 25']['Old Rod']))
-	}
-	
-	if (index === 3) {
-			
-		//***************************************//
-		//              Pre-Lt Surge
-		//***************************************//
-		
-		//Special
-		outputList = outputList.concat(['SPECIES_EEVEE']) //Route 5 gift
-		outputList = outputList.concat(['SPECIES_CRANIDOS', 'SPECIES_TYRUNT', 'SPECIES_LILEEP', 'SPECIES_ARCHEN', 'SPECIES_OMANYTE', 'SPECIES_KABUTO', 'SPECIES_TIRTOUGA', 'SPECIES_ANORITH', 'SPECIES_SHIELDON', 'SPECIES_AMAURA', 'SPECIES_AERODACTYL']) //from fossil trader, couldnt find data in locations[]
-		outputList = outputList.concat(['SPECIES_FARFETCHD_G']) //Vermilion City trade
-		outputList = outputList.concat(['SPECIES_FLOETTE_ETERNAL']) //Route 11 trade, use the shiny stone from Brendan
-		outputList = outputList.concat(['SPECIES_MR_MIME_G']) //Route 2 trade
-		
-		//Alt Forms 
-		outputList = outputList.concat(['SPECIES_DARMANITANZEN']) //battle form with different stats
-		outputList = outputList.concat(['SPECIES_CHERRIM_SUN']) //battle form with different stats
-		outputList = outputList.concat(['SPECIES_WISHIWASHI_S']) //battle form with different stats
-		outputList = outputList.concat(['SPECIES_FRILLISH_F']) //gender difference thats not in the encounter table explicitly
-		outputList = outputList.concat(['SPECIES_HIPPOPOTAS_F']) //gender difference thats not in the encounter table explicitly
-		
-		//Raids
-		outputList = outputList.concat(Object.keys(locations['Route 5']['Raid 2 Star']))
-		outputList = outputList.concat(Object.keys(locations['Route 6']['Raid 2 Star']))
-		outputList = outputList.concat(Object.keys(locations['Route 11']['Raid 2 Star']))
-		outputList = outputList.concat(Object.keys(locations['Digletts Cave']['Raid 2 Star']))
-		outputList = outputList.concat(Object.keys(locations['Route 2']['Raid 2 Star']))
-		outputList = outputList.concat(Object.keys(locations['Route 9']['Raid 2 Star']))
-		outputList = outputList.concat(Object.keys(locations['Route 10']['Raid 2 Star']))
-		
-		//Standard
 		outputList = outputList.concat(Object.keys(locations['Route 5']['Day']))
 		outputList = outputList.concat(Object.keys(locations['Route 5']['Night']))
 		outputList = outputList.concat(Object.keys(locations['Route 6']['Day']))
@@ -612,24 +625,19 @@ function _jwowEncounterBlock(index) {
 		outputList = outputList.concat(Object.keys(locations['Digletts Cave B 1 F']['Night']))
 		outputList = outputList.concat(Object.keys(locations['S S Anne']['Old Rod']))
 		outputList = outputList.concat(Object.keys(locations['S S Anne']['Good Rod']))
-		outputList = outputList.concat(Object.keys(locations['Route 9']['Day']))
-		outputList = outputList.concat(Object.keys(locations['Route 9']['Night']))
-		outputList = outputList.concat(Object.keys(locations['Route 10']['Day']))
-		outputList = outputList.concat(Object.keys(locations['Route 10']['Night']))
-		outputList = outputList.concat(Object.keys(locations['Route 10']['Old Rod']))
-		outputList = outputList.concat(Object.keys(locations['Route 10']['Good Rod']))
 	}
-
-	if (index === 4) {
-		
+	
+	if (index === 3) {
+			
 		//***************************************//
-		//               Pre-Erika
+		//              Pre-Lt Surge
 		//***************************************//
 		
 		//Special
 		outputList = outputList.concat(['SPECIES_EISCUE']) //Route 5 trade
 		outputList = outputList.concat(['SPECIES_CHATOT']) //Celadon City trade
 		outputList = outputList.concat(['SPECIES_TAUROS_P_FIRE', 'SPECIES_TAUROS_P_WATER']) //Saffron City Dojo gift
+		outputList = outputList.concat(['SPECIES_PIKACHU_POP_STAR']) //Missing from the yellow shard egg
 		
 		//Alt Forms
 		outputList = outputList.concat(['SPECIES_ORICORIO_Y']) //nectar in saffron city
@@ -640,12 +648,21 @@ function _jwowEncounterBlock(index) {
 		outputList = outputList.concat(['SPECIES_ASHGRENINJA']) //requires hidden ability, this is earliest even if froakie was starter
 		
 		//Raids
+		outputList = outputList.concat(Object.keys(locations['Route 2']['Raid 2 Star']))
+		outputList = outputList.concat(Object.keys(locations['Route 9']['Raid 2 Star']))
+		outputList = outputList.concat(Object.keys(locations['Route 10']['Raid 2 Star']))
 		outputList = outputList.concat(Object.keys(locations['Rock Tunnel']['Raid 2 Star']))
 		outputList = outputList.concat(Object.keys(locations['Route 12']['Raid 2 Star']))
 		outputList = outputList.concat(Object.keys(locations['Route 8']['Raid 2 Star']))
 		outputList = outputList.concat(Object.keys(locations['Route 16']['Raid 2 Star']))
 		
 		//Standard
+		outputList = outputList.concat(Object.keys(locations['Route 9']['Day']))
+		outputList = outputList.concat(Object.keys(locations['Route 9']['Night']))
+		outputList = outputList.concat(Object.keys(locations['Route 10']['Day']))
+		outputList = outputList.concat(Object.keys(locations['Route 10']['Night']))
+		outputList = outputList.concat(Object.keys(locations['Route 10']['Old Rod']))
+		outputList = outputList.concat(Object.keys(locations['Route 10']['Good Rod']))
 		outputList = outputList.concat(Object.keys(locations['Rock Tunnel 1 F']['Day']))
 		outputList = outputList.concat(Object.keys(locations['Rock Tunnel 1 F']['Night']))
 		outputList = outputList.concat(Object.keys(locations['Rock Tunnel B 1 F']['Day']))
@@ -664,6 +681,15 @@ function _jwowEncounterBlock(index) {
 		outputList = outputList.concat(Object.keys(locations['Celadon City']['Yellow Shard']))
 		outputList = outputList.concat(Object.keys(locations['Route 16']['Day']))
 		outputList = outputList.concat(Object.keys(locations['Route 16']['Night']))
+	}
+
+	if (index === 4) {
+		
+		//***************************************//
+		//               Pre-Erika
+		//***************************************//
+		
+		//nothing goes here! dark rock tunnel is poggers!
 	}
 	
 	if (index === 5) {
@@ -1018,6 +1044,7 @@ function _jwowEncounterBlock(index) {
 		outputList = outputList.concat(['SPECIES_ENAMORUS_THERIAN']) //available with base pokemon
 		outputList = outputList.concat(['SPECIES_NECROZMA_DUSK_MANE']) //available with base pokemon
 		outputList = outputList.concat(['SPECIES_NECROZMA_DAWN_WINGS']) //available with base pokemon
+		outputList = outputList.concat(['SPECIES_NECROZMA_ULTRA']) //requires z crystal, included here so the necrozma forms arent lost when filtering by only fully evolved
 		
 		//Raids
 		outputList = outputList.concat(Object.keys(locations['Viridian Forest']['Raid 6 Star']))
@@ -1105,23 +1132,14 @@ function _jwowItemBlock(index, isHardcore) {
 		//Items
 		outputList = outputList.concat(["ITEM_SUN_STONE"])
 		outputList = outputList.concat(["ITEM_LEAF_STONE"])
+		outputList = outputList.concat(["ITEM_FIRE_STONE"])
+		outputList = outputList.concat(["ITEM_SHINY_STONE"])
 	}
 	
 	if (index === 3) {
 			
 		//***************************************//
 		//              Pre-Lt Surge
-		//***************************************//
-		
-		//Items
-		outputList = outputList.concat(["ITEM_FIRE_STONE"])
-		outputList = outputList.concat(["ITEM_SHINY_STONE"])
-	}
-
-	if (index === 4) {
-		
-		//***************************************//
-		//               Pre-Erika
 		//***************************************//
 		
 		//Items
@@ -1140,6 +1158,17 @@ function _jwowItemBlock(index, isHardcore) {
 		outputList.push("ITEM_KINGS_ROCK")
 		outputList.push("ITEM_METAL_COAT")
 		outputList.push("ITEM_UP_GRADE")
+		
+	}
+
+	if (index === 4) {
+		
+		//***************************************//
+		//               Pre-Erika
+		//***************************************//
+		
+		//nothing goes here!
+		
 	}
 	
 	if (index === 5) {
@@ -1333,7 +1362,7 @@ function _jwowItemBlock(index, isHardcore) {
 		outputList.push("ITEM_MEWTWONITE_Y")
 		outputList.push("ITEM_MEWTWONITE_X")
 		outputList.push("ITEM_BLUE_ORB")
-		outputList.push("ITEM_ULTRANECROZIUM_Z")
+		//outputList.push("ITEM_ULTRANECROZIUM_Z") //in alt forms instead so the other necrozma forms arent filtered out when filtering by only fully evolved
 		
 	}
 	
