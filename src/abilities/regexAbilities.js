@@ -131,6 +131,9 @@ function regexAbilitiesDescription(textAbilitiesDescription, abilities){
         if(matchAbility){
             ability = `ABILITY_${matchAbility[1]}`
             abilitySanitized = `ABILITY_${matchAbility[1].replace(/_/g, "")}`
+            if(abilitySanitized === "ABILITY_HADRONEENGINE"){
+                abilitySanitized = "ABILITY_HADRONENGINE"
+            }
         }
         else{
             for (let i = 0; i < abilityArray.length; i++)
